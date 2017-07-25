@@ -4,7 +4,7 @@ import { User } from './user';
 
 const USERS: User[] = [
     {name: 'TestUser', role: 'user'},
-    {name: 'TestMerchant', role: 'merchat'},
+    {name: 'TestMerchant', role: 'merchant'},
     {name: 'TestAdmin', role: 'admin'}
 ];
 

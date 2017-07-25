@@ -1,13 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {HttpModule} from '@angular/http';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import {ProductListComponent} from './Products/product-list.component';
-import {FormsModule} from "@angular/forms";
-import {ProductFilterPipe} from "./Products/product-filter.pipe";
+import { ProductListComponent } from './Products/product-list.component';
+import { FormsModule } from "@angular/forms";
+import { ProductFilterPipe } from "./Products/product-filter.pipe";
 import { StarComponent } from './Shared/star.component';
-import {RoleManagementComponent} from './RoleManagement/rolemanagement.component';
+import { RoleManagementComponent } from './RoleManagement/rolemanagement.component';
+import { RoleSelectorComponent } from './RoleSelector/roleselector.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import {RoleManagementComponent} from './RoleManagement/rolemanagement.component
     ProductListComponent,
     ProductFilterPipe,
     StarComponent,
-    RoleManagementComponent
+    RoleManagementComponent,
+    RoleSelectorComponent
   ],
   imports: [
     BrowserModule,
