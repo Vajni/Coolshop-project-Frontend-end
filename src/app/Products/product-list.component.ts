@@ -11,7 +11,7 @@ export class ProductListComponent implements OnInit{
   pageTitle: string = "Product List";
   imageWidth: number = 80;
   imageMargin: number = 2;
-  showImage: boolean = false;
+  showImage: boolean = true;
   listFilter: string;
   products: IProduct[];
   errorMessage: string;
