@@ -5,7 +5,7 @@ import { ProductService } from "./product.service";
 @Component({
   selector: 'pm-products',
   templateUrl: 'product-list.component.html',
-  styleUrls: ['product-list.component.css']
+  //styleUrls: ['product-list.component.css']
 })
 export class ProductListComponent implements OnInit{
   pageTitle: string = "Product List";
@@ -17,7 +17,7 @@ export class ProductListComponent implements OnInit{
   errorMessage: string;
 
   constructor(private _productService: ProductService){
-    
+
   }
 
   toggleImage(): void {
