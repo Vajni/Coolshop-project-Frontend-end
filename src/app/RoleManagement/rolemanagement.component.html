@@ -4,5 +4,9 @@
 			<th>Name:</th>
 			<th>Role:</th>
 		</tr>
+		<tr *ngFor="let user of users">
+			<td>{{user.name}}</td>
+			<td>{{user.role}}</td>
+		</tr>
 	</table>
 </div>
