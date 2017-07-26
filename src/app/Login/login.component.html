@@ -1,0 +1,17 @@
+<div class="col-md-6">
+  <h1 class="pi-item">SIGN IN</h1>
+  <div class="col-md-12 bg-warning text-lowercase text-info text-left py-1" id="warning">
+    <ul class="list-inline my-1">
+      <li class="list-inline-item"><i class="fa fa-window-close" aria-hidden="true"></i></li>
+      <li class="list-inline-item">WARNING: </li>
+      <li class="list-inline-item">E-mail or password incorrect!</li>
+    </ul>
+  </div>
+  <form action="service/user/login" id="loginform" method="post">
+    <fieldset class="form-group"> <label for="email">Your e-mail</label>
+      <input type="email" class="form-control" id="email" placeholder="Your e-mail" name="email" onkeypress="handleKeyPress(event)"> </fieldset>
+      <fieldset class="form-group"> <label for="password">Your password</label>
+      <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" onkeypress="handleKeyPress(event)"> </fieldset>
+      <input type="button" onclick="login()" value="Login" class="btn btn-primary">
+  </form>
+</div>
