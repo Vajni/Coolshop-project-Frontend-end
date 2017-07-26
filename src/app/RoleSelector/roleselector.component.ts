@@ -7,6 +7,7 @@ import { User } from '../RoleManagement/user';
   templateUrl: './roleselector.component.html',
   styleUrls: ['./roleselector.component.css']
 })
+
 export class RoleSelectorComponent implements OnInit {
 
   private roles: string[] = ['user', 'merchant', 'admin'];
@@ -17,7 +18,6 @@ export class RoleSelectorComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('askasdkjasdh', this.user);
+    console.log('Role for this user has been changed', this.user);
   }
-
 }

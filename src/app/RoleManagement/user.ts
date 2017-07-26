@@ -1,4 +1,12 @@
-export class User {
-    name: string;
-    role: string;
+export interface User {
+    userID: number;
+    userName: String;
+    password: String;
+    role: String;
+    address: String;
+    city: String;
+    region: String;
+    postalCode: String;
+    country: String;
+    phone: String;
 }

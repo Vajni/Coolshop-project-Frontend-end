@@ -9,6 +9,7 @@ import { ProductFilterPipe } from "./Products/product-filter.pipe";
 import { StarComponent } from './Shared/star.component';
 import { RoleManagementComponent } from './RoleManagement/rolemanagement.component';
 import { RoleSelectorComponent } from './RoleSelector/roleselector.component';
+import { RoleManagementService } from './RoleManagement/rolemanagement.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { RoleSelectorComponent } from './RoleSelector/roleselector.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [RoleManagementService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

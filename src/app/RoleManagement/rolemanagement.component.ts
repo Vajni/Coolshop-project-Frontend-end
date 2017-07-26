@@ -1,12 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { User } from './user';
-
-const USERS: User[] = [
-    {name: 'TestUser', role: 'user'},
-    {name: 'TestMerchant', role: 'merchant'},
-    {name: 'TestAdmin', role: 'admin'}
-];
+import { RoleManagementService } from './rolemanagement.service';
 
 @Component({
     selector: 'rolemanagement',
@@ -15,5 +10,13 @@ const USERS: User[] = [
 })
 
 export class RoleManagementComponent {
-    users = USERS;
+    users: User[];
+    errorMessage: string;
+
+    constructor(private _roleManagementService: RoleManagementService){}
+
+    ngOnInit(): void {
+        this._roleManagementService.getUserRoles()
+            .subscribe(users => this.users = users, error => this.errorMessage = <any>error);
+    }
 }
