@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { ProductService } from "./Products/product.service";
+import { ProductService } from './Products/product.service';
+
 
 @Component({
-  selector : 'pm-app',
-  //template : '<div><h1>{{pageTitle}}</h1><div>My first component</div><pm-products></pm-products></div>',
+  selector: 'app-root',
   templateUrl: './app.component.html',
-  providers : [ProductService]
+  styleUrls: ['./app.component.css'],
+  providers: [ProductService]
 })
-export class AppComponent{
-  pageTitle :string = "My first Angular application";
+export class AppComponent {
+  title = 'app';
 }
