@@ -26,7 +26,6 @@ export class LoginService {
     this._http.post("http://localhost:8080/CoolShop-1.0/rest/user/login", data)
     .map(response => response.json())
       .subscribe(data => {
-        //alert("OK: " + data.login);
         this.router.navigate(["products"]);
       },
       error => {
