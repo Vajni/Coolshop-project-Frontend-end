@@ -6020,3 +6020,8 @@ html {
   padding-left: 25px;
   padding-right: 25px;
 }
+
+
+.form-signin {
+  width: 70%;
+}
