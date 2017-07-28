@@ -1,0 +1,8 @@
+.table {
+    width: 50%;
+    margin: auto;
+}
+
+.table input {
+    float: right;
+}
