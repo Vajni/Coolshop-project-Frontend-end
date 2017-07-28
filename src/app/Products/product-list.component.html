@@ -34,7 +34,6 @@
       </div>
     </div>
     <div class="row">
-
     </div>
   </div>
   <div class="table-responsive">
@@ -57,12 +56,13 @@
       <tr *ngFor="let product of products | productFilter: listFilter">
         <td>
           <img *ngIf="showImage"
-              src={{product.pictureTitle}} title={{product.productName}}
+              src={{product.imageName}} title={{product.productName}}
               [style.width.px]="imageWidth"
               [style.margin.px]="imageMargin"
           >
         </td>
-        <td>{{product.productName}}</td>
+        <td><a [routerLink] = "['/product', product.productId]">
+          {{product.productName}}</a></td>
         <td>{{product.productType}}</td>
         <td>{{product.productBrand}}</td>
         <td><b>{{product.productPrice | currency:"USD" : true: "1.2-2"}}</b></td>

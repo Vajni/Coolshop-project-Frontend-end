@@ -1,7 +1,7 @@
 /**
  * Created by vajni on 2017.07.19..
  */
-export interface IProduct{
+export class IProduct{
 
   productName: String;
   productType: String;
@@ -10,6 +10,7 @@ export interface IProduct{
   productPrice: number;
   productQuantity: number;
   unitsOnOrder: number;
-  ReOrderLevel: number;
-  imageUrl: string;
+  reOrderLevel: number;
+  imageName: string;
+  imageUrl: any;
 }

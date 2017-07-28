@@ -3,11 +3,10 @@ import { ProductService } from './Products/product.service';
 
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  providers: [ProductService]
+  selector : 'pm-app',
+  templateUrl : 'app.component.html',
+  providers : [ProductService]
 })
-export class AppComponent {
-  title = 'app';
+export class AppComponent{
+  
 }

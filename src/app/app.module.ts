@@ -6,18 +6,28 @@ import {HttpModule} from '@angular/http';
 import {RouterModule} from '@angular/router';
 
 import { AppComponent } from './app.component';
-import {ProductListComponent} from './Products/product-list.component';
-import {FormsModule} from "@angular/forms";
-import {ProductFilterPipe} from "./Products/product-filter.pipe";
+import { ProductListComponent } from './Products/product-list.component';
+import { FormsModule } from "@angular/forms";
+import { ProductFilterPipe } from "./Products/product-filter.pipe";
 import { StarComponent } from './Shared/star.component';
 import { LoginComponent } from './Login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { LoginService } from './Login/login.service';
-//import { ProductDetailComponent } from "./Products/product-detail.component";
 
 import {RegistrationComponent} from './Registration/registration.component';
 import { RegistrationService } from './Registration/registration.service';
+
+import { ProductDetailComponent } from "./Products/product-detail.component";
+import { WelcomeContent } from "./WelcomeContent/welcome.component";
+import { MerchantComponent } from "./Merchant/merchant.component";
+import { MerchantService } from "./Merchant/merchant.service";
+
+import { RoleManagementComponent } from './RoleManagement/rolemanagement.component';
+import { RoleSelectorComponent } from './RoleSelector/roleselector.component';
+import { RoleManagementService } from './RoleManagement/rolemanagement.service';
+import { RoleSelectorService } from './RoleSelector/roleselector.service';
+
 
 @NgModule({
    imports: [
@@ -31,19 +41,27 @@ import { RegistrationService } from './Registration/registration.service';
        {path: "", pathMatch: "full", redirectTo: "products"},
        {path: "login", component: LoginComponent},
        {path: "register", component: RegistrationComponent},
-       {path: "products", component: ProductListComponent}
+       {path: "products", component: ProductListComponent},
+       {path: 'product/:id', component: ProductDetailComponent},
+       {path: 'welcome', component: WelcomeContent},
+       {path: 'merchant', component: MerchantComponent}
      ])
    ],
    declarations: [
-     AppComponent,
-     AppComponent,
-     ProductListComponent,
-     ProductFilterPipe,
-     StarComponent,
-     LoginComponent,
-     RegistrationComponent,
-     //ProductDetailComponent
-    ],
-   bootstrap: [ AppComponent ]
- })
+    AppComponent,
+    LoginComponent,
+    RegistrationComponent,
+    ProductListComponent,
+    ProductFilterPipe,
+    StarComponent,
+    ProductDetailComponent,
+    WelcomeContent,
+    MerchantComponent,
+    RoleManagementComponent,
+    RoleSelectorComponent
+  ],
+  bootstrap: [ AppComponent ],
+  providers: [RoleManagementService, RoleSelectorService, MerchantService],
+  bootstrap: [AppComponent]
+})
 export class AppModule { }
