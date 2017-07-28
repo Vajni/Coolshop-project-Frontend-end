@@ -21,16 +21,13 @@ export class LoginService {
     let data = new URLSearchParams();
     data.append("email", email);
     data.append("password", password);
-
     return this._http.post("http://localhost:8080/CoolShop-1.0/rest/user/login", data)
       .map(response => this.check(response.json()));
   }
 
 
   check(data): boolean {
-    alert("data.login: " + data.login);
     if (data.login == "true") {
-      alert("This is fucking true");
       return true;
     }
     else {

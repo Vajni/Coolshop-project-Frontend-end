@@ -24,7 +24,6 @@ export class LoginComponent {
 
   sendClicked() {
     this._service.login(this.email, this.password).subscribe(success => {
-      alert("asdasd: " +  success);
       if (success) {
         this._router.navigate(["products"]);
       }
