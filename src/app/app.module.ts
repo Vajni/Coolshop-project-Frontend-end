@@ -1,4 +1,4 @@
-import { AppRoutingModule, routingComponents } from './app.routing';
+//import { AppRoutingModule, routingComponents } from './app.routing';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -22,19 +22,20 @@ import { RegistrationService } from './Registration/registration.service';
 @NgModule({
    imports: [
      BrowserModule,
-     AppRoutingModule,
+     //AppRoutingModule,
      HttpModule,
      FormsModule,
      RouterModule,
      HttpClientModule,
      RouterModule.forRoot([
+       {path: "", pathMatch: "full", redirectTo: "products"},
        {path: "login", component: LoginComponent},
-       {path: "register", component: RegistrationComponent}
+       {path: "register", component: RegistrationComponent},
+       {path: "products", component: ProductListComponent}
      ])
    ],
    declarations: [
      AppComponent,
-     routingComponents,
      AppComponent,
      ProductListComponent,
      ProductFilterPipe,
