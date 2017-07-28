@@ -3,7 +3,7 @@ import { ProductService } from "./Products/product.service";
 
 @Component({
   selector : 'pm-app',
-  template : '<div><pm-products></pm-products></div>',
+  templateUrl : 'app.component.html',
   providers : [ProductService]
 })
 export class AppComponent{

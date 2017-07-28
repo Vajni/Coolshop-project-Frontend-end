@@ -9,6 +9,9 @@ import {FormsModule} from "@angular/forms";
 import {ProductFilterPipe} from "./Products/product-filter.pipe";
 import { StarComponent } from './Shared/star.component';
 import { ProductDetailComponent } from "./Products/product-detail.component";
+import { WelcomeContent } from "./WelcomeContent/welcome.component";
+import { MerchantComponent } from "./Merchant/merchant.component";
+import { MerchantService } from "./Merchant/merchant.service";
 
 @NgModule({
   declarations: [
@@ -16,7 +19,9 @@ import { ProductDetailComponent } from "./Products/product-detail.component";
     ProductListComponent,
     ProductFilterPipe,
     StarComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    WelcomeContent,
+    MerchantComponent
   
   ],
   imports: [
@@ -25,10 +30,12 @@ import { ProductDetailComponent } from "./Products/product-detail.component";
     HttpModule,
     RouterModule.forRoot([
       {path: 'products', component: ProductListComponent},
-      {path: 'product/:id', component: ProductDetailComponent}
+      {path: 'product/:id', component: ProductDetailComponent},
+      {path: 'welcome', component: WelcomeContent},
+      {path: 'merchant', component: MerchantComponent}
   ])
   ],
-  providers: [],
+  providers: [MerchantService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
