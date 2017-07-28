@@ -6008,6 +6008,9 @@ body > * {
 
 #warning {
   margin-bottom: 20px;
+}
+
+.warning-hidden {
   visibility: hidden;
 }
 

@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
   selector: 'login',
   templateUrl: '../Login/login.component.html',
   providers: [LoginService]
-  //template: "<h1>Login</h1><hr>This is the login page!"
 })
 export class LoginComponent {
   backgroundColor: string = "c45f2ad";
@@ -17,16 +16,21 @@ export class LoginComponent {
     email: "",
     password: ""
   }
+  hidden: string = "warning-hidden";
 
   constructor(private _service: LoginService, private _router: Router) {
 
   }
 
   sendClicked() {
-    this._service.login(this.email, this.password);
-    //this._service.loginfn({email: this.email, password: this.password}).then((res) => {})
-    //alert(this._httpService.getLogin());
-    //alert("fasz: " + this.email + " : " + this.password);
-    //return this._http.post("http://localhost:8080/service/user/login", '{"asd": "asd"}');
+    this._service.login(this.email, this.password).subscribe(success => {
+      alert("asdasd: " +  success);
+      if (success) {
+        this._router.navigate(["products"]);
+      }
+      else {
+        this.hidden = "";
+      }
+    })
   }
 }
