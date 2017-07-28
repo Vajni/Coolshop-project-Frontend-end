@@ -1,0 +1,14 @@
+.mainform{
+    width: 60%;
+    margin: auto;
+}
+
+.registerbutton{
+    width: 30%;
+    float: right;
+    margin-bottom: 20px;
+}
+
+#passsecond{
+    margin-bottom: -10px;
+}

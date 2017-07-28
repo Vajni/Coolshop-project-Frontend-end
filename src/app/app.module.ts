@@ -1,14 +1,22 @@
+//import { AppRoutingModule, routingComponents } from './app.routing';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpModule} from '@angular/http';
 import {RouterModule} from '@angular/router';
-
 
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './Products/product-list.component';
 import { FormsModule } from "@angular/forms";
 import { ProductFilterPipe } from "./Products/product-filter.pipe";
 import { StarComponent } from './Shared/star.component';
+import { LoginComponent } from './Login/login.component';
+import { HttpClientModule } from '@angular/common/http';
+
+import { LoginService } from './Login/login.service';
+
+import {RegistrationComponent} from './Registration/registration.component';
+import { RegistrationService } from './Registration/registration.service';
 
 import { ProductDetailComponent } from "./Products/product-detail.component";
 import { WelcomeContent } from "./WelcomeContent/welcome.component";
@@ -22,8 +30,27 @@ import { RoleSelectorService } from './RoleSelector/roleselector.service';
 
 
 @NgModule({
-  declarations: [
+   imports: [
+     BrowserModule,
+     //AppRoutingModule,
+     HttpModule,
+     FormsModule,
+     RouterModule,
+     HttpClientModule,
+     RouterModule.forRoot([
+       {path: "", pathMatch: "full", redirectTo: "products"},
+       {path: "login", component: LoginComponent},
+       {path: "register", component: RegistrationComponent},
+       {path: "products", component: ProductListComponent},
+       {path: 'product/:id', component: ProductDetailComponent},
+       {path: 'welcome', component: WelcomeContent},
+       {path: 'merchant', component: MerchantComponent}
+     ])
+   ],
+   declarations: [
     AppComponent,
+    LoginComponent,
+    RegistrationComponent,
     ProductListComponent,
     ProductFilterPipe,
     StarComponent,
@@ -33,17 +60,7 @@ import { RoleSelectorService } from './RoleSelector/roleselector.service';
     RoleManagementComponent,
     RoleSelectorComponent
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    RouterModule.forRoot([
-      {path: 'products', component: ProductListComponent},
-      {path: 'product/:id', component: ProductDetailComponent},
-      {path: 'welcome', component: WelcomeContent},
-      {path: 'merchant', component: MerchantComponent}
-  ])
-  ],
+  bootstrap: [ AppComponent ],
   providers: [RoleManagementService, RoleSelectorService, MerchantService],
   bootstrap: [AppComponent]
 })
