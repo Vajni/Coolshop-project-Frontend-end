@@ -3,10 +3,10 @@ import { ProductService } from "./Products/product.service";
 
 @Component({
   selector : 'pm-app',
-  template : '<div><rolemanagement></rolemanagement></div>',
+  templateUrl : 'app.component.html',
   providers : [ProductService]
 })
 export class AppComponent{
-  pageTitle :string = "My first Angular application";
+  
 }
 
