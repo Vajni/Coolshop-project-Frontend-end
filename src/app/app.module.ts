@@ -10,6 +10,7 @@ import { StarComponent } from './Shared/star.component';
 import { RoleManagementComponent } from './RoleManagement/rolemanagement.component';
 import { RoleSelectorComponent } from './RoleSelector/roleselector.component';
 import { RoleManagementService } from './RoleManagement/rolemanagement.service';
+import { RoleSelectorService } from './RoleSelector/roleselector.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { RoleManagementService } from './RoleManagement/rolemanagement.service';
     FormsModule,
     HttpModule
   ],
-  providers: [RoleManagementService],
+  providers: [RoleManagementService, RoleSelectorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
