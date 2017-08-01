@@ -44,7 +44,8 @@ import { RoleSelectorService } from './RoleSelector/roleselector.service';
        {path: "products", component: ProductListComponent},
        {path: 'product/:id', component: ProductDetailComponent},
        {path: 'welcome', component: WelcomeContent},
-       {path: 'merchant', component: MerchantComponent}
+       {path: 'merchant', component: MerchantComponent},
+       {path: 'rolemanagement', component: RoleManagementComponent}
      ])
    ],
    declarations: [
@@ -62,6 +63,5 @@ import { RoleSelectorService } from './RoleSelector/roleselector.service';
   ],
   bootstrap: [ AppComponent ],
   providers: [RoleManagementService, RoleSelectorService, MerchantService],
-  bootstrap: [AppComponent]
 })
 export class AppModule { }
