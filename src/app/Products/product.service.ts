@@ -13,7 +13,6 @@ export class ProductService {
     private _productUrl = 'http://localhost:8080/CoolShop-1.0/rest/ProductList/Products'
 
     constructor(private _http: Http){
-
     }
 
     getProducts(): Observable<IProduct[]> {
@@ -28,4 +27,7 @@ export class ProductService {
         return Observable.throw(error.json().error || "Server error");
     }
     
+    logName(userName: String) {
+        console.log('userName: ' + userName);
+    }
 }

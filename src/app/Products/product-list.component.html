@@ -54,28 +54,27 @@
         </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let product of products | productFilter: listFilter">
-        <td>
-          <img *ngIf="showImage"
-              src={{product.pictureTitle}} title={{product.productName}}
-              [style.width.px]="imageWidth"
-              [style.margin.px]="imageMargin"
-          >
-        </td>
-        <td><a [routerLink] = "['/product', product.productId]">
-          {{product.productName}}</a></td>
-        <td>{{product.productType}}</td>
-        <td>{{product.productBrand}}</td>
-        <td><b>{{product.productPrice | currency:"USD" : true: "1.2-2"}}</b></td>
-        <td>{{product.productDescription}}</td>
-        <td>
-          <app-star [rating] = 'product.starRating' (ratingClicked) = 'onRatingClicked($event)'></app-star>
-        </td>
-        <td>
-          <button class="btn btn-primary">Add to cart!</button>
-        </td>
-      </tr>
-
+        <tr *ngFor="let product of products | productFilter: listFilter">
+          <td>
+            <img *ngIf="showImage"
+                src={{product.pictureTitle}} title={{product.productName}}
+                [style.width.px]="imageWidth"
+                [style.margin.px]="imageMargin"
+            >
+          </td>
+          <td><a [routerLink] = "['/product', product.productId]">
+            {{product.productName}}</a></td>
+          <td>{{product.productType}}</td>
+          <td>{{product.productBrand}}</td>
+          <td><b>{{product.productPrice | currency:"USD" : true: "1.2-2"}}</b></td>
+          <td>{{product.productDescription}}</td>
+          <td>
+            <app-star [rating] = 'product.starRating' (ratingClicked) = 'onRatingClicked($event)'></app-star>
+          </td>
+          <td>
+            <button class="btn btn-primary" (click)="getName(product.productName)">Add to cart!</button>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>

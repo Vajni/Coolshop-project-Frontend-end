@@ -5,7 +5,7 @@ import { ProductService } from "./product.service";
 @Component({
   selector: 'pm-products',
   templateUrl: 'product-list.component.html',
-  //styleUrls: ['product-list.component.css']
+  styleUrls: ['product-list.component.css']
 })
 export class ProductListComponent implements OnInit{
   pageTitle: string = "Product List";
@@ -17,7 +17,6 @@ export class ProductListComponent implements OnInit{
   errorMessage: string;
 
   constructor(private _productService: ProductService){
-
   }
 
   toggleImage(): void {
@@ -32,5 +31,10 @@ export class ProductListComponent implements OnInit{
 
   onRatingClicked(message: string):void{
     this.pageTitle = "Product List " + message;
+  }
+
+  //test függvény
+  getName(productName: String) {
+    this._productService.logName(productName);
   }
 }
