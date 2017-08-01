@@ -26,7 +26,8 @@ export class ProductService {
         console.error(error);
         return Observable.throw(error.json().error || "Server error");
     }
-    
+
+    //test függvény
     logName(userName: String) {
         console.log('userName: ' + userName);
     }
