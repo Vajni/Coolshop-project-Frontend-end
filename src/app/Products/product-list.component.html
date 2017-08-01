@@ -50,6 +50,7 @@
           <th>Price</th>
           <th>Description</th>
           <th>5 star rating</th>
+          <th></th> <!-- placeholder for add to cart buttons; Made by: Feri -->
         </tr>
       </thead>
       <tbody>
@@ -67,8 +68,11 @@
         <td>{{product.productBrand}}</td>
         <td><b>{{product.productPrice | currency:"USD" : true: "1.2-2"}}</b></td>
         <td>{{product.productDescription}}</td>
-          <td>
+        <td>
           <app-star [rating] = 'product.starRating' (ratingClicked) = 'onRatingClicked($event)'></app-star>
+        </td>
+        <td>
+          <button class="btn btn-primary">Add to cart!</button>
         </td>
       </tr>
 
