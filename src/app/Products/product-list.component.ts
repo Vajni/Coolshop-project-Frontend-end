@@ -15,6 +15,9 @@ export class ProductListComponent implements OnInit{
   listFilter: string;
   products: IProduct[];
   errorMessage: string;
+  //ferijé he!
+  orderedProducts: IProduct[];
+  totalPrice: number = 0;
 
   constructor(private _productService: ProductService){
   }
@@ -22,7 +25,6 @@ export class ProductListComponent implements OnInit{
   toggleImage(): void {
     this.showImage = !this.showImage;
   }
-
 
   ngOnInit(): void {
     this._productService.getProducts()
@@ -36,5 +38,10 @@ export class ProductListComponent implements OnInit{
   //test függvény
   getName(productName: String) {
     this._productService.logName(productName);
+  }
+
+  countTotalPrice(productPrice: number): number {
+    this.totalPrice += productPrice;
+    return this.totalPrice;
   }
 }
