@@ -28,6 +28,10 @@ import { RoleSelectorComponent } from './RoleSelector/roleselector.component';
 import { RoleManagementService } from './RoleManagement/rolemanagement.service';
 import { RoleSelectorService } from './RoleSelector/roleselector.service';
 
+import { CheckoutComponent } from './Checkout/checkout.component';
+import { CheckoutService } from './Checkout/checkout.service';
+import { User } from './Registration/user';
+
 
 @NgModule({
    imports: [
@@ -38,13 +42,15 @@ import { RoleSelectorService } from './RoleSelector/roleselector.service';
      RouterModule,
      HttpClientModule,
      RouterModule.forRoot([
-       {path: "", pathMatch: "full", redirectTo: "products"},
+       //{path: "", pathMatch: "full", redirectTo: "products"},
        {path: "login", component: LoginComponent},
        {path: "register", component: RegistrationComponent},
        {path: "products", component: ProductListComponent},
        {path: 'product/:id', component: ProductDetailComponent},
        {path: 'welcome', component: WelcomeContent},
-       {path: 'merchant', component: MerchantComponent}
+       {path: 'merchant', component: MerchantComponent},
+       {path: 'rolemanagement', component: RoleManagementComponent},
+       {path: 'checkout', component: CheckoutComponent}
      ])
    ],
    declarations: [
@@ -58,10 +64,10 @@ import { RoleSelectorService } from './RoleSelector/roleselector.service';
     WelcomeContent,
     MerchantComponent,
     RoleManagementComponent,
-    RoleSelectorComponent
+    RoleSelectorComponent,
+    CheckoutComponent,
   ],
   bootstrap: [ AppComponent ],
-  providers: [RoleManagementService, RoleSelectorService, MerchantService],
-  bootstrap: [AppComponent]
+  providers: [RoleManagementService, RoleSelectorService, MerchantService, CheckoutService],
 })
 export class AppModule { }

@@ -1,0 +1,21 @@
+<div>
+<h1>Delivery informations</h1>
+</div>
+<div id="addressinfo">
+    <label>Country: {{user.country}}</label><br>
+    <label>City: {{user.city}}</label><br>
+    <label>Region: {{user.region}}</label><br>    
+    <label>Street & number: {{user.address}}</label><br>
+    <label>PostalCode: {{user.postalCode}}</label><br>
+</div>
+<span>If your delivery address different than your home address please mark this box</span>
+<input type="checkbox" id="checkbox" [(ngModel)]="checked" [checked]="checked==true"><br>
+<span>and give me your details above</span>
+<div id="deliveryinfo">
+    <label>Country: </label><input type="text" id="country" [(ngModel)]="deliverycountry"><br>
+    <label>City: </label><input type="text" id="city" [(ngModel)]="deliverycity"><br>
+    <label>Region: </label><input type="text" id="region" [(ngModel)]="deliveryregion"><br>    
+    <label>Street & number: </label><input type="text" id="address" [(ngModel)]="deliveryaddress"><br>
+    <label>PostalCode: </label><input type="text" id="postalcode" [(ngModel)]="deliverypostalcode"><br>
+</div>
+<button id="button" (click)="valamilyenneven()">Order</button>

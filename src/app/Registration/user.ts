@@ -25,4 +25,5 @@ export class User {
         this.address = address;
 
     }
+
 }

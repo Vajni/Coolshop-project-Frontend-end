@@ -40,7 +40,6 @@ export class RegistrationComponent {
         } else {
             let user1 = new User(0, username, email, password, passwordagain, phonenumber, country, region, postalcode, city, streetandstreetnumber);
             let user = JSON.stringify(user1);
-            alert(user1.userName)
             return user1;
         }
 
@@ -54,7 +53,7 @@ export class RegistrationComponent {
             } else if (response._body === "Something went wrong.") {
                 alert("Something went wrong.")
             } else {
-                alert("ok");
+                alert("Registration succesful.");
                 this.router.navigate(["login"]);
             }
         });
