@@ -16,7 +16,7 @@ export class ProductListComponent implements OnInit{
   products: IProduct[];
   errorMessage: string;
   //ferijé he!
-  orderedProducts: IProduct[];
+  orderedProducts: Array<IProduct> = new Array;
   totalPrice: number = 0;
 
   constructor(private _productService: ProductService){
@@ -43,5 +43,13 @@ export class ProductListComponent implements OnInit{
   countTotalPrice(productPrice: number): number {
     this.totalPrice += productPrice;
     return this.totalPrice;
+  }
+
+  orderProduct(product: IProduct) {
+    this.orderedProducts.push(product);
+    for(let product of this.orderedProducts) {
+      console.log(product.productName);
+    }
+    return this.orderedProducts;
   }
 }
