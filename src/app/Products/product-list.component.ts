@@ -35,7 +35,7 @@ export class ProductListComponent implements OnInit{
     this.pageTitle = "Product List " + message;
   }
 
-  //test függvény
+  //test függvény INNENTŐL A FERIJÉ HE
   getName(productName: String) {
     this._productService.logName(productName);
   }
@@ -46,10 +46,16 @@ export class ProductListComponent implements OnInit{
   }
 
   orderProduct(product: IProduct) {
+    product.productQuantity = 1;
     this.orderedProducts.push(product);
-    for(let product of this.orderedProducts) {
-      console.log(product.productName);
-    }
     return this.orderedProducts;
+  }
+
+  increaseQuantity(product: IProduct) {
+    product.productQuantity++;
+  }
+
+  decreaseQuantity(product: IProduct) {
+    product.productQuantity--;
   }
 }

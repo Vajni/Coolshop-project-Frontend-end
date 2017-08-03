@@ -92,7 +92,15 @@
     <div class="panel-heading text-center">
 			<h4>Shopping Cart</h4>
 		</div>
-    <div class="panel-body"></div>
+    <div class="panel-body">
+			<ul *ngFor="let product of orderedProducts">
+				<li>{{product.productName}}<br>
+						<button><span class="glyphicon glyphicon-minus" (click)="decreaseQuantity(product)"></span></button>
+						{{product.productQuantity}}
+						<button><span class="glyphicon glyphicon-plus" (click)="increaseQuantity(product)"></span></button>
+						{{product.productPrice}}</li>
+			</ul>
+		</div>
     <div class="panel-footer">
       <p>Total price: {{totalPrice | currency:"USD" : true:"1.2-2"}}</p>
     </div>
