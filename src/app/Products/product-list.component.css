@@ -21,6 +21,30 @@
   position: relative;
 }
 
+.cart a {
+  text-decoration: none;
+  color: #00b0eb;
+}
+
+.cart a:hover {
+  text-decoration: underline;
+  color: #337ab7;
+}
+
+.cart ul {
+  margin-bottom: 30px;
+  padding: 0;
+}
+
+.cart li {
+  list-style-type: none;
+}
+
+.cart p {
+  margin: 0 20px 0 0;
+  display: inline-block;
+}
+
 .panel-footer {
   background-color: #337ab7;
   position: absolute;

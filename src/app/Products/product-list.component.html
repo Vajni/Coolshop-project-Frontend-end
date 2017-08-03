@@ -94,15 +94,19 @@
 		</div>
     <div class="panel-body">
 			<ul *ngFor="let product of orderedProducts">
-				<li>{{product.productName}}<br>
+				<li><p>Product name:</p><a href="#">{{product.productName}}</a>
+						<br>
+						<p>Quantity:</p>
 						<button><span class="glyphicon glyphicon-minus"
 						(click)="decreaseQuantity(product);
 										 subtractFromTotalPrice(product.productPrice);
 										 checkQuantity(product, product.productQuantity)"></span></button>
-						{{product.productQuantity}}
+						<span class="quantity">{{product.productQuantity}}</span>
 						<button><span class="glyphicon glyphicon-plus"
 						(click)="increaseQuantity(product); addToTotalPrice(product.productPrice)"></span></button>
-						{{product.productPrice}}</li>
+						<br>
+						<p>Price:</p>{{product.productPrice | currency:"USD" : true:"1.2-2"}}
+				</li>
 			</ul>
 		</div>
     <div class="panel-footer">
