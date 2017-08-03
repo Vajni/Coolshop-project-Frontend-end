@@ -40,15 +40,20 @@ export class ProductListComponent implements OnInit{
     this._productService.logName(productName);
   }
 
-  countTotalPrice(productPrice: number): number {
-    this.totalPrice += productPrice;
-    return this.totalPrice;
-  }
-
   orderProduct(product: IProduct) {
     product.productQuantity = 1;
     this.orderedProducts.push(product);
     return this.orderedProducts;
+  }
+
+  addToTotalPrice(productPrice: number): number {
+    this.totalPrice += productPrice;
+    return this.totalPrice;
+  }
+
+  subtractFromTotalPrice(productPrice: number): number {
+    this.totalPrice -= productPrice;
+    return this.totalPrice;
   }
 
   increaseQuantity(product: IProduct) {
@@ -57,5 +62,17 @@ export class ProductListComponent implements OnInit{
 
   decreaseQuantity(product: IProduct) {
     product.productQuantity--;
+  }
+
+  checkQuantity(product: IProduct, quantity: number) {
+    let id: number = this.orderedProducts.indexOf(product);
+    if(quantity == 0) {
+      this.removeProduct(id);
+    }
+  }
+
+  removeProduct(id: number) {
+    this.orderedProducts.splice(id, 1);
+    console.log(id);
   }
 }

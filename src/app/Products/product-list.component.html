@@ -77,7 +77,7 @@
 						<td>
 							<button class="btn btn-primary"
               (click)="getName(product.productName);
-											 countTotalPrice(product.productPrice);
+											 addToTotalPrice(product.productPrice);
 											 orderProduct(product)">Add to cart!</button>
 						</td>
 					</tr>
@@ -95,9 +95,13 @@
     <div class="panel-body">
 			<ul *ngFor="let product of orderedProducts">
 				<li>{{product.productName}}<br>
-						<button><span class="glyphicon glyphicon-minus" (click)="decreaseQuantity(product)"></span></button>
+						<button><span class="glyphicon glyphicon-minus"
+						(click)="decreaseQuantity(product);
+										 subtractFromTotalPrice(product.productPrice);
+										 checkQuantity(product, product.productQuantity)"></span></button>
 						{{product.productQuantity}}
-						<button><span class="glyphicon glyphicon-plus" (click)="increaseQuantity(product)"></span></button>
+						<button><span class="glyphicon glyphicon-plus"
+						(click)="increaseQuantity(product); addToTotalPrice(product.productPrice)"></span></button>
 						{{product.productPrice}}</li>
 			</ul>
 		</div>
