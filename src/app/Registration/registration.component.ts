@@ -42,7 +42,6 @@ export class RegistrationComponent {
             let user = JSON.stringify(user1);
             return user1;
         }
-
     }
 
 
@@ -58,5 +57,4 @@ export class RegistrationComponent {
             }
         });
     }
-
 }

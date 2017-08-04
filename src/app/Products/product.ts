@@ -3,6 +3,7 @@
  */
 export class IProduct{
 
+  productId: number;
   productName: String;
   productType: String;
   productBrand: String;

@@ -8,7 +8,9 @@ import {RouterModule} from '@angular/router';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './Products/product-list.component';
 import { FormsModule } from "@angular/forms";
-import { ProductFilterPipe } from "./Products/product-filter.pipe";
+import { ProductFilterPipeProduct } from "./Products/product-filter-product.pipe";
+import { ProductFilterPipeSupplier } from "./Products/product-filter-supplier.pipe";
+import { ProductFilterPipeType } from "./Products/product-filter-type.pipe";
 import { StarComponent } from './Shared/star.component';
 import { LoginComponent } from './Login/login.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -22,6 +24,7 @@ import { ProductDetailComponent } from "./Products/product-detail.component";
 import { WelcomeContent } from "./WelcomeContent/welcome.component";
 import { MerchantComponent } from "./Merchant/merchant.component";
 import { MerchantService } from "./Merchant/merchant.service";
+import { ProductDetailGuard } from "./Products/product-guard.service";
 
 import { RoleManagementComponent } from './RoleManagement/rolemanagement.component';
 import { RoleSelectorComponent } from './RoleSelector/roleselector.component';
@@ -36,17 +39,16 @@ import { User } from './Registration/user';
 @NgModule({
    imports: [
      BrowserModule,
-     //AppRoutingModule,
      HttpModule,
      FormsModule,
      RouterModule,
      HttpClientModule,
      RouterModule.forRoot([
-       //{path: "", pathMatch: "full", redirectTo: "products"},
+       {path: "", pathMatch: "full", redirectTo: "welcome"},
        {path: "login", component: LoginComponent},
        {path: "register", component: RegistrationComponent},
        {path: "products", component: ProductListComponent},
-       {path: 'product/:id', component: ProductDetailComponent},
+       {path: 'product/:id', canActivate : [ProductDetailGuard], component: ProductDetailComponent},
        {path: 'welcome', component: WelcomeContent},
        {path: 'merchant', component: MerchantComponent},
        {path: 'rolemanagement', component: RoleManagementComponent},
@@ -58,7 +60,9 @@ import { User } from './Registration/user';
     LoginComponent,
     RegistrationComponent,
     ProductListComponent,
-    ProductFilterPipe,
+    ProductFilterPipeProduct,
+    ProductFilterPipeSupplier,
+    ProductFilterPipeType,
     StarComponent,
     ProductDetailComponent,
     WelcomeContent,
@@ -68,6 +72,6 @@ import { User } from './Registration/user';
     CheckoutComponent,
   ],
   bootstrap: [ AppComponent ],
-  providers: [RoleManagementService, RoleSelectorService, MerchantService, CheckoutService],
+  providers: [RoleManagementService, RoleSelectorService, MerchantService, ProductDetailGuard, CheckoutService]
 })
 export class AppModule { }
