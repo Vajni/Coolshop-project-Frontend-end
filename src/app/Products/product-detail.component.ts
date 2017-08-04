@@ -43,7 +43,7 @@ export class ProductDetailComponent implements OnInit{
                 payment: {
                     transactions: [
                         {
-                            amount: { total: '1.00', currency: 'USD' }
+                            amount: { total: '2.00', currency: 'USD' }
                         }
                     ]
                 }
@@ -53,7 +53,7 @@ export class ProductDetailComponent implements OnInit{
             onAuthorize: function(data, actions) {
             return actions.payment.execute().then(function(payment) {
 
-                // The payment is complete!
+                alert("The payment is complete!");
                 // You can now show a confirmation message to the customer
             });
         }
