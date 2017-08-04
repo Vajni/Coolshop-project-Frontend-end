@@ -27,8 +27,12 @@ export class ProductService {
         return Observable.throw(error.json().error || "Server error");
     }
 
-    //test függvény
     logName(userName: String) {
         console.log('userName: ' + userName);
+    }
+
+    getProduct(id: number): Observable<IProduct> {
+        return this.getProducts()
+            .map((products: IProduct[]) => products.find(p => p.productId === id));
     }
 }

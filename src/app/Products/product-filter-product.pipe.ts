@@ -5,9 +5,9 @@ import {IProduct} from "./product";
  */
 
 @Pipe({
-  name: 'productFilter'
+  name: 'productFilterByProduct'
 })
-export class ProductFilterPipe implements PipeTransform {
+export class ProductFilterPipeProduct implements PipeTransform {
 
   transform(value: IProduct[], filterBy: string): IProduct[] {
     filterBy = filterBy ? filterBy.toLocaleLowerCase() : null;

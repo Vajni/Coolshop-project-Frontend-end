@@ -1,92 +1,66 @@
-<!-- Navbar - Start -->
-<nav class="navbar navbar-default">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="#">Welcome to Cool Shop!</a>
-		</div>
-		<ul class="nav navbar-nav">
-			<li class="active"><a href="#">Home</a></li>
-			<li class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1
-        <span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li><a href="#">Page 1-1</a></li>
-					<li><a href="#">Page 1-2</a></li>
-					<li><a href="#">Page 1-3</a></li>
-				</ul>
-			</li>
-		</ul>
-		<ul class="nav navbar-nav navbar-right">
-			<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-			<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-		</ul>
-	</div>
-</nav>
-<!-- Navbar - End -->
-
 <div class="container">
-	<!-- Product List table - Start -->
-	<div class="panel panel-primary productList">
-		<div class="panel-heading text-center">
-			<h4>{{pageTitle}}</h4>
-		</div>
-		<div class="panel-body">
-			<div class="row">
-				<div class="col-md-2">
-					<h4>Search product:</h4>
-				</div>
-				<div class="col-md-4">
-					<input type="text" [(ngModel)]="listFilter" placeholder="Product" />
-				</div>
-			</div>
-			<div class="row">
-			</div>
-		</div>
-		<div class="table-responsive">
-			<table class="table" *ngIf="products && products.length">
-				<thead>
-					<tr>
-						<th>
-							<button class="btn btn-primary" (click)="toggleImage()">
+<div class="panel panel-primary">
+  <div class="panel-heading text-center">
+    <h4>{{pageTitle}}</h4>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-2"><h4>Search product:</h4></div>
+      <div class="col-md-2">
+        <input type="text" [(ngModel)] = "listFilterProduct" placeholder="Product"/>
+      </div>
+    <div class="col-md-2"><h4>Search supplier:</h4></div>
+      <div class="col-md-2">
+        <input type="text" [(ngModel)] = "listFilterBySupplier" placeholder="Supplier"/>
+      </div>
+    <div class="col-md-2"><h4>Search type:</h4></div>
+      <div class="col-md-2">
+        <input type="text" [(ngModel)] = "listFilterByType" placeholder="Type"/>
+      </div>
+    </div>
+    <div class="row">
+    </div>
+  <div class="table-responsive">
+    <table class="table" *ngIf="products && products.length">
+      <thead>
+        <tr>
+          <th>
+            <button class="btn btn-primary" (click)="toggleImage()">
               {{showImage ? "Hide" : "Show"}} image</button>
-						</th>
-						<th>Product</th>
-						<th>Type</th>
-						<th>Brand</th>
-						<th>Price</th>
-						<th>Description</th>
-						<th>5 star rating</th>
-						<th></th>
-						<!-- placeholder for add to cart buttons; Made by: Feri -->
-					</tr>
-				</thead>
-				<tbody>
-					<tr *ngFor="let product of products | productFilter: listFilter">
-						<td>
-							<img *ngIf="showImage" src={{product.pictureTitle}} title={{product.productName}} [style.width.px]="imageWidth" [style.margin.px]="imageMargin">
-						</td>
-						<td><a [routerLink]="['/product', product.productId]">
-            {{product.productName}}</a></td>
-						<td>{{product.productType}}</td>
-						<td>{{product.productBrand}}</td>
-						<td><b>{{product.productPrice | currency:"USD" : true: "1.2-2"}}</b></td>
-						<td>{{product.productDescription}}</td>
-						<td>
-							<app-star [rating]='product.starRating' (ratingClicked)='onRatingClicked($event)'></app-star>
-						</td>
-						<td>
+          </th>
+          <th>Product</th>
+          <th>Type</th>
+          <th>Brand</th>
+          <th>Price</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let product of products | productFilterByProduct: listFilterProduct | productFilterBySupplier : listFilterBySupplier | productFilterByType : listFilterByType">
+        <td>
+          <img *ngIf="showImage"
+              src={{product.imageName}} title={{product.productName}}
+              [style.width.px]="imageWidth"
+              [style.margin.px]="imageMargin"
+          >
+        </td>
+        <td><a [routerLink] = "['/product', product.productId]">
+          {{product.productName}}</a></td>
+        <td>{{product.productType}}</td>
+        <td>{{product.productBrand}}</td>
+        <td><b>{{product.productPrice | currency:"USD" : true: "1.2-2"}}</b></td>
+        <td>
 							<button class="btn btn-primary"
               (click)="getName(product.productName);
 											 addToTotalPrice(product.productPrice);
 											 orderProduct(product)">Add to cart!</button>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-	<!-- Product List table - End -->
-
+				</td>
+      </tr>
+      </tbody>
+    </table>
+   </div>
+  </div>
+    
 	<!-- Shopping Cart - Start -->
 	<div class="panel panel-primary cart">
     <div class="panel-heading text-center">
