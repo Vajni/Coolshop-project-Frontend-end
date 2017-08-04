@@ -31,6 +31,10 @@ import { RoleSelectorComponent } from './RoleSelector/roleselector.component';
 import { RoleManagementService } from './RoleManagement/rolemanagement.service';
 import { RoleSelectorService } from './RoleSelector/roleselector.service';
 
+import { CheckoutComponent } from './Checkout/checkout.component';
+import { CheckoutService } from './Checkout/checkout.service';
+import { User } from './Registration/user';
+
 
 @NgModule({
    imports: [
@@ -47,7 +51,8 @@ import { RoleSelectorService } from './RoleSelector/roleselector.service';
        {path: 'product/:id', canActivate : [ProductDetailGuard], component: ProductDetailComponent},
        {path: 'welcome', component: WelcomeContent},
        {path: 'merchant', component: MerchantComponent},
-       {path: 'rolemanagement', component: RoleManagementComponent}
+       {path: 'rolemanagement', component: RoleManagementComponent},
+       {path: 'checkout', component: CheckoutComponent}
      ])
    ],
    declarations: [
@@ -63,9 +68,10 @@ import { RoleSelectorService } from './RoleSelector/roleselector.service';
     WelcomeContent,
     MerchantComponent,
     RoleManagementComponent,
-    RoleSelectorComponent
+    RoleSelectorComponent,
+    CheckoutComponent,
   ],
   bootstrap: [ AppComponent ],
-  providers: [RoleManagementService, RoleSelectorService, MerchantService, ProductDetailGuard]
+  providers: [RoleManagementService, RoleSelectorService, MerchantService, ProductDetailGuard, CheckoutService]
 })
 export class AppModule { }

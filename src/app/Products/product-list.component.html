@@ -39,7 +39,7 @@
       <tr *ngFor="let product of products | productFilterByProduct: listFilterProduct | productFilterBySupplier : listFilterBySupplier | productFilterByType : listFilterByType">
         <td>
           <img *ngIf="showImage"
-              src={{product.imageName}} title={{product.productName}}
+              src={{product.pictureTitle}} title={{product.productName}}
               [style.width.px]="imageWidth"
               [style.margin.px]="imageMargin"
           >

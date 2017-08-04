@@ -1,0 +1,10 @@
+.mainform{
+    width: 60%;
+    margin: auto;
+}
+
+#checkbox{
+    -webkit-transform: scale(1.5);
+    margin-left: 10px;
+    margin-right: 10px;
+}
