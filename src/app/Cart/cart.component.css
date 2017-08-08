@@ -3,14 +3,11 @@
   padding: 0;
 }
 
-.productList {
-  width: 80%;
-}
-
 .cart {
-  width: 50%;
-  height: 500px;
-  margin-left: 22px;
+  min-height: 250px;
+  max-height: auto;
+  width: 20%;
+  padding-bottom: 50px;
   position: relative;
 }
 
