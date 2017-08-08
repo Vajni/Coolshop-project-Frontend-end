@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {IProduct} from "./product";
 import { ProductService } from "./product.service";
+import { CartComponent} from '../Cart/cart.component';
 
 @Component({
   selector: 'pm-products',
@@ -15,11 +16,10 @@ export class ProductListComponent implements OnInit{
   listFilter: string;
   products: IProduct[];
   errorMessage: string;
-  //ferijé he!
   orderedProducts: Array<IProduct> = new Array;
   totalPrice: number = 0;
 
-  constructor(private _productService: ProductService){
+  constructor(private _productService: ProductService, private _cartComponent: CartComponent){
   }
 
   toggleImage(): void {
@@ -35,16 +35,18 @@ export class ProductListComponent implements OnInit{
     this.pageTitle = "Product List " + message;
   }
 
-  //test függvény INNENTŐL A FERIJÉ HE
-  getName(productName: String) {
-    this._productService.logName(productName);
+  testOrder(product: IProduct) {
+    this._cartComponent.orderProduct(product);
   }
 
-  orderProduct(product: IProduct) {
+  /*testAdd() {
+    this._cartComponent.addNumber();
+  }*/
+  /*orderProduct(product: IProduct) {
     product.productQuantity = 1;
     this.orderedProducts.push(product);
     return this.orderedProducts;
-  }
+  }Ez lesz most tesztelve, ezt kell meghívni, csak a cartban!!!*/
 
   addToTotalPrice(productPrice: number): number {
     this.totalPrice += productPrice;

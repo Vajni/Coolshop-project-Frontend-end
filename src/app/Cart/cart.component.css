@@ -1,0 +1,55 @@
+.panel {
+  margin: 0;
+  padding: 0;
+}
+
+.productList {
+  width: 80%;
+}
+
+.cart {
+  width: 50%;
+  height: 500px;
+  margin-left: 22px;
+  position: relative;
+}
+
+.cart a {
+  text-decoration: none;
+  color: #00b0eb;
+}
+
+.cart a:hover {
+  text-decoration: underline;
+  color: #337ab7;
+}
+
+.cart ul {
+  margin-bottom: 30px;
+  padding: 0;
+}
+
+.cart li {
+  list-style-type: none;
+}
+
+.cart p {
+  margin: 0 20px 0 0;
+  display: inline-block;
+}
+
+.panel-footer {
+  background-color: #337ab7;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 10px;
+}
+
+.panel-footer p {
+  color: white;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+}
