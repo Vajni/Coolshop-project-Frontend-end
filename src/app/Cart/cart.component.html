@@ -4,7 +4,7 @@
 		<h4>Shopping Cart</h4>
 	</div>
     <div class="panel-body">
-		<ul *ngFor="let product of orderedProducts">
+		<ul *ngFor="let product of cartService.orderedProducts">
 			<li><p>Product name:</p><a href="#">{{product.productName}}</a>
             	<br>
 				<p>Quantity:</p>
@@ -19,12 +19,9 @@
 				<p>Price:</p>{{product.productPrice | currency:"USD" : true:"1.2-2"}}
 			</li>
 		</ul>
-		<ul *ngFor="let num of list">
-			<li>{{num}}</li>
-		</ul>
-		</div>
+	</div>
     <div class="panel-footer">
-        <p>Total price: {{totalPrice | currency:"USD" : true:"1.2-2"}}</p>
+        <p>Total price: {{cartService.totalPrice | currency:"USD" : true:"1.2-2"}}</p>
     </div>
 </div>
 <!-- Shopping Cart - End -->

@@ -49,13 +49,11 @@
         <td>{{product.productBrand}}</td>
         <td><b>{{product.productPrice | currency:"USD" : true: "1.2-2"}}</b></td>
         <td>
-							<!-- EZ AZ EREDETI<button class="btn btn-primary"
-              (click)="getName(product.productName);
-											 addToTotalPrice(product.productPrice);
-											 orderProduct(product)">Add to cart!</button>-->
               <button class="btn btn-primary"
-              (click)="testOrder(product)">Add to cart!</button>
-              
+              (click)="orderProduct(product);
+                       addToTotalPrice(product.productPrice)">
+                       Add to cart!
+              </button>
 				</td>
       </tr>
       </tbody>

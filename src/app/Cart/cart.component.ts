@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component} from "@angular/core";
 import {IProduct} from "../Products/product";
 import {CartService} from './cart.service';
 
@@ -9,18 +9,39 @@ import {CartService} from './cart.service';
 })
 
 export class CartComponent {
-    orderedProducts;
-    totalPrice;
 
-    constructor(private _cartService: CartService) {
-        this.orderedProducts = _cartService.orderedProducts;
-        this.totalPrice = _cartService.totalPrice;
+    constructor(private cartService: CartService) {
     }
 
     orderProduct(product: IProduct) {
-        this.orderedProducts.push(product);
-        for(let product of this.orderedProducts) {
-            console.log(product);
+        product.productQuantity = 1;
+        this.cartService.orderedProducts.push(product);
+    }
+
+    addToTotalPrice(productPrice: number) {
+        this.cartService.totalPrice += productPrice;
+    }
+
+    subtractFromTotalPrice(productPrice: number) {
+        this.cartService.totalPrice -= productPrice;
+    }
+
+    increaseQuantity(product: IProduct) {
+        product.productQuantity++;
+    }
+
+    decreaseQuantity(product: IProduct) {
+        product.productQuantity--;
+    }
+
+    checkQuantity(product: IProduct, quantity: number) {
+        let id: number = this.cartService.orderedProducts.indexOf(product);
+        if(quantity == 0) {
+            this.removeProduct(id);
         }
+    }
+
+    removeProduct(id: number) {
+        this.cartService.orderedProducts.splice(id, 1);
     }
 }

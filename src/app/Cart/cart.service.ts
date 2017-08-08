@@ -3,6 +3,6 @@ import { IProduct} from '../Products/product';
 
 @Injectable()
 export class CartService {
-    orderedProducts: Array<IProduct> = new Array;
-    totalPrice: number = 0;
+    orderedProducts: Array<IProduct> = new Array; 
+    totalPrice: number = 0;   
 }
