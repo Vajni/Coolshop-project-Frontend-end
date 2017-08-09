@@ -25,15 +25,17 @@ export class MerchantService {
                        unitsOnOrder: 0,
                        imageName : product.productName,
                        reOrderLevel: product.reOrderLevel}
+        
         var formData = new FormData();
+        
         formData.append('details', new Blob([JSON.stringify(details)], {
         type: 'application/json'
         })), 
+        
         formData.append('file', document.getElementById('productPicture')['files'][0]);
+        
         var headers = new Headers();
         
-        console.log(typeof product.productName);
-
         return this._http.post(this._productUrl , formData, { headers : headers })
         .map(res => res.json());
     }

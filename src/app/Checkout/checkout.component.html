@@ -18,5 +18,7 @@
     <label>Street & number: </label><input type="text" id="address" [(ngModel)]="deliveryaddress"><br>
     <label>PostalCode: </label><input type="text" id="postalcode" [(ngModel)]="deliverypostalcode"><br>
 </div>
-<button id="button" (click)="valamilyenneven()">Order</button>
+<button id="button" (click)="valamilyenneven()">Order</button><br>
+<button id="backButton" (click)='onBack()'>Back</button><br>
+<div id="paypal-button"></div>
 </div>

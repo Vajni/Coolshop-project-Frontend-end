@@ -1,6 +1,7 @@
 import {Component} from "@angular/core";
 import {IProduct} from "../Products/product";
 import {CartService} from './cart.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'pm-cart',
@@ -10,7 +11,7 @@ import {CartService} from './cart.service';
 
 export class CartComponent {
 
-    constructor(private cartService: CartService) {
+    constructor(private cartService: CartService, private _router : Router) {
     }
 
     checkIfAdded(product: IProduct) {
@@ -51,5 +52,9 @@ export class CartComponent {
 
     removeProduct(id: number) {
         this.cartService.orderedProducts.splice(id, 1);
+    }
+
+    onOrder(): void{
+        this._router.navigate(['/checkout']);
     }
 }

@@ -4,6 +4,8 @@ import { User } from '../Registration/user';
 import { Order } from './order';
 import { Router } from '@angular/router';
 
+declare var paypal: any;
+
 @Component({
     selector: 'checkout',
     templateUrl: 'checkout.component.html',
@@ -35,7 +37,41 @@ export class CheckoutComponent implements OnInit{
 
     ngOnInit(): void {
         this.checkoutService.getAddress().subscribe(user => this.user = user, error => this.errorMessage = <any>error);
+
+        paypal.Button.render({
+
+            env: 'sandbox', // Or 'sandbox',
+            
+            client: {
+            sandbox:    'ASw28Jwetd3OMa9dEnZ9bRELiMMhhPsXgfye9kqxbT4iRD5SxSu59DS-bI-kH-rE4JCZCV1NP8Uqrj_w',
+            production: 'ASw28Jwetd3OMa9dEnZ9bRELiMMhhPsXgfye9kqxbT4iRD5SxSu59DS-bI-kH-rE4JCZCV1NP8Uqrj_w'
+        },
+            commit: true, // Show a 'Pay Now' button
+
+            payment: function(data, actions) {
+            return actions.payment.create({
+                payment: {
+                    transactions: [
+                        {
+                            amount: { total: '2.00', currency: 'USD' }
+                        }
+                    ]
+                }
+            });
+        },
+
+            onAuthorize: function(data, actions) {
+            return actions.payment.execute().then(function(payment) {
+
+                alert("The payment is complete!");
+                // You can now show a confirmation message to the customer
+            });
+        }
+
+
+        }, '#paypal-button');
     }
+    
 
     valamilyenneven(): void{
         if (this.checked == false) {
@@ -64,5 +100,9 @@ export class CheckoutComponent implements OnInit{
         }
     }
 
+    }
+
+    onBack(): void{
+        this.router.navigate(['/products']);
     }
 }

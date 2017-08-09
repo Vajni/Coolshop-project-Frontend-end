@@ -32,7 +32,8 @@
                 </div><br>
                 <div class='row'>
                     <div class='col-md-3'><b></b></div>
-                    <div class='col-md-6'><div class="btn btn-info" (click)='onAddToCart()'><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</div></div>
+                    <div class='col-md-6'><div class="btn btn-info" (click)="checkIfAdded(product);
+                       addToTotalPrice(product.productPrice)"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</div></div>
                 </div><br>
                 <div class='row'>
                     <div class='col-md-3'><b></b></div>
@@ -59,3 +60,4 @@
         </a>
     </div>
 </div>
+<pm-cart></pm-cart>

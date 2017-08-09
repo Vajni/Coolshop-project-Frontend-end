@@ -36,6 +36,9 @@
 	</div>
 	<div class="panel-footer">
 		<p>Total price: {{cartService.totalPrice | currency:"USD" : true:"1.2-2"}}</p>
+		<div class="btn btn-primary" (click)='onOrder()'>Order</div>
 	</div>
+	
 </div>
+
 <!-- Shopping Cart - End -->

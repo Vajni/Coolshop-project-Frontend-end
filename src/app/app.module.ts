@@ -30,6 +30,7 @@ import { RoleManagementComponent } from './RoleManagement/rolemanagement.compone
 import { RoleSelectorComponent } from './RoleSelector/roleselector.component';
 import { RoleManagementService } from './RoleManagement/rolemanagement.service';
 import { RoleSelectorService } from './RoleSelector/roleselector.service';
+import { ProductService } from "./Products/product.service"
 
 import { CheckoutComponent } from './Checkout/checkout.component';
 import { CheckoutService } from './Checkout/checkout.service';
@@ -76,6 +77,8 @@ import {CartService} from './Cart/cart.service';
     CartComponent
   ],
   bootstrap: [ AppComponent ],
-  providers: [RoleManagementService, RoleSelectorService, MerchantService, ProductDetailGuard, CheckoutService, CartService, CartComponent]
+
+  providers: [RoleManagementService, RoleSelectorService, MerchantService, ProductDetailGuard, CheckoutService,ProductService, CartService, CartComponent]
+
 })
 export class AppModule { }

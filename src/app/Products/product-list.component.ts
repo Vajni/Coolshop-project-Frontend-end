@@ -34,10 +34,6 @@ export class ProductListComponent implements OnInit{
     .subscribe(products => this.products = products, error => this.errorMessage = <any>error);
   }
 
-  onRatingClicked(message: string):void{
-    this.pageTitle = "Product List " + message;
-  }
-
   addToTotalPrice(productPrice: number) {
     this.cartComponent.addToTotalPrice(productPrice);
   }
@@ -45,4 +41,5 @@ export class ProductListComponent implements OnInit{
   checkIfAdded(product: IProduct) {
     this.cartComponent.checkIfAdded(product);
   }
+
 }

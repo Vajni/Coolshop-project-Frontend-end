@@ -10,7 +10,7 @@ import "rxjs/add/operator/do";
 @Injectable()
 export class ProductService {
 
-    private _productUrl = 'http://localhost:8080/CoolShop-1.0/rest/ProductList/Products'
+    private _productUrl = 'http://localhost:8080/CoolShop-1.0/rest/ProductList/Products';
 
     constructor(private _http: Http){
     }
