@@ -3,10 +3,13 @@
   padding: 0;
 }
 
+table {
+  margin-bottom: 20px;
+}
+
 .cart {
-  min-height: 250px;
+  min-height: 300px;
   max-height: auto;
-  width: 20%;
   padding-bottom: 50px;
   position: relative;
 }
@@ -31,8 +34,25 @@
 }
 
 .cart p {
-  margin: 0 20px 0 0;
+  margin: 0 10px 0 0;
   display: inline-block;
+}
+
+.button {
+  background-color: #00b0eb;
+    border: none;
+    color: white;
+    padding: 3px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin: 3px;
+    cursor: pointer;
+}
+
+.button:hover {
+  background-color: #337ab7;
 }
 
 .panel-footer {

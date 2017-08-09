@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, HostBinding} from "@angular/core";
 import {IProduct} from "./product";
 import {ProductService } from "./product.service";
 import {CartComponent} from '../Cart/cart.component';
@@ -9,6 +9,11 @@ import {CartComponent} from '../Cart/cart.component';
   styleUrls: ['product-list.component.css']
 })
 export class ProductListComponent implements OnInit{
+/*
+**This is how you give css selector to a @Component selector ->
+*/
+@HostBinding('class') ProductListClass = 'pm-products';
+
   pageTitle: string = "Product List";
   imageWidth: number = 80;
   imageMargin: number = 2;
@@ -17,7 +22,7 @@ export class ProductListComponent implements OnInit{
   products: IProduct[];
   errorMessage: string;
 
-  constructor(private _productService: ProductService, private _cartComponent: CartComponent){
+  constructor(private _productService: ProductService, private cartComponent: CartComponent){
   }
 
   toggleImage(): void {
@@ -33,11 +38,11 @@ export class ProductListComponent implements OnInit{
     this.pageTitle = "Product List " + message;
   }
 
-  orderProduct(product: IProduct) {
-    this._cartComponent.orderProduct(product);
+  addToTotalPrice(productPrice: number) {
+    this.cartComponent.addToTotalPrice(productPrice);
   }
 
-  addToTotalPrice(productPrice: number) {
-    this._cartComponent.addToTotalPrice(productPrice);
+  checkIfAdded(product: IProduct) {
+    this.cartComponent.checkIfAdded(product);
   }
 }

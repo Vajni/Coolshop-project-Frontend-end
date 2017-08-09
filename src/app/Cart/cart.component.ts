@@ -13,6 +13,14 @@ export class CartComponent {
     constructor(private cartService: CartService) {
     }
 
+    checkIfAdded(product: IProduct) {
+        if(this.cartService.orderedProducts.includes(product)) {
+            this.increaseQuantity(product);
+        } else {
+            this.orderProduct(product);
+        }
+    }
+
     orderProduct(product: IProduct) {
         product.productQuantity = 1;
         this.cartService.orderedProducts.push(product);
