@@ -35,6 +35,9 @@ import { CheckoutComponent } from './Checkout/checkout.component';
 import { CheckoutService } from './Checkout/checkout.service';
 import { User } from './Registration/user';
 
+import {CartComponent} from './Cart/cart.component';
+import {CartService} from './Cart/cart.service';
+
 
 @NgModule({
    imports: [
@@ -70,8 +73,9 @@ import { User } from './Registration/user';
     RoleManagementComponent,
     RoleSelectorComponent,
     CheckoutComponent,
+    CartComponent
   ],
   bootstrap: [ AppComponent ],
-  providers: [RoleManagementService, RoleSelectorService, MerchantService, ProductDetailGuard, CheckoutService]
+  providers: [RoleManagementService, RoleSelectorService, MerchantService, ProductDetailGuard, CheckoutService, CartService, CartComponent]
 })
 export class AppModule { }

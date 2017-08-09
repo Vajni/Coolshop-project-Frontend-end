@@ -1,0 +1,41 @@
+<!-- Shopping Cart - Start -->
+<div class="panel panel-primary cart">
+	<div class="panel-heading text-center">
+		<h4>Shopping cart</h4>
+	</div>
+	<div class="panel-body">
+		<table *ngFor="let product of cartService.orderedProducts">
+			<tr>
+				<td><p>Product name:</p></td>
+				<td>
+					<a href="#">{{product.productName}}</a>
+				</td>
+			</tr>
+			<tr>
+				<td>Quantity:</td>
+				<td>
+					<button class="button"
+						(click)="decreaseQuantity(product);
+						subtractFromTotalPrice(product.productPrice);
+						checkQuantity(product, product.productQuantity)">
+						<span class="glyphicon glyphicon-minus"></span>
+					</button>
+					<span class="quantity">{{product.productQuantity}}</span>
+					<button class="button"
+						(click)="increaseQuantity(product);
+						addToTotalPrice(product.productPrice)">
+						<span class="glyphicon glyphicon-plus"></span>
+					</button>
+				</td>
+			</tr>
+			<tr>
+				<td>Price:</td>
+				<td>{{product.productPrice | currency:"USD" : true:"1.2-2"}}</td>
+			</tr>
+		</table>
+	</div>
+	<div class="panel-footer">
+		<p>Total price: {{cartService.totalPrice | currency:"USD" : true:"1.2-2"}}</p>
+	</div>
+</div>
+<!-- Shopping Cart - End -->

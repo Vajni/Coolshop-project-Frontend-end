@@ -1,25 +1,37 @@
-<div class="container">
 <div class="panel panel-primary">
   <div class="panel-heading text-center">
     <h4>{{pageTitle}}</h4>
   </div>
   <div class="panel-body">
-    <div class="row">
-      <div class="col-md-2"><h4>Search product:</h4></div>
-      <div class="col-md-2">
-        <input type="text" [(ngModel)] = "listFilterProduct" placeholder="Product"/>
+
+    <!-- Start of - filter-bar -->
+    <div class="filter-bar">
+      <div class="row">
+        <div class="col-md-4">
+          <h4>Search product:</h4>
+        </div>
+        <div class="col-md-4">
+          <h4>Search supplier:</h4>
+        </div>
+        <div class="col-md-4">
+          <h4>Search type:</h4>
+        </div>
       </div>
-    <div class="col-md-2"><h4>Search supplier:</h4></div>
-      <div class="col-md-2">
-        <input type="text" [(ngModel)] = "listFilterBySupplier" placeholder="Supplier"/>
-      </div>
-    <div class="col-md-2"><h4>Search type:</h4></div>
-      <div class="col-md-2">
-        <input type="text" [(ngModel)] = "listFilterByType" placeholder="Type"/>
+      
+      <div class="row">
+        <div class="col-md-4">
+          <input type="text" [(ngModel)] = "listFilterProduct" placeholder="Product"/>
+        </div>
+        <div class="col-md-4">
+          <input type="text" [(ngModel)] = "listFilterBySupplier" placeholder="Supplier"/>
+        </div>
+        <div class="col-md-4">
+          <input type="text" [(ngModel)] = "listFilterByType" placeholder="Type"/>
+        </div>
       </div>
     </div>
-    <div class="row">
-    </div>
+    <!-- End of - filter-bar -->
+
   <div class="table-responsive">
     <table class="table" *ngIf="products && products.length">
       <thead>
@@ -30,7 +42,7 @@
           </th>
           <th>Product</th>
           <th>Type</th>
-          <th>Brand</th>
+          <th>Supplier</th>
           <th>Price</th>
           <th></th>
         </tr>
@@ -50,42 +62,16 @@
         <td>{{product.productBrand}}</td>
         <td><b>{{product.productPrice | currency:"USD" : true: "1.2-2"}}</b></td>
         <td>
-							<button class="btn btn-primary"
-              (click)="getName(product.productName);
-											 addToTotalPrice(product.productPrice);
-											 orderProduct(product)">Add to cart!</button>
+              <button class="btn btn-primary"
+              (click)="checkIfAdded(product);
+                       addToTotalPrice(product.productPrice)">
+                       Add to cart!
+              </button>
 				</td>
       </tr>
       </tbody>
     </table>
    </div>
   </div>
-    
-	<!-- Shopping Cart - Start -->
-	<div class="panel panel-primary cart">
-    <div class="panel-heading text-center">
-			<h4>Shopping Cart</h4>
-		</div>
-    <div class="panel-body">
-			<ul *ngFor="let product of orderedProducts">
-				<li><p>Product name:</p><a href="#">{{product.productName}}</a>
-						<br>
-						<p>Quantity:</p>
-						<button><span class="glyphicon glyphicon-minus"
-						(click)="decreaseQuantity(product);
-										 subtractFromTotalPrice(product.productPrice);
-										 checkQuantity(product, product.productQuantity)"></span></button>
-						<span class="quantity">{{product.productQuantity}}</span>
-						<button><span class="glyphicon glyphicon-plus"
-						(click)="increaseQuantity(product); addToTotalPrice(product.productPrice)"></span></button>
-						<br>
-						<p>Price:</p>{{product.productPrice | currency:"USD" : true:"1.2-2"}}
-				</li>
-			</ul>
-		</div>
-    <div class="panel-footer">
-      <p>Total price: {{totalPrice | currency:"USD" : true:"1.2-2"}}</p>
-    </div>
-  </div>
-	<!-- Shopping Cart - End -->
 </div>
+<pm-cart></pm-cart>

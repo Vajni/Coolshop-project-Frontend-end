@@ -1,6 +1,7 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, HostBinding} from "@angular/core";
 import {IProduct} from "./product";
-import { ProductService } from "./product.service";
+import {ProductService } from "./product.service";
+import {CartComponent} from '../Cart/cart.component';
 
 @Component({
   selector: 'pm-products',
@@ -8,6 +9,11 @@ import { ProductService } from "./product.service";
   styleUrls: ['product-list.component.css']
 })
 export class ProductListComponent implements OnInit{
+/*
+**This is how you give css selector to a @Component selector ->
+*/
+@HostBinding('class') ProductListClass = 'pm-products';
+
   pageTitle: string = "Product List";
   imageWidth: number = 80;
   imageMargin: number = 2;
@@ -15,11 +21,8 @@ export class ProductListComponent implements OnInit{
   listFilter: string;
   products: IProduct[];
   errorMessage: string;
-  //ferijé he!
-  orderedProducts: Array<IProduct> = new Array;
-  totalPrice: number = 0;
 
-  constructor(private _productService: ProductService){
+  constructor(private _productService: ProductService, private cartComponent: CartComponent){
   }
 
   toggleImage(): void {
@@ -35,44 +38,11 @@ export class ProductListComponent implements OnInit{
     this.pageTitle = "Product List " + message;
   }
 
-  //test függvény INNENTŐL A FERIJÉ HE
-  getName(productName: String) {
-    this._productService.logName(productName);
+  addToTotalPrice(productPrice: number) {
+    this.cartComponent.addToTotalPrice(productPrice);
   }
 
-  orderProduct(product: IProduct) {
-    product.productQuantity = 1;
-    this.orderedProducts.push(product);
-    return this.orderedProducts;
-  }
-
-  addToTotalPrice(productPrice: number): number {
-    this.totalPrice += productPrice;
-    return this.totalPrice;
-  }
-
-  subtractFromTotalPrice(productPrice: number): number {
-    this.totalPrice -= productPrice;
-    return this.totalPrice;
-  }
-
-  increaseQuantity(product: IProduct) {
-    product.productQuantity++;
-  }
-
-  decreaseQuantity(product: IProduct) {
-    product.productQuantity--;
-  }
-
-  checkQuantity(product: IProduct, quantity: number) {
-    let id: number = this.orderedProducts.indexOf(product);
-    if(quantity == 0) {
-      this.removeProduct(id);
-    }
-  }
-
-  removeProduct(id: number) {
-    this.orderedProducts.splice(id, 1);
-    console.log(id);
+  checkIfAdded(product: IProduct) {
+    this.cartComponent.checkIfAdded(product);
   }
 }
