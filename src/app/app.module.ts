@@ -39,6 +39,8 @@ import { User } from './Registration/user';
 import {CartComponent} from './Cart/cart.component';
 import {CartService} from './Cart/cart.service';
 
+import { PaymentComponent } from './Payment/payment.component';
+
 
 @NgModule({
    imports: [
@@ -56,7 +58,8 @@ import {CartService} from './Cart/cart.service';
        {path: 'welcome', component: WelcomeContent},
        {path: 'merchant', component: MerchantComponent},
        {path: 'rolemanagement', component: RoleManagementComponent},
-       {path: 'checkout', component: CheckoutComponent}
+       {path: 'checkout', component: CheckoutComponent},
+       {path: 'payment', component: PaymentComponent}
      ])
    ],
    declarations: [
@@ -74,7 +77,8 @@ import {CartService} from './Cart/cart.service';
     RoleManagementComponent,
     RoleSelectorComponent,
     CheckoutComponent,
-    CartComponent
+    CartComponent,
+    PaymentComponent
   ],
   bootstrap: [ AppComponent ],
 

@@ -1,0 +1,38 @@
+<div class="form-horizontal mainform">
+    <div class="form-group">
+        <h1>Payment informations</h1>
+        <h5>
+            Products in cart:
+        </h5>
+        <label class="col-sm-2 control-label">Total price</label>
+        <div class="col-sm-10">
+            <label type="text" class="form-control">{{totalPrice}}</label><br>
+        </div>
+        <h5>
+            You can pay with credit card:
+        </h5>
+        <label class="col-sm-2 control-label">Card number</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="cardNumber" placeholder="What is your card number?" [(ngModel)]="cardNumber"><br>
+        </div>
+        <label class="col-sm-2 control-label">Card holder</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="cardHolder" placeholder="Who is the card holder?" [(ngModel)]="cardHolder"><br>
+        </div>
+        <label class="col-sm-2 control-label">Expiry date</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="expiryDate" placeholder="When is expiry date?" [(ngModel)]="expiryDate"><br>
+        </div>
+        <label class="col-sm-2 control-label">Security code</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="securityCode" placeholder="What is your security code?" [(ngModel)]="securityCode"><br>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block paybutton" (click)='checkCreditCardinfos()'>Pay</button>
+    </div>
+    <div>
+        <h5>
+            Or you can pay with PayPal:
+        </h5>
+        <div id="paypal-button"></div>
+    </div>
+</div>

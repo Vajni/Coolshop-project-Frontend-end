@@ -18,7 +18,6 @@ export class CheckoutService{
     getAddress(token: string): Observable<User> {
         let data = new URLSearchParams();
         data.append("token", LoginService.token);
-        console.log("VALAMI");
         return this._http.post("http://localhost:8080/CoolShop-1.0/rest/checkout/getAddressInformations", data).map((response: Response)=><User>response.json()).do(data => console.log(JSON.stringify(data)));
     }
 

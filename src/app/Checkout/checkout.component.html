@@ -1,6 +1,18 @@
 <div class="form-horizontal mainform">
     <div class="form-group">
         <h1>Delivery informations</h1>
+        <label class="col-sm-2 control-label">Username</label>
+        <div class="col-sm-10">
+            <label class="form-control">{{user.userName}}</label>
+        </div>
+        <label class="col-sm-2 control-label">E-mail</label>
+        <div class="col-sm-10">
+            <label class="form-control">{{user.email}}</label>
+        </div>
+        <label class="col-sm-2 control-label">Phone</label>
+        <div class="col-sm-10">
+            <label class="form-control">{{user.phone}}</label>
+        </div>
         <label class="col-sm-2 control-label">Country</label>
         <div class="col-sm-10">
             <label class="form-control">{{user.country}}</label>
@@ -24,7 +36,10 @@
     </div>
     <h5><input type="checkbox" id="checkbox" [(ngModel)]="checked" [checked]="checked==true">
     If your delivery address different than your home address please mark this box
-and give me your details above:</h5>
+and give me your details above*:</h5>
+    <h6>
+        *Please fill out the above form carefully, because you won't change the details later.
+    </h6>
     <div class="form-group">
         <label for="country" class="col-sm-2 control-label">Country</label>
         <div class="col-sm-10">
@@ -55,9 +70,6 @@ and give me your details above:</h5>
             <input type="text" class="form-control" id="streetandstreetnumber" placeholder="What is your street and street number?" [(ngModel)]="deliveryaddress">
         </div>
     </div>
+    <button class="btn btn-lg btn-primary btn-block backbutton" (click)='onBack()'><< Back</button>
     <button class="btn btn-lg btn-primary btn-block orderbutton" (click)="valamilyenneven()">Next >></button>
 </div>
-<pm-cart></pm-cart>
-<button id="button" (click)="valamilyenneven()">Order</button><br>
-<button id="backButton" (click)='onBack()'>Back</button><br>
-<div id="paypal-button"></div>
