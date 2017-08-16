@@ -56,7 +56,8 @@ import {CartService} from './Cart/cart.service';
        {path: 'welcome', component: WelcomeContent},
        {path: 'merchant', component: MerchantComponent},
        {path: 'rolemanagement', component: RoleManagementComponent},
-       {path: 'checkout', component: CheckoutComponent}
+       {path: 'checkout', component: CheckoutComponent},
+       {path: 'welcome', component: WelcomeContent}
      ])
    ],
    declarations: [
