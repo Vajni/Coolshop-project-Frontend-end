@@ -49,6 +49,8 @@
       </thead>
       <tbody>
       <tr *ngFor="let product of products | productFilterByProduct: listFilterProduct | productFilterBySupplier : listFilterBySupplier | productFilterByType : listFilterByType">
+        <!-- This container is filtering out Drugs and Sex toys from the products-->
+        <!--ng-container *ngIf="product.productType != 'Sex toy' && product.productType != 'Drugs'"-->
         <td>
           <img *ngIf="showImage"
               src={{product.imageName}} title={{product.productName}}
@@ -66,7 +68,8 @@
                        addToTotalPrice(product.productPrice)">
                        Add to cart!
               </button>
-				</td>
+        </td>
+        <!--/ng-container-->
       </tr>
       </tbody>
     </table>

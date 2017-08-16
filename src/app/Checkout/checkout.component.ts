@@ -3,6 +3,8 @@ import { CheckoutService } from './checkout.service';
 import { User } from '../Registration/user';
 import { Order } from './order';
 import { Router } from '@angular/router';
+import { CartService } from "../Cart/cart.service";
+import { CartComponent } from "../Cart/cart.component";
 
 declare var paypal: any;
 
@@ -30,7 +32,7 @@ export class CheckoutComponent implements OnInit{
     deliveryOrder: Order;
 
 
-    constructor(private checkoutService: CheckoutService, private router: Router) {}
+    constructor(private checkoutService: CheckoutService, private router: Router, private cartComponent: CartComponent) {}
 
     
 

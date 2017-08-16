@@ -9,16 +9,16 @@ import { Order } from './order'
 export class CheckoutService{
     
 
-    constructor(private http: Http){
+    constructor(private _http: Http){
 
     }
 
     getAddress(): Observable<User> {
         console.log("VALAMI");
-        return this.http.get("http://localhost:8080/CoolShop-1.0/rest/checkout/getAddressInformations").map((response: Response)=><User>response.json()).do(data => console.log(JSON.stringify(data)));
+        return this._http.get("http://localhost:8080/CoolShop-1.0/rest/checkout/getAddressInformations").map((response: Response)=><User>response.json()).do(data => console.log(JSON.stringify(data)));
     }
 
     postOrder(order: Order): Observable<any>{
-        return this.http.post("http://localhost:8080/CoolShop-1.0/rest/order/addToDatabase", order);
+        return this._http.post("http://localhost:8080/CoolShop-1.0/rest/order/addToDatabase", order);
     } 
 }
