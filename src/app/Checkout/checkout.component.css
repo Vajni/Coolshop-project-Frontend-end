@@ -8,3 +8,9 @@
     margin-left: 10px;
     margin-right: 10px;
 }
+
+.orderbutton{
+    width: 30%;
+    float: right;
+    margin-bottom: 20px;
+}

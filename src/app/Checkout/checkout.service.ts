@@ -4,6 +4,8 @@ import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { User } from '../Registration/user';
 import { Order } from './order'
+import { LoginService } from '../Login/login.service';
+import { URLSearchParams } from '@angular/http';
 
 @Injectable()
 export class CheckoutService{
@@ -13,9 +15,11 @@ export class CheckoutService{
 
     }
 
-    getAddress(): Observable<User> {
+    getAddress(token: string): Observable<User> {
+        let data = new URLSearchParams();
+        data.append("token", LoginService.token);
         console.log("VALAMI");
-        return this._http.get("http://localhost:8080/CoolShop-1.0/rest/checkout/getAddressInformations").map((response: Response)=><User>response.json()).do(data => console.log(JSON.stringify(data)));
+        return this._http.post("http://localhost:8080/CoolShop-1.0/rest/checkout/getAddressInformations", data).map((response: Response)=><User>response.json()).do(data => console.log(JSON.stringify(data)));
     }
 
     postOrder(order: Order): Observable<any>{

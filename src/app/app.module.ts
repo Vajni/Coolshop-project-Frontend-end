@@ -78,7 +78,7 @@ import {CartService} from './Cart/cart.service';
   ],
   bootstrap: [ AppComponent ],
 
-  providers: [RoleManagementService, RoleSelectorService, MerchantService, ProductDetailGuard, CheckoutService,ProductService, CartService, CartComponent]
+  providers: [RoleManagementService, RoleSelectorService, MerchantService, ProductDetailGuard, CheckoutService,ProductService, CartService, CartComponent, LoginService]
 
 })
 export class AppModule { }
