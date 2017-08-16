@@ -5,6 +5,7 @@ import { Order } from './order';
 import { Router } from '@angular/router';
 import { CartService } from "../Cart/cart.service";
 import { CartComponent } from "../Cart/cart.component";
+import { LoginService } from '../Login/login.service';
 
 declare var paypal: any;
 
@@ -16,6 +17,7 @@ declare var paypal: any;
 
 })
 export class CheckoutComponent implements OnInit{
+
 
     errorMessage: string;
     user: User;
@@ -32,13 +34,14 @@ export class CheckoutComponent implements OnInit{
     deliveryOrder: Order;
 
 
-    constructor(private checkoutService: CheckoutService, private router: Router, private cartComponent: CartComponent) {}
+    constructor(private checkoutService: CheckoutService, private router: Router, private cartComponent: CartComponent, private loginService: LoginService) {}
 
     
 
 
     ngOnInit(): void {
-        this.checkoutService.getAddress().subscribe(user => this.user = user, error => this.errorMessage = <any>error);
+        console.log(LoginService.token);
+        this.checkoutService.getAddress(LoginService.token).subscribe(user => this.user = user, error => this.errorMessage = <any>error);
 
         paypal.Button.render({
 

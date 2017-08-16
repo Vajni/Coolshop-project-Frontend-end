@@ -11,6 +11,10 @@ import { Router } from '@angular/router';
 @Injectable()
 
 export class LoginService {
+
+
+  static token: string;
+
   isLoggedIn: boolean;
 
   constructor(private _http: Http, private router: Router) {
@@ -28,6 +32,8 @@ export class LoginService {
 
   check(data): boolean {
     if (data.login == "true") {
+      LoginService.token = data.token;
+      console.log(LoginService.token);
       return true;
     }
     else {
