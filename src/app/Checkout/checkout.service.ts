@@ -6,10 +6,12 @@ import { User } from '../Registration/user';
 import { Order } from './order'
 import { LoginService } from '../Login/login.service';
 import { URLSearchParams } from '@angular/http';
+import { IProduct} from '../Products/product';
 
 @Injectable()
 export class CheckoutService{
     
+    static checkoutProducts: Array<IProduct> = new Array; 
 
     constructor(private _http: Http){
 

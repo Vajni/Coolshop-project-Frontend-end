@@ -2,6 +2,7 @@ import {Component} from "@angular/core";
 import {IProduct} from "../Products/product";
 import {CartService} from './cart.service';
 import { Router } from "@angular/router";
+import { CheckoutService } from '../Checkout/checkout.service';
 
 @Component({
   selector: 'pm-cart',
@@ -9,9 +10,10 @@ import { Router } from "@angular/router";
   styleUrls: ['cart.component.css']
 })
 
+
 export class CartComponent {
 
-    constructor(private cartService: CartService, private _router : Router) {
+    constructor(private cartService: CartService, private _router : Router, private checkoutService: CheckoutService) {
     }
 
     checkIfAdded(product: IProduct) {
@@ -55,6 +57,16 @@ export class CartComponent {
     }
 
     onOrder(): void{
+        this.addProductsToCheckoutArray();
         this._router.navigate(['/checkout']);
+    }
+
+    addProductsToCheckoutArray(): void{
+        for (let product of this.cartService.orderedProducts) {
+            let quan = product.productQuantity;
+            for (var i = 1; i <= quan; i++) {
+                CheckoutService.checkoutProducts.push(product);
+            }
+        }
     }
 }

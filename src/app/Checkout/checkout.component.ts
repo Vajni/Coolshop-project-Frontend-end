@@ -40,42 +40,54 @@ export class CheckoutComponent implements OnInit{
 
 
     ngOnInit(): void {
-        console.log(LoginService.token);
         this.checkoutService.getAddress(LoginService.token).subscribe(user => this.user = user, error => this.errorMessage = <any>error);
 
     }
     
 
-    valamilyenneven(): void{
+    orderAddToDatabase(): void{
         if (this.checked == false) {
-            this.addressOrder = new Order(0, this.user.userID, 1, this.today, this.requiredDate, this.shippedDate, this.user.userName, this.user.address, this.user.city, this.user.region, this.user.postalCode, this.user.country);
-            this.checkoutService.postOrder(this.addressOrder).subscribe((response) => {
-            if(response._body === "Order added to Database") {
-                alert("Your order has been recorded.")
-                this.router.navigate(["payment"])
-            } else {
-                alert(response._body);
-            }
-            });
+            this.orderWithHomeAddress();
         } else {
-            if (this.deliverycountry==null || this.deliverycity==null || this.deliveryregion==null || this.deliveryaddress==null || this.deliverypostalcode==null ){
-                alert("You must fill out all field.");
-            } else {
-            this.deliveryOrder = new Order(0, this.user.userID, 1, this.today, this.requiredDate, this.shippedDate, this.user.userName, this.deliveryaddress, this.deliverycity, this.deliveryregion, this.deliverypostalcode, this.deliverycountry);
-            this.checkoutService.postOrder(this.deliveryOrder).subscribe((response) => {
-            if(response._body === "Order added to Database") {
-                alert("Your order has been recorded.")
-                this.router.navigate(["payment"])
-            } else {
-                alert(response._body);
-            }
-            });
-        }
+            this.orderWithDeliveryAddress();
     }
 
     }
 
     onBack(): void{
         this.router.navigate(['/products']);
+    }
+
+    orderWithHomeAddress(): void {
+        for (let product of CheckoutService.checkoutProducts) {
+                this.addressOrder = new Order(0, this.user.userID, product.productId, this.today, this.requiredDate, this.shippedDate, this.user.userName, this.user.address, this.user.city, this.user.region, this.user.postalCode, this.user.country);
+                this.checkoutService.postOrder(this.addressOrder).subscribe((response) => {
+            if(response._body === "Order added to Database"){
+                
+            } else {
+                alert(response._body);
+            }
+                });
+            }
+            alert("Your order has been recorded.");
+            this.router.navigate(["payment"])
+    }
+
+    orderWithDeliveryAddress(): void {
+        if (this.deliverycountry==null || this.deliverycity==null || this.deliveryregion==null || this.deliveryaddress==null || this.deliverypostalcode==null ){
+                alert("You must fill out all field.");
+            } else {
+                for (let product of CheckoutService.checkoutProducts) {
+            this.deliveryOrder = new Order(0, this.user.userID, product.productId, this.today, this.requiredDate, this.shippedDate, this.user.userName, this.deliveryaddress, this.deliverycity, this.deliveryregion, this.deliverypostalcode, this.deliverycountry);
+            this.checkoutService.postOrder(this.deliveryOrder).subscribe((response) => {
+            if(response._body === "Order added to Database") {
+            } else {
+                alert(response._body);
+            }
+        });
+                }
+        }
+        alert("Your order has been recorded.")
+        this.router.navigate(["payment"])
     }
 }
