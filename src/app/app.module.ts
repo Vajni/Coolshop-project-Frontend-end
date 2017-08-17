@@ -40,6 +40,8 @@ import {CartComponent} from './Cart/cart.component';
 import {CartService} from './Cart/cart.service';
 import { WelcomeService } from "./WelcomeContent/welcome.service";
 
+import { PaymentComponent } from './Payment/payment.component';
+
 
 @NgModule({
    imports: [
@@ -57,7 +59,8 @@ import { WelcomeService } from "./WelcomeContent/welcome.service";
        {path: 'welcome', component: WelcomeContent},
        {path: 'merchant', component: MerchantComponent},
        {path: 'rolemanagement', component: RoleManagementComponent},
-       {path: 'checkout', component: CheckoutComponent}
+       {path: 'checkout', component: CheckoutComponent},
+       {path: 'payment', component: PaymentComponent}
      ])
    ],
    declarations: [
@@ -75,11 +78,12 @@ import { WelcomeService } from "./WelcomeContent/welcome.service";
     RoleManagementComponent,
     RoleSelectorComponent,
     CheckoutComponent,
-    CartComponent
+    CartComponent,
+    PaymentComponent
   ],
   bootstrap: [ AppComponent ],
 
-  providers: [RoleManagementService, RoleSelectorService, MerchantService, ProductDetailGuard, CheckoutService,ProductService, CartService, CartComponent, WelcomeService]
+  providers: [RoleManagementService, RoleSelectorService, MerchantService, ProductDetailGuard, CheckoutService,ProductService, CartService, CartComponent, WelcomeService, LoginService]
 
 })
 export class AppModule { }

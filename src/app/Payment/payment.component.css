@@ -1,0 +1,9 @@
+.mainform{
+    width: 60%;
+    margin: auto;
+}
+
+.paybutton{
+    width: 30%;
+    float: left;
+}
