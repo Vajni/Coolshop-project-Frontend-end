@@ -38,6 +38,7 @@ import { User } from './Registration/user';
 
 import {CartComponent} from './Cart/cart.component';
 import {CartService} from './Cart/cart.service';
+import { WelcomeService } from "./WelcomeContent/welcome.service";
 
 
 @NgModule({
@@ -78,7 +79,7 @@ import {CartService} from './Cart/cart.service';
   ],
   bootstrap: [ AppComponent ],
 
-  providers: [RoleManagementService, RoleSelectorService, MerchantService, ProductDetailGuard, CheckoutService,ProductService, CartService, CartComponent]
+  providers: [RoleManagementService, RoleSelectorService, MerchantService, ProductDetailGuard, CheckoutService,ProductService, CartService, CartComponent, WelcomeService]
 
 })
 export class AppModule { }

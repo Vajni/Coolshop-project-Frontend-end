@@ -6,7 +6,8 @@ import { Router } from "@angular/router";
 @Component({
   selector: 'pm-cart',
   templateUrl: 'cart.component.html',
-  styleUrls: ['cart.component.css']
+  styleUrls: ['cart.component.css'],
+  
 })
 
 export class CartComponent {
@@ -15,7 +16,8 @@ export class CartComponent {
     }
 
     checkIfAdded(product: IProduct) {
-        if(this.cartService.orderedProducts.includes(product)) {
+        console.log(this.cartService.Products);
+        if (this.cartService.Products.includes(product)) {
             this.increaseQuantity(product);
         } else {
             this.orderProduct(product);

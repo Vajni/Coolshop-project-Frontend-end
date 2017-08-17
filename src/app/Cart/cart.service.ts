@@ -4,5 +4,9 @@ import { IProduct} from '../Products/product';
 @Injectable()
 export class CartService {
     orderedProducts: Array<IProduct> = new Array; 
-    totalPrice: number = 0;   
+    totalPrice: number = 0;
+    
+    get Products() : Array<IProduct>{
+        return this.orderedProducts;
+    }
 }
