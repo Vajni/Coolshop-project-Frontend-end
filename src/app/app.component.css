@@ -1,0 +1,24 @@
+:host(.pm-app) {
+}
+
+.footer {
+    margin-top: 100px;
+    background-color: #1f1f1f;
+    color: #DADFE1;
+}
+
+.social {
+    background-color: #474747;
+    height: 100px;
+    text-align: center;
+}
+
+.fa {
+    color: white;
+    font-size: 50px;
+    margin: 20px;
+}
+
+.social i:hover {
+    color: #00b0eb;
+}
