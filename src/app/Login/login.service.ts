@@ -25,6 +25,7 @@ export class LoginService {
     let data = new URLSearchParams();
     data.append("email", email);
     data.append("password", password);
+    
     return this._http.post("http://localhost:8080/CoolShop-1.0/rest/user/login", data)
       .map(response => this.check(response.json()));
   }
@@ -39,5 +40,12 @@ export class LoginService {
     else {
       return false;
     }
+  }
+
+  logout(): Observable<boolean> {
+    let data = new URLSearchParams();
+    data.append("token", LoginService.token);
+    return this._http.post("http://localhost:8080/CoolShop-1.0/rest/user/logout", data)
+      .map(response => this.check(response.json()));
   }
 }
