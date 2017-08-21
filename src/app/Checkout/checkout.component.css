@@ -19,3 +19,12 @@
     width: 30%;
     float: left;
 }
+
+.rows{
+    width: 10%;
+    padding-left: 50px;
+}
+
+.firstcolumn{
+    padding-bottom: 50px;
+}

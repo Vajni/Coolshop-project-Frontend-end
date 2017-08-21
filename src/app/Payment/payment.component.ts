@@ -19,11 +19,11 @@ export class PaymentComponent implements OnInit{
     cardNumber: number;
     cardHolder: string;
     expiryDate: string;
-    securityCode: number;
+    securityCode: string;
 
     constructor(private cartService: CartService, private router: Router) {}
 
-    totalPrice = this.cartService.totalPrice;
+    totalPrice = this.cartService.totalPrice.toFixed(2);
 
     ngOnInit(): void{
 

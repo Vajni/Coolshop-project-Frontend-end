@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { CartService } from "../Cart/cart.service";
 import { CartComponent } from "../Cart/cart.component";
 import { LoginService } from '../Login/login.service';
+import { IProduct} from '../Products/product';
 
 declare var paypal: any;
 
@@ -32,9 +33,11 @@ export class CheckoutComponent implements OnInit{
     shippedDate: Date = new Date("February 8, 2017 20:10:00");
     addressOrder: Order;
     deliveryOrder: Order;
+    orderedProducts: Array<IProduct> = this.cartService.orderedProducts;
 
 
-    constructor(private checkoutService: CheckoutService, private router: Router, private cartComponent: CartComponent, private loginService: LoginService) {}
+
+    constructor(private checkoutService: CheckoutService, private router: Router, private cartComponent: CartComponent, private loginService: LoginService, private cartService: CartService) {}
 
     
 
@@ -61,15 +64,8 @@ export class CheckoutComponent implements OnInit{
     orderWithHomeAddress(): void {
         for (let product of CheckoutService.checkoutProducts) {
                 this.addressOrder = new Order(0, this.user.userID, product.productId, this.today, this.requiredDate, this.shippedDate, this.user.userName, this.user.address, this.user.city, this.user.region, this.user.postalCode, this.user.country);
-                this.checkoutService.postOrder(this.addressOrder).subscribe((response) => {
-            if(response._body === "Order added to Database"){
-                
-            } else {
-                alert(response._body);
+                this.checkoutService.postOrder(this.addressOrder).subscribe();
             }
-                });
-            }
-            alert("Your order has been recorded.");
             this.router.navigate(["payment"])
     }
 
@@ -79,15 +75,9 @@ export class CheckoutComponent implements OnInit{
             } else {
                 for (let product of CheckoutService.checkoutProducts) {
             this.deliveryOrder = new Order(0, this.user.userID, product.productId, this.today, this.requiredDate, this.shippedDate, this.user.userName, this.deliveryaddress, this.deliverycity, this.deliveryregion, this.deliverypostalcode, this.deliverycountry);
-            this.checkoutService.postOrder(this.deliveryOrder).subscribe((response) => {
-            if(response._body === "Order added to Database") {
-            } else {
-                alert(response._body);
-            }
-        });
+            this.checkoutService.postOrder(this.deliveryOrder).subscribe();
                 }
+            this.router.navigate(["payment"])
         }
-        alert("Your order has been recorded.")
-        this.router.navigate(["payment"])
     }
 }
