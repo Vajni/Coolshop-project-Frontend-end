@@ -2,20 +2,24 @@ import {Component} from "@angular/core";
 import {IProduct} from "../Products/product";
 import {CartService} from './cart.service';
 import { Router } from "@angular/router";
+import { CheckoutService } from '../Checkout/checkout.service';
 
 @Component({
   selector: 'pm-cart',
   templateUrl: 'cart.component.html',
-  styleUrls: ['cart.component.css']
+  styleUrls: ['cart.component.css'],
+  
 })
+
 
 export class CartComponent {
 
-    constructor(private cartService: CartService, private _router : Router) {
+    constructor(private cartService: CartService, private _router : Router, private checkoutService: CheckoutService) {
     }
 
     checkIfAdded(product: IProduct) {
-        if(this.cartService.orderedProducts.includes(product)) {
+        console.log(this.cartService.Products);
+        if (this.cartService.Products.includes(product)) {
             this.increaseQuantity(product);
         } else {
             this.orderProduct(product);
@@ -55,6 +59,16 @@ export class CartComponent {
     }
 
     onOrder(): void{
+        this.addProductsToCheckoutArray();
         this._router.navigate(['/checkout']);
+    }
+
+    addProductsToCheckoutArray(): void{
+        for (let product of this.cartService.orderedProducts) {
+            let quan = product.productQuantity;
+            for (var i = 1; i <= quan; i++) {
+                CheckoutService.checkoutProducts.push(product);
+            }
+        }
     }
 }

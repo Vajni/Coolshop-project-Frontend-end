@@ -38,6 +38,7 @@ import { User } from './Registration/user';
 
 import {CartComponent} from './Cart/cart.component';
 import {CartService} from './Cart/cart.service';
+import { WelcomeService } from "./WelcomeContent/welcome.service";
 
 import { PaymentComponent } from './Payment/payment.component';
 
@@ -83,8 +84,6 @@ import { StorageService } from './Storage/storage.service';
     PaymentComponent
   ],
   bootstrap: [ AppComponent ],
-
-  providers: [RoleManagementService, RoleSelectorService, MerchantService, ProductDetailGuard, CheckoutService,ProductService, CartService, CartComponent, LoginService, StorageService]
-
+  providers: [RoleManagementService, RoleSelectorService, MerchantService, ProductDetailGuard, CheckoutService,ProductService, CartService, CartComponent, LoginService, StorageService, WelcomeService]
 })
 export class AppModule { }

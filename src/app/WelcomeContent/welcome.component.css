@@ -12,3 +12,8 @@
 h2{
   text-align: center;
 }
+
+.carousel-caption{
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 20px;
+}

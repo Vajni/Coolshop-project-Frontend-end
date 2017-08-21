@@ -1,39 +1,39 @@
 <div class="container">
-  <h2>Welcome to Coop Shop!</h2><br>
+  <h2>Welcome to CooL Shop!</h2><br>
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
       <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+      <li data-target="#myCarousel" data-slide-to="4"></li>
+      <li data-target="#myCarousel" data-slide-to="5"></li>
+      <li data-target="#myCarousel" data-slide-to="6"></li>
+      <li data-target="#myCarousel" data-slide-to="7"></li>
+      <li data-target="#myCarousel" data-slide-to="8"></li>
+      <li data-target="#myCarousel" data-slide-to="9"></li>
     </ol>
     
     <!-- Wrapper for slides -->
-    <div class="carousel-inner">
+ 
+    <div class="carousel-inner" >
 
       <div class="item active">
-        <img src="http://localhost:8080/images/1bc7b936-c36b-4e2e-a4a9-f2dca67edac7/Crystal%20meth.jpg" alt="Los Angeles">
+        <img src="http://localhost:8080/images/6560cf25-bdd1-4412-b84f-3e5011471f9d/Yoga book.jpeg" alt="Yoga Book">
         <div class="carousel-caption">
-          <h3>Chrystal</h3>
-          <p>Fancy chrystal for fancy people.!</p>
+          <h3>Yoga Book</h3>
+          <p>Your best friend as a technology nomad.</p>
         </div>
       </div>
 
-      <div class="item">
-        <img src="http://localhost:8080/images/04cf7fb6-dc6c-40fe-b77c-cecc0076a28a/Golden%20toilet.jpg" alt="Chicago">
-        <div class="carousel-caption">
-          <h3>Golden toilet</h3>
-          <p>The Gold of Thrones!</p>
-        </div>
+      <div class="item" *ngFor="let product of products">
+      <img src="{{product.imageName}}" alt="{{product.productName}}">
+      <div class="carousel-caption">
+        <h3>{{product.productName}}</h3>
+        <p>{{product.productDescription}}</p>
       </div>
-    
-      <div class="item">
-        <img src="http://localhost:8080/images/144dd6d2-9e33-4e2d-ba52-be1b1438546b/Funny%20shirt.jpeg" alt="New York">
-        <div class="carousel-caption">
-          <h3>T-shirt</h3>
-          <p>Funny shirt for funny people!</p>
-        </div>
-      </div>
+    </div>
   
     </div>
 
