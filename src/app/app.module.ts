@@ -41,6 +41,8 @@ import {CartService} from './Cart/cart.service';
 
 import { PaymentComponent } from './Payment/payment.component';
 
+import { StorageService } from './Storage/storage.service';
+
 
 @NgModule({
    imports: [
@@ -82,7 +84,7 @@ import { PaymentComponent } from './Payment/payment.component';
   ],
   bootstrap: [ AppComponent ],
 
-  providers: [RoleManagementService, RoleSelectorService, MerchantService, ProductDetailGuard, CheckoutService,ProductService, CartService, CartComponent, LoginService]
+  providers: [RoleManagementService, RoleSelectorService, MerchantService, ProductDetailGuard, CheckoutService,ProductService, CartService, CartComponent, LoginService, StorageService]
 
 })
 export class AppModule { }
