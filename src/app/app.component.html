@@ -8,7 +8,7 @@
             <a class="nav-link" routerLink="/products">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item" id="nav-item-signin">
-            <a class="nav-link" routerLink="/login">Sign in</a>
+            <a class="nav-link" (click)="userButtonClicked()" routerLink="{{userButtonUrl}}">{{userButtonText}}</a>
           </li>
           <li class="nav-item" id="nav-item-signup">
             <a class="nav-link" routerLink="/register">Sign up</a>
