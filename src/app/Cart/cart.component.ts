@@ -59,8 +59,7 @@ export class CartComponent {
     }
 
     onOrder(): void{
-        this.addProductsToCheckoutArray();
-        this._router.navigate(['/checkout']);
+        this.checkTheCart();
     }
 
     addProductsToCheckoutArray(): void{
@@ -69,6 +68,15 @@ export class CartComponent {
             for (var i = 1; i <= quan; i++) {
                 CheckoutService.checkoutProducts.push(product);
             }
+        }
+    }
+
+    checkTheCart(): void{
+        if(this.cartService.orderedProducts.length == 0){
+            alert("Your cart is empty");
+        } else {
+            this.addProductsToCheckoutArray();
+            this._router.navigate(['/checkout']);
         }
     }
 }
