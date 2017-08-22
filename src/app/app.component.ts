@@ -34,7 +34,6 @@ export class AppComponent{
     console.log("Detected token: " + token);
     if (token != null) {
       this.login();
-      this._router.navigate(["products"]);
     }
   }
 

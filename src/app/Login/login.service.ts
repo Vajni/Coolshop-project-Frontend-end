@@ -12,11 +12,7 @@ import { StorageService } from '../Storage/storage.service';
 @Injectable()
 
 export class LoginService {
-
-
   static token: string;
-
-  //isLoggedIn: boolean;
 
   constructor(private _http: Http, private router: Router, private _storage: StorageService) {
 

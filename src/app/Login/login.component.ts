@@ -29,7 +29,6 @@ export class LoginComponent {
       if (success) {
         this._app.login();
         this._storage.write("token", LoginService.token);
-        this._app.login();
         this._router.navigate(["products"]);
       }
       else {
