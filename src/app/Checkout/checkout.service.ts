@@ -21,10 +21,14 @@ export class CheckoutService{
     getAddress(token: string): Observable<User> {
         let data = new URLSearchParams();
         data.append("token", <string>this.storageService.read("token"));
-        return this._http.post("http://localhost:8080/CoolShop-1.0/rest/checkout/getAddressInformations", data).map((response: Response)=><User>response.json()).do(data => console.log(JSON.stringify(data)));
+        let headers = new Headers();
+        headers.append("X-token", token);
+        return this._http.post("http://localhost:8080/CoolShop-1.0/rest/checkout/getAddressInformations", data, {headers: headers}).map((response: Response)=><User>response.json()).do(data => console.log(JSON.stringify(data)));
     }
 
     postOrder(order: Order): Observable<any>{
-        return this._http.post("http://localhost:8080/CoolShop-1.0/rest/order/addToDatabase", order);
+        let headers = new Headers();
+        headers.append("X-token", <string>this.storageService.read("token"));
+        return this._http.post("http://localhost:8080/CoolShop-1.0/rest/order/addToDatabase", order, {headers: headers});
     } 
 }
