@@ -20,7 +20,7 @@
 						checkQuantity(product, product.productQuantity)">
 						<span class="glyphicon glyphicon-minus"></span>
 					</button>
-					<span class="quantity">{{product.productQuantity}}</span>
+					<span class="quantity">{{product.unitsOnOrder}}</span>
 					<button class="button"
 						(click)="increaseQuantity(product);
 						addToTotalPrice(product.productPrice)">

@@ -19,15 +19,27 @@ export class CartComponent {
 
     checkIfAdded(product: IProduct) {
         console.log(this.cartService.Products);
-        if (this.cartService.Products.includes(product)) {
+        if (this.checkForId(product.productId)) {
             this.increaseQuantity(product);
+            console.log(product.productQuantity)
         } else {
             this.orderProduct(product);
+            console.log("Sucker");
         }
     }
 
+    checkForId(id:number) : boolean{
+        let products : IProduct[] = this.cartService.Products;
+            for (var i=0; i < products.length; i++){
+                if (products[i].productId === id){
+                    return true;
+                }
+            }
+        return false;
+    }
+
     orderProduct(product: IProduct) {
-        product.productQuantity = 1;
+        product.unitsOnOrder = 1;
         this.cartService.orderedProducts.push(product);
     }
 
@@ -40,11 +52,13 @@ export class CartComponent {
     }
 
     increaseQuantity(product: IProduct) {
-        product.productQuantity++;
+        product.unitsOnOrder++;
+        product.productQuantity--;
     }
 
     decreaseQuantity(product: IProduct) {
-        product.productQuantity--;
+        product.unitsOnOrder--;
+        product.productQuantity++;
     }
 
     checkQuantity(product: IProduct, quantity: number) {
@@ -64,7 +78,7 @@ export class CartComponent {
 
     addProductsToCheckoutArray(): void{
         for (let product of this.cartService.orderedProducts) {
-            let quan = product.productQuantity;
+            let quan = product.unitsOnOrder;
             for (var i = 1; i <= quan; i++) {
                 CheckoutService.checkoutProducts.push(product);
             }
