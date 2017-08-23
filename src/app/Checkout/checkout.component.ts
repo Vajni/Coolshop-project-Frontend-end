@@ -7,6 +7,7 @@ import { CartService } from "../Cart/cart.service";
 import { CartComponent } from "../Cart/cart.component";
 import { LoginService } from '../Login/login.service';
 import { IProduct} from '../Products/product';
+import { StorageService } from '../Storage/storage.service';
 
 declare var paypal: any;
 
@@ -37,13 +38,14 @@ export class CheckoutComponent implements OnInit{
 
 
 
-    constructor(private checkoutService: CheckoutService, private router: Router, private cartComponent: CartComponent, private loginService: LoginService, private cartService: CartService) {}
+    constructor(private checkoutService: CheckoutService, private router: Router, private cartComponent: CartComponent, private loginService: LoginService, private cartService: CartService, private storageService: StorageService) {}
 
     
 
 
     ngOnInit(): void {
-        this.checkoutService.getAddress(LoginService.token).subscribe(user => this.user = user, error => this.errorMessage = <any>error);
+        console.log(<string>this.storageService.read("token"))
+        this.checkoutService.getAddress(<string>this.storageService.read("token")).subscribe(user => this.user = user, error => this.errorMessage = <any>error);
 
     }
     
