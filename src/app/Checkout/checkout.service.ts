@@ -27,5 +27,6 @@ export class CheckoutService{
 
     postOrder(order: Order): Observable<any>{
         return this._httpWrapper.post("http://localhost:8080/CoolShop-1.0/rest/order/addToDatabase", order);
+
     } 
 }
