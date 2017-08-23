@@ -5,17 +5,19 @@ import {Http, Response, Headers} from "@angular/http";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
 import "rxjs/add/operator/do";
+import { HTTPWrapper } from "../HTTPWrapper/wrapper.service";
 
 @Injectable()
 export class RoleManagementService {
     private _getRoleUrl = 'http://localhost:8080/CoolShop-1.0/rest/RoleManagement/getRoles'
     private user: User;
 
-    constructor(private _http: Http) {
+    constructor(private _httpWrapper: HTTPWrapper) {
     }
 
     getUserRoles(): Observable<User[]> {
-        return this._http.get(this._getRoleUrl)
+        
+        return this._httpWrapper.get(this._getRoleUrl)
                     .map((response: Response) => <User[]>response.json())
                     .do(data => console.log("All: " + JSON.stringify(data)))
                     .catch(this.handleError);

@@ -3,11 +3,12 @@ import { Injectable} from '@angular/core';
 import { Observable} from 'rxjs/Observable';
 import {Http, Response, Headers} from '@angular/http';
 import {User} from '../RoleManagement/user';
+import { HTTPWrapper } from "../HTTPWrapper/wrapper.service";
 
 @Injectable()
 export class RoleSelectorService {
 
-    constructor(private http: Http) {
+    constructor(private httpWrapper: HTTPWrapper) {
     }
 
     @Input()
@@ -20,6 +21,6 @@ export class RoleSelectorService {
 
     updateUserRole(id: number, role: String): Observable<any> {
         this._updateRoleUrl = 'http://localhost:8080/CoolShop-1.0/rest/RoleManagement/updateRole/' + id + '';
-        return this.http.post(this._updateRoleUrl, role);
+        return this.httpWrapper.post(this._updateRoleUrl, role);
     }
 }

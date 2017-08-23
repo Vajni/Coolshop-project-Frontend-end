@@ -43,6 +43,7 @@ import { WelcomeService } from "./WelcomeContent/welcome.service";
 import { PaymentComponent } from './Payment/payment.component';
 
 import { StorageService } from './Storage/storage.service';
+import { HTTPWrapper } from "./HTTPWrapper/wrapper.service";
 
 
 @NgModule({
@@ -84,6 +85,6 @@ import { StorageService } from './Storage/storage.service';
     PaymentComponent
   ],
   bootstrap: [ AppComponent ],
-  providers: [RoleManagementService, RoleSelectorService, MerchantService, ProductDetailGuard, CheckoutService,ProductService, CartService, CartComponent, LoginService, StorageService, WelcomeService]
+  providers: [RoleManagementService, RoleSelectorService, MerchantService, ProductDetailGuard, CheckoutService,ProductService, CartService, CartComponent, LoginService, StorageService, WelcomeService, HTTPWrapper]
 })
 export class AppModule { }

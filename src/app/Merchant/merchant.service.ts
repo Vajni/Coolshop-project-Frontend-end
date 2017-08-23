@@ -5,13 +5,14 @@ import {Http, Response, Headers} from "@angular/http";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
 import "rxjs/add/operator/do";
+import { StorageService } from "../Storage/storage.service";
 
 @Injectable()
 export class MerchantService {
 
     private _productUrl = 'http://localhost:8080/CoolShop-1.0/rest/ProductList/addProductToDatabase'
 
-    constructor(private _http: Http){
+    constructor(private _http: Http, private _storageService : StorageService){
 
     }
 
@@ -34,7 +35,9 @@ export class MerchantService {
         
         formData.append('file', document.getElementById('productPicture')['files'][0]);
         
-        var headers = new Headers();
+        let token = <string>this._storageService.read("token");
+        let headers = new Headers();
+        headers.append("X-token", token);
         
         return this._http.post(this._productUrl , formData, { headers : headers })
         .map(res => res.json());
