@@ -26,7 +26,7 @@ export class PaymentComponent implements OnInit{
     totalPrice = this.cartService.totalPrice.toFixed(2);
 
     ngOnInit(): void{
-
+            var price = this.totalPrice;
             paypal.Button.render({
 
             env: 'sandbox', // Or 'sandbox',
@@ -36,13 +36,13 @@ export class PaymentComponent implements OnInit{
             production: 'ASw28Jwetd3OMa9dEnZ9bRELiMMhhPsXgfye9kqxbT4iRD5SxSu59DS-bI-kH-rE4JCZCV1NP8Uqrj_w'
         },
             commit: true, // Show a 'Pay Now' button
-
+        
             payment: function(data, actions) {
             return actions.payment.create({
                 payment: {
                     transactions: [
                         {
-                            amount: { total: '2.00', currency: 'USD' }
+                            amount: { total: price, currency: 'USD' }
                         }
                     ]
                 }
