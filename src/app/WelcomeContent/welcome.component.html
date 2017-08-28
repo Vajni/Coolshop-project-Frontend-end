@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>Welcome to CooL Shop!</h2><br>
+  <h2>Welcome to Emezen!</h2><br>
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -28,11 +28,13 @@
       </div>
 
       <div class="item" *ngFor="let product of products">
+          <ng-container *ngIf="product.productType != 'Sex toy' && product.productType != 'Drugs'">
       <img src="{{product.imageName}}" alt="{{product.productName}}">
       <div class="carousel-caption">
         <h3>{{product.productName}}</h3>
         <p>{{product.productDescription}}</p>
       </div>
+          </ng-container>
     </div>
   
     </div>

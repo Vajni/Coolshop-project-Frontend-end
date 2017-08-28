@@ -3,6 +3,7 @@ import {IProduct} from "../Products/product";
 import {CartService} from './cart.service';
 import { Router } from "@angular/router";
 import { CheckoutService } from '../Checkout/checkout.service';
+import { HTTPWrapper } from "../HTTPWrapper/wrapper.service";
 
 @Component({
   selector: 'pm-cart',
@@ -14,28 +15,27 @@ import { CheckoutService } from '../Checkout/checkout.service';
 
 export class CartComponent {
 
-    constructor(private cartService: CartService, private _router : Router, private checkoutService: CheckoutService) {
+    quantity : string;
+
+    constructor(private _httpWrapper : HTTPWrapper, private cartService: CartService, private _router : Router, private checkoutService: CheckoutService) {
     }
 
     checkIfAdded(product: IProduct) {
-        console.log(this.cartService.Products);
-        if (this.checkForId(product.productId)) {
-            this.increaseQuantity(product);
-            console.log(product.productQuantity)
+        if (this.findById(product.productId) != null) {
+            this.increaseQuantity(this.findById(product.productId));
         } else {
             this.orderProduct(product);
-            console.log("Sucker");
         }
     }
 
-    checkForId(id:number) : boolean{
+    findById(id:number) : IProduct{
         let products : IProduct[] = this.cartService.Products;
             for (var i=0; i < products.length; i++){
                 if (products[i].productId === id){
-                    return true;
+                    return products[i];
                 }
             }
-        return false;
+        return null;
     }
 
     orderProduct(product: IProduct) {
@@ -53,7 +53,7 @@ export class CartComponent {
 
     increaseQuantity(product: IProduct) {
         product.unitsOnOrder++;
-        product.productQuantity--;
+        product.productQuantity--;      
     }
 
     decreaseQuantity(product: IProduct) {

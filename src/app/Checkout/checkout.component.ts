@@ -8,6 +8,7 @@ import { CartComponent } from "../Cart/cart.component";
 import { LoginService } from '../Login/login.service';
 import { IProduct} from '../Products/product';
 import { StorageService } from '../Storage/storage.service';
+import { HTTPWrapper } from "../HTTPWrapper/wrapper.service";
 
 declare var paypal: any;
 
@@ -38,7 +39,7 @@ export class CheckoutComponent implements OnInit{
 
 
 
-    constructor(private checkoutService: CheckoutService, private router: Router, private cartComponent: CartComponent, private loginService: LoginService, private cartService: CartService, private storageService: StorageService) {}
+    constructor(private _httpWrapper : HTTPWrapper, private checkoutService: CheckoutService, private router: Router, private cartComponent: CartComponent, private loginService: LoginService, private cartService: CartService, private storageService: StorageService) {}
 
     
 
