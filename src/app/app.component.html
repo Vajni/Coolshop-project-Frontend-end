@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-md navbar-light bg-faded fixed-navbar">
+<nav class="navbar navbar-expand-md navbar-light bg-faded">
     <div class="container">
-      <a class="navbar-brand" href="#" id="navbar-brand-logo">CooLShop</a>
+      <a class="navbar-brand" routerLink="/welcome" id="navbar-brand-logo">Emezen</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
@@ -16,6 +16,9 @@
           <li class="nav-item" id="nav-item-about">
             <a class="nav-link" routerLink="/about">About</a>
           </li>
+          <li class="nav-item" id="nav-item-about">
+            <a class="nav-link" routerLink="/rolemanagement">Role management</a>
+          </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="text" placeholder="Search">
@@ -23,7 +26,25 @@
         </form>
       </div>
     </div>
-  </nav>
-  <div id="content">
-    <router-outlet></router-outlet>
+</nav>
+<div id="content">
+  <router-outlet></router-outlet>
+</div>
+
+<!-- Footer element -->
+<footer class="footer">
+  <div class="social">
+    <a href="https://github.com/Vajni/Coolshop-project-Frontend-end" target="_blank">
+      <i class="fa fa-github"></i>
+    </a>
+    <i class="fa fa-facebook"></i>
+    <i class="fa fa-twitter"></i>
   </div>
+  <div class="container">
+    <p>
+      <span>&copy;</span>
+      All rights reserved!
+    </p>
+  </div>
+</footer>
+<!-- Footer element end -->

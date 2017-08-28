@@ -4,6 +4,7 @@ import { WelcomeService } from "./welcome.service";
 import { IProduct } from "../Products/product";
 
 @Component({
+    selector: '/welcome',
     templateUrl: 'welcome.component.html',
     styleUrls: ['welcome.component.css']
     
