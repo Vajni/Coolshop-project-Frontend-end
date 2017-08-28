@@ -40,6 +40,7 @@ export class CartComponent {
 
     orderProduct(product: IProduct) {
         product.unitsOnOrder = 1;
+        product.productQuantity--;
         this.cartService.orderedProducts.push(product);
     }
 
