@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from "@angular/router"
 import { ProductService } from "./product.service"
 import { Subscription } from 'rxjs/Subscription';
 import { CartComponent } from "../Cart/cart.component";
+import { HTTPWrapper } from "../HTTPWrapper/wrapper.service";
 
 declare var paypal: any;
 
@@ -24,7 +25,7 @@ export class ProductDetailComponent implements OnInit{
     private sub : Subscription;
  
    
-    constructor(private _productService : ProductService, private _route: ActivatedRoute, private _router: Router, private cartComponent: CartComponent){
+    constructor(private _httpWrapper : HTTPWrapper, private _productService : ProductService, private _route: ActivatedRoute, private _router: Router, private cartComponent: CartComponent){
         
     }
  
@@ -53,11 +54,11 @@ export class ProductDetailComponent implements OnInit{
 
     addToTotalPrice(productPrice: number) {
     this.cartComponent.addToTotalPrice(productPrice);
-  }
+    }
 
-  checkIfAdded(product: IProduct) {
+    checkIfAdded(product: IProduct) {
     this.cartComponent.checkIfAdded(product);
-  }
+    }
 
 }
 

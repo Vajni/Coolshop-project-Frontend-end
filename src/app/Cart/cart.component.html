@@ -17,7 +17,7 @@
 					<button class="button"
 						(click)="decreaseQuantity(product);
 						subtractFromTotalPrice(product.productPrice);
-						checkQuantity(product, product.productQuantity)">
+						checkQuantity(product, product.unitsOnOrder)">
 						<span class="glyphicon glyphicon-minus"></span>
 					</button>
 					<span class="quantity">{{product.unitsOnOrder}}</span>
