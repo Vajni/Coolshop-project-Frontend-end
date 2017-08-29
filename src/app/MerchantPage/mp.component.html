@@ -1,1 +1,5 @@
 <p>Szia!</p>
+<button (click)="showRole()">Show role!</button>
+<ul *ngFor="let product of products">
+    <li>{{product.productName}}</li>
+</ul>

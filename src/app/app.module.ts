@@ -44,6 +44,7 @@ import { StorageService } from './Storage/storage.service';
 import { HTTPWrapper } from "./HTTPWrapper/wrapper.service";
 
 import {MerchantPageComponent} from './MerchantPage/mp.component';
+import {MerchantPageService} from './MerchantPage/mp.service';
 
 
 @NgModule({
@@ -87,6 +88,6 @@ import {MerchantPageComponent} from './MerchantPage/mp.component';
     MerchantPageComponent
   ],
   bootstrap: [ AppComponent ],
-  providers: [RoleManagementService, RoleSelectorService, MerchantService, ProductDetailGuard, CheckoutService,ProductService, CartService, CartComponent, LoginService, StorageService, WelcomeService, HTTPWrapper]
+  providers: [RoleManagementService, RoleSelectorService, MerchantService, ProductDetailGuard, CheckoutService,ProductService, CartService, CartComponent, LoginService, StorageService, WelcomeService, HTTPWrapper, MerchantPageService]
 })
 export class AppModule { }
