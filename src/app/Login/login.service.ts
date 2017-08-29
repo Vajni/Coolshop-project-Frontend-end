@@ -13,6 +13,7 @@ import { StorageService } from '../Storage/storage.service';
 
 export class LoginService {
   static token: string;
+  static role: string;
 
   constructor(private _http: Http, private router: Router, private _storage: StorageService) {
 
@@ -30,6 +31,8 @@ export class LoginService {
   check(data): boolean {
     if (data.login == "true") {
       LoginService.token = data.token;
+      LoginService.role = data.userRole;
+      console.log(LoginService.role);
       console.log(LoginService.token);
       return true;
     }
