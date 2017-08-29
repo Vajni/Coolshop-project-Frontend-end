@@ -1,5 +1,39 @@
-<p>Szia!</p>
-<button (click)="showRole()">Show role!</button>
-<ul *ngFor="let product of products">
-    <li>{{product.productName}}</li>
-</ul>
+<!-- 
+
+-->
+<div>
+    <h2>Dear Merchant!</h2>
+    <p>Welcome to you personal space, where you can easily manage your own products.</p>
+</div>
+
+<!-- Product table - START -->
+<div class="productList">
+    <table class="table table-inverse">
+        <thead>
+            <th>Product Name:</th>
+            <th>Type:</th>
+            <th>Brand:</th>
+            <th>Description:</th>
+            <th>Price:</th>
+            <th>Available quantity:</th>
+            <th>On order:</th>
+            <th>Reorder level:</th>
+            <th>Available:</th>
+        </thead>
+
+        <tbody>
+            <tr class="bg-success" *ngFor="let product of products">
+                <td>{{product.productName}}</td>
+                <td>{{product.productType}}</td>
+                <td>{{product.productBrand}}</td>
+                <td>{{product.productDescription}}</td>
+                <td>{{product.productPrice}}</td>
+                <td>{{product.productQuantity}}</td>
+                <td>{{product.unitsOnOrder}}</td>
+                <td>{{product.reOrderLevel}}</td>
+                <td>{{product.available}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- Product table - END -->

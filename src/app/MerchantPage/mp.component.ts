@@ -21,8 +21,4 @@ export class MerchantPageComponent {
         this._merchantPageService.getProducts()
         .subscribe(products => this.products = products, error => this.errorMessage = <any>error);
     }
-
-    showRole() {
-        this._merchantPageService.testMehtod();
-    }
 }

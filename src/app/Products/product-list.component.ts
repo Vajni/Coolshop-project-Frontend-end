@@ -42,5 +42,4 @@ export class ProductListComponent implements OnInit{
   checkIfAdded(product: IProduct) {
     this.cartComponent.checkIfAdded(product);
   }
-
 }
