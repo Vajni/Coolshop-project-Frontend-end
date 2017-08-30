@@ -22,7 +22,8 @@
         </thead>
 
         <tbody>
-            <tr class="bg-success" *ngFor="let product of products">
+            <tr [ngClass]="product.available ? 'bg-success' : 'bg-danger' "
+                *ngFor="let product of products">
                 <td>{{product.productName}}</td>
                 <td>{{product.productType}}</td>
                 <td>{{product.productBrand}}</td>
