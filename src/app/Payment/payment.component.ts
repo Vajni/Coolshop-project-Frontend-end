@@ -80,9 +80,16 @@ export class PaymentComponent implements OnInit{
             for(let order of CheckoutService.orderList){
                 this.checkoutService.postOrder(order).subscribe();
             }
+
             alert("Thanks for your vásárlás.")
+            this.clearTheCart();
             this.router.navigate(["welcome"]);
         }
+    }
+
+    clearTheCart(): void{
+        this.cartService.orderedProducts = new Array();
+        this.cartService.totalPrice = 0;
     }
 
 }
