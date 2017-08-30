@@ -44,13 +44,13 @@
           <th>Type</th>
           <th>Supplier</th>
           <th>Price</th>
-          <th></th>
+          <th>Quantity</th>
         </tr>
       </thead>
       <tbody>
       <tr *ngFor="let product of products | productFilterByProduct: listFilterProduct | productFilterBySupplier : listFilterBySupplier | productFilterByType : listFilterByType">
         <!-- This container is filtering out Drugs and Sex toys from the products-->
-        <ng-container *ngIf="product.productType != 'Sex toy' && product.productType != 'Drugs'">
+        <!--ng-container *ngIf="product.productType != 'Sex toy' && product.productType != 'Drugs'"-->
         <td>
           <img *ngIf="showImage"
               src={{product.imageName}} title={{product.productName}}
@@ -62,6 +62,7 @@
         <td>{{product.productType}}</td>
         <td>{{product.productBrand}}</td>
         <td><b>{{product.productPrice | currency:"USD" : true: "1.2-2"}}</b></td>
+        <td>{{checkIfInCart(product) === true ? "Bakker" : product.productBrand}}</td>
         <td>
               <button class="btn btn-primary"
               (click)="checkIfAdded(product);
@@ -69,7 +70,7 @@
                        Add to cart!
               </button>
         </td>
-        </ng-container>
+        <!--/ng-container-->
       </tr>
       </tbody>
     </table>

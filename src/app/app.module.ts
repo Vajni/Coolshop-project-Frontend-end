@@ -1,5 +1,3 @@
-//import { AppRoutingModule, routingComponents } from './app.routing';
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpModule} from '@angular/http';
