@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
       urls: {
         "logged_out": "/register",
         "logged_in": "",
-        "logged_in_merchant": "",
+        "logged_in_merchant": "/merchant",
         "logged_in_admin": "/rolemanagement"
       },
       clickfuncs: {
