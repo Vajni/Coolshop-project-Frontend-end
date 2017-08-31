@@ -44,25 +44,26 @@
           <th>Type</th>
           <th>Supplier</th>
           <th>Price</th>
-          <th>Quantity</th>
         </tr>
       </thead>
       <tbody>
       <tr *ngFor="let product of products | productFilterByProduct: listFilterProduct | productFilterBySupplier : listFilterBySupplier | productFilterByType : listFilterByType">
         <!-- This container is filtering out Drugs and Sex toys from the products-->
-        <ng-container *ngIf="product.productType != 'Sex toy' && product.productType != 'Drugs'">
+        <!-- It also filters wether a product is available or not!-->
+        <ng-container *ngIf="product.productType != 'Sex toy' && product.productType != 'Drugs'
+                            && product.available != false">
         <td>
           <img *ngIf="showImage"
               src={{product.imageName}} title={{product.productName}}
               [style.width.px]="imageWidth"
               [style.margin.px]="imageMargin">
         </td>
-        <td><a [routerLink] = "['/product', product.productId]">
-          {{product.productName}}</a></td>
+        <td><a [routerLink] = "['/product', product.productID]">
+            {{product.productName}}
+        </a></td>
         <td>{{product.productType}}</td>
         <td>{{product.productBrand}}</td>
         <td><b>{{product.productPrice | currency:"USD" : true: "1.2-2"}}</b></td>
-        <td>{{product.productQuantity}}</td>
         <td>
               <button class="btn btn-primary"
               (click)="checkIfAdded(product);

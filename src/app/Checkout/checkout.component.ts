@@ -66,7 +66,7 @@ export class CheckoutComponent implements OnInit{
 
     orderWithHomeAddress(): void {
         for (let product of CheckoutService.checkoutProducts) {
-                this.addressOrder = new Order(0, this.user.userID, product.productId, this.today, this.requiredDate, this.shippedDate, this.user.userName, this.user.address, this.user.city, this.user.region, this.user.postalCode, this.user.country);
+                this.addressOrder = new Order(0, this.user.userID, product.productID, this.today, this.requiredDate, this.shippedDate, this.user.userName, this.user.address, this.user.city, this.user.region, this.user.postalCode, this.user.country);
                 this.checkoutService.postOrder(this.addressOrder).subscribe();
             }
             this.router.navigate(["payment"])
@@ -77,7 +77,7 @@ export class CheckoutComponent implements OnInit{
                 alert("You must fill out all field.");
             } else {
                 for (let product of CheckoutService.checkoutProducts) {
-            this.deliveryOrder = new Order(0, this.user.userID, product.productId, this.today, this.requiredDate, this.shippedDate, this.user.userName, this.deliveryaddress, this.deliverycity, this.deliveryregion, this.deliverypostalcode, this.deliverycountry);
+            this.deliveryOrder = new Order(0, this.user.userID, product.productID, this.today, this.requiredDate, this.shippedDate, this.user.userName, this.deliveryaddress, this.deliverycity, this.deliveryregion, this.deliverypostalcode, this.deliverycountry);
             this.checkoutService.postOrder(this.deliveryOrder).subscribe();
                 }
             this.router.navigate(["payment"])

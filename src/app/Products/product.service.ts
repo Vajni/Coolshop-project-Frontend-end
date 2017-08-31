@@ -21,7 +21,7 @@ export class ProductService {
         
         return this._wrapper.get(this._productUrl)
         .map((response: Response)=><IProduct[]>response.json())
-        .do(data => console.log("All: " + JSON.stringify(data)))
+        .do(data => console.log("All products: " + JSON.stringify(data)))
         .catch(this.handleError);
         
     }
@@ -37,6 +37,6 @@ export class ProductService {
 
     getProduct(id: number): Observable<IProduct> {
         return this.getProducts()
-            .map((products: IProduct[]) => products.find(p => p.productId === id));
+            .map((products: IProduct[]) => products.find(p => p.productID === id));
     }
 }

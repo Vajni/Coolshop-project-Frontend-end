@@ -3,15 +3,17 @@
  */
 export class IProduct{
 
-  productId: number;
-  productName: String;
-  productType: String;
-  productBrand: String;
-  productDescription: String;
-  productPrice: number;
-  productQuantity: number;
-  unitsOnOrder: number;
-  reOrderLevel: number;
-  imageName: string;
-  imageUrl: any;
+    productID: number;
+    userID: number;
+    productName: String;
+    productType: String;
+    productBrand: String;
+    productDescription: String;
+    productPrice: number;
+    productQuantity: number;
+    unitsOnOrder: number;
+    reorderLevel: number;
+    available: boolean;
+    imageName: string;
+    imageURL: any;
 }
