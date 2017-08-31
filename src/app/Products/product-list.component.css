@@ -5,8 +5,22 @@
 .panel {
     width: 78%;
     margin-right: 20px;
+    border-color: #333333;
+}
+
+.panel-primary {
+    border-color: #333333;
+}
+
+.panel-heading {
+    background-color: #333333;
+    border-color: #333333;
 }
 
 .filter-bar {
     margin-bottom: 20px;
+}
+
+.btn-info:hover {
+    color: #00b0eb;
 }

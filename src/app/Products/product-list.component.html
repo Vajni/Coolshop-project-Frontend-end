@@ -37,7 +37,7 @@
       <thead>
         <tr>
           <th>
-            <button class="btn btn-primary" (click)="toggleImage()">
+            <button class="btn btn-info" (click)="toggleImage()">
               {{showImage ? "Hide" : "Show"}} image</button>
           </th>
           <th>Product</th>
@@ -65,10 +65,10 @@
         <td>{{product.productBrand}}</td>
         <td><b>{{product.productPrice | currency:"USD" : true: "1.2-2"}}</b></td>
         <td>
-              <button class="btn btn-primary"
+              <button class="btn btn-info"
               (click)="checkIfAdded(product);
                        addToTotalPrice(product.productPrice)">
-                       Add to cart!
+                       <span class="glyphicon glyphicon-shopping-cart"></span> Add to cart!
               </button>
         </td>
         </ng-container>
