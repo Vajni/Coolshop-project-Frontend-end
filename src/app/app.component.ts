@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
       texts: {
         "logged_out": "Sign up",
         "logged_in": "",
-        "logged_in_merchant": "Merchant",
+        "logged_in_merchant": "New product",
         "logged_in_admin": "ManageRoles"
       },
       urls: {
