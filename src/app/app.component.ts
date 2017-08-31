@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
       texts: {
         "logged_out": "Sign up",
         "logged_in": "",
-        "logged_in_merchant": "",
+        "logged_in_merchant": "Merchant",
         "logged_in_admin": "ManageRoles"
       },
       urls: {
@@ -51,6 +51,7 @@ export class AppComponent implements OnInit {
 
   user: User;
   errorMessage: string;
+  userJSON: JSON;
 
   userButtonClick = this.snippets.userButton.clickfuncs["logged_out"];
   userButtonText = this.snippets.userButton.texts["logged_out"];
@@ -62,10 +63,11 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(): void {
-      console.log(<string>this._storage.read("token"))
-      this.checkoutService.getAddress(<string>this._storage.read("token")).subscribe(user => this.user = user, error => this.errorMessage = <any>error);
-      this.login();
-      alert("OnInit: -> " + this.user);
+      console.log(<string>this._storage.read("token"));
+      this.setUser();
+      if (this.logged_in()) {
+        this.login();
+      }
   }
 
   constructor(private loginService: LoginService, private _storage: StorageService, private _router: Router,
@@ -75,6 +77,10 @@ export class AppComponent implements OnInit {
     if (token != null) {
       this.login();
     }
+  }
+
+  setUser() {
+    this.checkoutService.getAddress(<string>this._storage.read("token")).subscribe(user => this.user = user, error => this.errorMessage = <any>error);
   }
 
   userButtonClicked(): void {
@@ -96,43 +102,62 @@ export class AppComponent implements OnInit {
   }
 
   changeRegAndManageButton(to: string) {
-
+      this.rmButtonClick = this.snippets.regAndManagementButton.clickfuncs[to];
+      this.rmButtonText = this.snippets.regAndManagementButton.texts[to];
+      this.rmButtonUrl = this.snippets.regAndManagementButton.urls[to];
   }
 
   login() {
-    if (this.user != undefined) {
-      alert("OKsi");
-      let role = this.user.role;
-      alert("Role: " + role);
-      this.changeUserButton("logged_in");
-      switch(role) {
-        case "user":
-          this.changeRegAndManageButton("logged_in");
-          break;
-        case "merchant":
-          alert("You are a merchant");
-          this.changeRegAndManageButton("logged_in_merchant");
-          break;
-        case "admin":
-          alert("You are an ADMIN");
-          this.changeRegAndManageButton("logged_in_admin");
-          break;
-        default: break;
-      }
+    this.changeUserButton("logged_in");
+    //alert(this.user);
+    if (this.user == undefined) {
+      this.setUser();
     }
-    else {
-      alert("shit");
-    }
+    let userDatas;
+    userDatas = this.getUser();
+
   }
 
   logout() {
     this.loginService.logout();
     this.changeUserButton("logged_out");
+    this.changeRegAndManageButton("logged_out");
   }
 
   logged_in(): boolean {
-    let logged_in = this._storage.read("token");
-    return logged_in != null;
+    return this.loginService.isLoggedIn();
   }
 
+  getUser() {
+      let logged_in = this.logged_in();
+      let user;
+      this.loginService.getUserData().subscribe(data => {
+          this.userJSON = data;
+          if (this.userJSON == null) {
+              this._storage.write("token", null);
+          }
+          if (!logged_in) {
+              this._router.navigate(["login"]);
+              alert("NOT LOGGED IN");
+          }
+
+          let role = this.userJSON["role"];
+          switch(role) {
+            case "user":
+              //alert("You are a simple user");
+              this.changeRegAndManageButton("logged_in");
+              break;
+            case "merchant":
+              //alert("You are a merchant");
+              this.changeRegAndManageButton("logged_in_merchant");
+              break;
+            case "admin":
+              //alert("You are an ADMIN");
+              this.changeRegAndManageButton("logged_in_admin");
+              break;
+            default: break;
+          }
+
+      });
+  }
 }

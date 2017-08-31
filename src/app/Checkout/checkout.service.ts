@@ -12,8 +12,8 @@ import { HTTPWrapper } from "../HTTPWrapper/wrapper.service";
 
 @Injectable()
 export class CheckoutService{
-    
-    static checkoutProducts: Array<IProduct> = new Array; 
+
+    static checkoutProducts: Array<IProduct> = new Array;
 
     constructor(private _httpWrapper: HTTPWrapper, private storageService: StorageService){
 
@@ -22,11 +22,13 @@ export class CheckoutService{
     getAddress(token: string): Observable<User> {
         let data = new URLSearchParams();
         data.append("token", <string>this.storageService.read("token"));
-        return this._httpWrapper.post(data,"http://localhost:8080/CoolShop-1.0/rest/checkout/getAddressInformations").map((response: Response)=><User>response.json()).do(data => console.log(JSON.stringify(data)));
+        return this._httpWrapper.post(data,"http://localhost:8080/CoolShop-1.0/rest/checkout/getAddressInformations")
+            .map((response: Response)=><User>response.json())
+            .do(data => console.log(JSON.stringify(data)));
     }
 
     postOrder(order: Order): Observable<any>{
         return this._httpWrapper.post(order, "http://localhost:8080/CoolShop-1.0/rest/order/addToDatabase");
 
-    } 
+    }
 }

@@ -41,7 +41,7 @@ export class CheckoutComponent implements OnInit{
 
     constructor(private _httpWrapper : HTTPWrapper, private checkoutService: CheckoutService, private router: Router, private cartComponent: CartComponent, private loginService: LoginService, private cartService: CartService, private storageService: StorageService) {}
 
-    
+
 
 
     ngOnInit(): void {
@@ -49,7 +49,7 @@ export class CheckoutComponent implements OnInit{
         this.checkoutService.getAddress(<string>this.storageService.read("token")).subscribe(user => this.user = user, error => this.errorMessage = <any>error);
 
     }
-    
+
 
     orderAddToDatabase(): void{
         if (this.checked == false) {
