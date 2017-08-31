@@ -10,6 +10,7 @@ import {MerchantSelectorService} from './ms.service';
 })
 
 export class MerchantSelectorComponent {
+    private options: boolean[] = [true, false]
 
     @Input()
     private product: Product;

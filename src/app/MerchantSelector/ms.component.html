@@ -29,9 +29,7 @@
     size="10">
 </td>
 <td>
-    <input [ngClass]="product.available ? 'true' : 'false' "
-    type="number" value="{{product.unitsOnOrder}}"
-    size="10">
+    {{product.unitsOnOrder}}
 </td>
 <td>
     <input [ngClass]="product.available ? 'true' : 'false' "
@@ -39,9 +37,12 @@
     size="10">
 </td>
 <td>
-    <input [ngClass]="product.available ? 'true' : 'false' "
-    type="text" value="{{product.available}}"
-    size="10">
+    <select [ngClass]="product.available ? 'yes' : 'no' "
+        [(ngModel)]="product.available">
+        <option *ngFor="let option of options" [ngValue]="option">
+            {{option}}
+        </option>
+    </select>
 </td>
 <td>
     <button class="save">Save</button>
