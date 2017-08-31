@@ -60,8 +60,8 @@ export class CheckoutComponent implements OnInit{
 
     orderWithHomeAddress(): void {
         CheckoutService.orderList = new Array();
-        for (let product of CheckoutService.checkoutProducts) {
-                this.checkoutService.addressOrder = new Order(0, this.checkoutService.user.userID, product.productId, this.today, this.requiredDate, this.shippedDate, this.checkoutService.user.userName, this.checkoutService.user.address, this.checkoutService.user.city, this.checkoutService.user.region, this.checkoutService.user.postalCode, this.checkoutService.user.country);
+        for (let product of this.cartService.orderedProducts) {
+                this.checkoutService.addressOrder = new Order(0, this.checkoutService.user.userID, product.productId, product.unitsOnOrder, this.today, this.requiredDate, this.shippedDate, this.checkoutService.user.userName, this.checkoutService.user.address, this.checkoutService.user.city, this.checkoutService.user.region, this.checkoutService.user.postalCode, this.checkoutService.user.country);
                 CheckoutService.orderList.push(this.checkoutService.addressOrder);
             }
         this.navigateToPaymentPage();
@@ -72,8 +72,8 @@ export class CheckoutComponent implements OnInit{
             alert("You must fill out all field.");
         } else {
             CheckoutService.orderList = new Array();
-            for (let product of CheckoutService.checkoutProducts) {
-                this.checkoutService.addressOrder = new Order(0, this.checkoutService.user.userID, product.productId, this.today, this.requiredDate, this.shippedDate, this.checkoutService.user.userName, this.deliveryaddress, this.deliverycity, this.deliveryregion, this.deliverypostalcode, this.deliverycountry);
+            for (let product of this.cartService.orderedProducts) {
+                this.checkoutService.addressOrder = new Order(0, this.checkoutService.user.userID, product.productId, product.unitsOnOrder, this.today, this.requiredDate, this.shippedDate, this.checkoutService.user.userName, this.deliveryaddress, this.deliverycity, this.deliveryregion, this.deliverypostalcode, this.deliverycountry);
                 CheckoutService.orderList.push(this.checkoutService.addressOrder)
                 }
             this.navigateToPaymentPage();

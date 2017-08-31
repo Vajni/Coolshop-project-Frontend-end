@@ -95,7 +95,6 @@ export class PaymentComponent implements OnInit{
         this.cartService.totalPrice = 0;
         this.checkoutComponent.orderedProducts = new Array();
         CheckoutService.orderList = new Array();
-        CheckoutService.checkoutProducts = new Array();
     }
 
 }
