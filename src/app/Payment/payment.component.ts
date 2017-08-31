@@ -59,6 +59,9 @@ export class PaymentComponent implements OnInit{
             return actions.payment.execute().then(function(payment) {
 
                 alert("The payment is complete!");
+                this.clearTheCart();
+                this.router.navigate(["welcome"]);
+
                 // You can now show a confirmation message to the customer
                 });
             }
@@ -90,6 +93,9 @@ export class PaymentComponent implements OnInit{
     clearTheCart(): void{
         this.cartService.orderedProducts = new Array();
         this.cartService.totalPrice = 0;
+        this.checkoutComponent.orderedProducts = new Array();
+        CheckoutService.orderList = new Array();
+        CheckoutService.checkoutProducts = new Array();
     }
 
 }
