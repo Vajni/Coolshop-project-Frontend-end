@@ -12,8 +12,8 @@ import {StorageService} from '../Storage/storage.service';
 
 @Injectable()
 export class MerchantPageService {
-    
     private _getProductURL = 'http://localhost:8080/CoolShop-1.0/rest/mp/getProducts/';
+    private product: Product;
 
     constructor(private _wrapper : HTTPWrapper, private _storageService: StorageService) {
     }
