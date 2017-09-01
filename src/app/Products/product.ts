@@ -14,4 +14,5 @@ export class IProduct{
   reOrderLevel: number;
   imageName: string;
   imageUrl: any;
+
 }

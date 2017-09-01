@@ -128,6 +128,7 @@ export class AppComponent implements OnInit {
     return this.loginService.isLoggedIn();
   }
 
+
   getUser() {
       let logged_in = this.logged_in();
       let user;

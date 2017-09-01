@@ -40,6 +40,7 @@ export class CartComponent {
 
     orderProduct(product: IProduct) {
         product.unitsOnOrder = 1;
+        product.productQuantity--;
         this.cartService.orderedProducts.push(product);
     }
 
@@ -76,20 +77,10 @@ export class CartComponent {
         this.checkTheCart();
     }
 
-    addProductsToCheckoutArray(): void{
-        for (let product of this.cartService.orderedProducts) {
-            let quan = product.unitsOnOrder;
-            for (var i = 1; i <= quan; i++) {
-                CheckoutService.checkoutProducts.push(product);
-            }
-        }
-    }
-
     checkTheCart(): void{
         if(this.cartService.orderedProducts.length == 0){
             alert("Your cart is empty");
         } else {
-            this.addProductsToCheckoutArray();
             this._router.navigate(['/checkout']);
         }
     }

@@ -21,6 +21,6 @@ export class RoleSelectorService {
 
     updateUserRole(id: number, role: String): Observable<any> {
         this._updateRoleUrl = 'http://localhost:8080/CoolShop-1.0/rest/RoleManagement/updateRole/' + id + '';
-        return this.httpWrapper.post(this._updateRoleUrl, role);
+        return this.httpWrapper.post(role, this._updateRoleUrl);
     }
 }
