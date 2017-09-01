@@ -31,8 +31,9 @@ export class CheckoutService{
         return this._httpWrapper.post(data,"http://localhost:8080/CoolShop-1.0/rest/checkout/getAddressInformations").map((response: Response)=><User>response.json()).do(data => console.log(JSON.stringify(data)));
     }
 
-    postOrder(order: Order): Observable<any>{
-        return this._httpWrapper.post(order, "http://localhost:8080/CoolShop-1.0/rest/order/addToDatabase");
+    postOrder(order: Order[], totalPrice: string, cardNumber: number): Observable<any>{
+        var data = {"order": order, "totalPrice": totalPrice, "cardNumber": cardNumber}
+        return this._httpWrapper.post(data, "http://localhost:8080/CoolShop-1.0/rest/order/addToDatabase");
 
     } 
 }

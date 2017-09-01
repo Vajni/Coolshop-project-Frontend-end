@@ -7,6 +7,7 @@ import { LoginService } from '../Login/login.service';
 import { CheckoutComponent } from '../Checkout/checkout.component';
 import { CheckoutService} from '../Checkout/checkout.service';
 import { StorageService } from "../Storage/storage.service";
+import { Order } from "../Checkout/order";
 
 declare var paypal: any;
 
@@ -74,6 +75,7 @@ export class PaymentComponent implements OnInit{
     }
 
     checkCreditCardinfos(): void {
+        let orderList: Array<Order> = new Array();
         if (this.cardNumber == null || this.cardHolder == null || this.expiryDate == null || this.securityCode == null) {
             alert("You must be fill out all field.")
         } else if(this.cartService.totalPrice == 0){
@@ -81,9 +83,10 @@ export class PaymentComponent implements OnInit{
             this.router.navigate(["products"])
         }else {
             for(let order of CheckoutService.orderList){
-                this.checkoutService.postOrder(order).subscribe();
+                orderList.push(order);
             }
 
+            this.checkoutService.postOrder(orderList, this.totalPrice, this.cardNumber).subscribe();
             alert("Thanks for your vásárlás.")
             this.clearTheCart();
             this.router.navigate(["welcome"]);
