@@ -12,8 +12,7 @@ import { HTTPWrapper } from "../HTTPWrapper/wrapper.service";
 import { CartService } from '../Cart/cart.service';
 
 @Injectable()
-export class CheckoutService{
-    
+export class CheckoutService{    
     static orderList: Array<Order> = new Array;
 
     constructor(private _httpWrapper: HTTPWrapper, private storageService: StorageService, private cartService: CartService){
@@ -28,12 +27,14 @@ export class CheckoutService{
     getAddress(token: string): Observable<User> {
         let data = new URLSearchParams();
         data.append("token", <string>this.storageService.read("token"));
-        return this._httpWrapper.post(data,"http://localhost:8080/CoolShop-1.0/rest/checkout/getAddressInformations").map((response: Response)=><User>response.json()).do(data => console.log(JSON.stringify(data)));
+        return this._httpWrapper.post(data,"http://localhost:8080/CoolShop-1.0/rest/checkout/getAddressInformations")
+            .map((response: Response)=><User>response.json())
+            .do(data => console.log(JSON.stringify(data)));
     }
 
     postOrder(order: Order[], totalPrice: string, cardNumber: number): Observable<any>{
         var data = {"order": order, "totalPrice": totalPrice, "cardNumber": cardNumber}
         return this._httpWrapper.post(data, "http://localhost:8080/CoolShop-1.0/rest/order/addToDatabase");
 
-    } 
+    }
 }
