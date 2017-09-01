@@ -1,31 +1,31 @@
 <td>
     <input [ngClass]="product.available ? 'true' : 'false' "
-    type="text" value="{{product.productName}}"
+    type="text" [(ngModel)]="product.productName"
     size="15">
 </td>
 <td>
     <input [ngClass]="product.available ? 'true' : 'false' "
-    type="text" value="{{product.productType}}"
+    type="text" [(ngModel)]="product.productType"
     size="10">
 </td>
 <td>
     <input [ngClass]="product.available ? 'true' : 'false' "
-    type="text" value="{{product.productBrand}}"
+    type="text" [(ngModel)]="product.productBrand"
     size="10">
 </td>
 <td>
     <input [ngClass]="product.available ? 'true' : 'false' "
-    type="text" value="{{product.productDescription}}"
+    type="text" [(ngModel)]="product.productDescription"
     size="10">
 </td>
 <td>
     <input [ngClass]="product.available ? 'true' : 'false' "
-    type="number" value="{{product.productPrice}}"
+    type="number" [(ngModel)]="product.productPrice"
     size="10">
 </td>
 <td>
     <input [ngClass]="product.available ? 'true' : 'false' "
-    type="number" value="{{product.productQuantity}}"
+    type="number"[(ngModel)]="product.productQuantity"
     size="10">
 </td>
 <td>
@@ -33,7 +33,7 @@
 </td>
 <td>
     <input [ngClass]="product.available ? 'true' : 'false' "
-    type="number" value="{{product.reOrderLevel}}"
+    type="number" [(ngModel)]="product.reOrderLevel"
     size="10">
 </td>
 <td>
@@ -45,5 +45,5 @@
     </select>
 </td>
 <td>
-    <button class="save">Save</button>
+    <button class="save" (click)="updateProduct()">Save</button>
 </td>

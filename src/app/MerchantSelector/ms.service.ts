@@ -13,4 +13,11 @@ export class MerchantSelectorService {
 
     @Input()
     private product: Product;
+    private _updateProductURL = 'http://localhost:8080/CoolShop-1.0/rest/mp/updateProduct';
+
+    updateProd(product: Product): Observable<any> {
+        console.log(product);
+        let productID = product.productID;
+        return this._httpWrapper.post(product, this._updateProductURL);
+    }
 }

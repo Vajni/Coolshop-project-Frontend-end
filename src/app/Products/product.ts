@@ -12,7 +12,7 @@ export class IProduct{
     productPrice: number;
     productQuantity: number;
     unitsOnOrder: number;
-    reorderLevel: number;
+    reOrderLevel: number;
     available: boolean;
     imageName: string;
     imageURL: any;

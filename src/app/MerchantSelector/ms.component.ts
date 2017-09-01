@@ -17,4 +17,9 @@ export class MerchantSelectorComponent {
 
     constructor(private _merchantSelectorService: MerchantSelectorService) {
     }
+
+     updateProduct(): void {
+        this._merchantSelectorService.updateProd(this.product)
+        .subscribe();
+    }
 }

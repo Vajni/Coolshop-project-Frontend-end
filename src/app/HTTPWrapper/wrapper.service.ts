@@ -20,9 +20,8 @@ export class HTTPWrapper{
         return this.http.get(url, options);
     }
 
-    post(data, url){
+    post(url, data){
         let headers = this.generateAuthorizationHeader();
-        return this.http.post(url, data, {headers});
+        return this.http.post(data, url, {headers});
     }
-
 }

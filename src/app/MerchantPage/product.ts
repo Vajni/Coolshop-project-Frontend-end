@@ -12,5 +12,4 @@ export class Product {
     reorderLevel: number;
     available: boolean;
     imageName: string;
-    imageURL: any;
 }
