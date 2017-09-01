@@ -44,7 +44,6 @@
           <th>Type</th>
           <th>Supplier</th>
           <th>Price</th>
-          <th>Quantity</th>
         </tr>
       </thead>
       <tbody>
@@ -62,7 +61,6 @@
         <td>{{product.productType}}</td>
         <td>{{product.productBrand}}</td>
         <td><b>{{product.productPrice | currency:"USD" : true: "1.2-2"}}</b></td>
-        <td>{{checkIfInCart(product) === true ? "Bakker" : product.productBrand}}</td>
         <td>
               <button class="btn btn-primary"
               (click)="checkIfAdded(product);

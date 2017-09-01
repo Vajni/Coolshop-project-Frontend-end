@@ -42,6 +42,8 @@ import { PaymentComponent } from './Payment/payment.component';
 
 import { StorageService } from './Storage/storage.service';
 import { HTTPWrapper } from "./HTTPWrapper/wrapper.service";
+import { Admin } from "./AdminPage/admin.component";
+import { AdminService } from "./AdminPage/admin.service";
 
 
 @NgModule({
@@ -61,7 +63,8 @@ import { HTTPWrapper } from "./HTTPWrapper/wrapper.service";
        {path: 'merchant', component: MerchantComponent},
        {path: 'rolemanagement', component: RoleManagementComponent},
        {path: 'checkout', component: CheckoutComponent},
-       {path: 'payment', component: PaymentComponent}
+       {path: 'payment', component: PaymentComponent},
+       {path: 'admin', component: Admin}
      ])
    ],
    declarations: [
@@ -80,9 +83,10 @@ import { HTTPWrapper } from "./HTTPWrapper/wrapper.service";
     RoleSelectorComponent,
     CheckoutComponent,
     CartComponent,
-    PaymentComponent
+    PaymentComponent,
+    Admin
   ],
   bootstrap: [ AppComponent ],
-  providers: [RoleManagementService, RoleSelectorService, MerchantService, ProductDetailGuard, CheckoutService,ProductService, CartService, CartComponent, LoginService, StorageService, WelcomeService, HTTPWrapper]
+  providers: [RoleManagementService, RoleSelectorService, MerchantService, ProductDetailGuard, CheckoutService,ProductService, CartService, CartComponent, LoginService, StorageService, WelcomeService, HTTPWrapper, AdminService]
 })
 export class AppModule { }

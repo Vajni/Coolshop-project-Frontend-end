@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CartService } from "../Cart/cart.service";
 import { CartComponent } from "../Cart/cart.component";
 import { LoginService } from '../Login/login.service';
+
 import { CheckoutComponent } from '../Checkout/checkout.component';
 import { CheckoutService} from '../Checkout/checkout.service';
 import { StorageService } from "../Storage/storage.service";
@@ -25,6 +26,7 @@ export class PaymentComponent implements OnInit{
     expiryDate: string;
     securityCode: string;
     errorMessage: string;
+
 
     constructor(private cartService: CartService, private router: Router, private checkoutComponent: CheckoutComponent, private checkoutService: CheckoutService, private storageService: StorageService) {}
 
@@ -99,5 +101,4 @@ export class PaymentComponent implements OnInit{
         this.checkoutComponent.orderedProducts = new Array();
         CheckoutService.orderList = new Array();
     }
-
 }
