@@ -26,7 +26,7 @@ export class CheckoutComponent implements OnInit{
 
     constructor(private _httpWrapper : HTTPWrapper, private checkoutService: CheckoutService, private router: Router, private cartComponent: CartComponent, private loginService: LoginService, private cartService: CartService, private storageService: StorageService) {}
 
-    
+
     checked: boolean = false;
     deliverycountry: string;
     deliverycity: string;
@@ -39,7 +39,7 @@ export class CheckoutComponent implements OnInit{
     shippedDate: Date = new Date("February 8, 2017 20:10:00");
     orderedProducts: Array<IProduct> = this.cartService.orderedProducts;
 
-    constructor(private _httpWrapper : HTTPWrapper, private checkoutService: CheckoutService, private router: Router, private cartComponent: CartComponent, private loginService: LoginService, private cartService: CartService, private storageService: StorageService) {}
+
     ngOnInit(): void {
         console.log(<string>this.storageService.read("token"))
         this.checkoutService.getAddress(<string>this.storageService.read("token")).subscribe(user => this.checkoutService.user = user, error => this.checkoutService.errorMessage = <any>error);

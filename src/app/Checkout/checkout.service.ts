@@ -12,7 +12,7 @@ import { HTTPWrapper } from "../HTTPWrapper/wrapper.service";
 import { CartService } from '../Cart/cart.service';
 
 @Injectable()
-export class CheckoutService{    
+export class CheckoutService{
     static orderList: Array<Order> = new Array;
 
     constructor(private _httpWrapper: HTTPWrapper, private storageService: StorageService, private cartService: CartService){
@@ -22,7 +22,7 @@ export class CheckoutService{
     errorMessage: string;
     user: User = new User(1, "a", "a", "a", "a", "a", "a", "a", "a", "a", "a");
     uDate: Date = new Date();
-    addressOrder: Order = new Order(0, 0, 0, 0, this.uDate, this.uDate, this.uDate, "a", "a", "a", "a", "a", "a")
+    addressOrder: Order = new Order(0, 0, 0, 0, this.uDate, this.uDate, this.uDate, "a", "a", "a", "a", "a", "a");
 
     getAddress(token: string): Observable<User> {
         let data = new URLSearchParams();
