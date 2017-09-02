@@ -11,7 +11,7 @@ import { RoleSelectorService} from './roleselector.service';
 
 export class RoleSelectorComponent implements OnInit {
 
-  private roles: string[] = ['user', 'merchant', 'admin'];
+  private roles: string[] = ['admin', 'merchant', 'user'];
 
   @Input()
   private user: User;

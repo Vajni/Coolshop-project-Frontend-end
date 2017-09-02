@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { ProductService } from './Products/product.service';
 import { LoginService } from './Login/login.service';
 import { StorageService } from './Storage/storage.service';
@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 @Component({
   selector : 'pm-app',
   templateUrl: 'app.component.html',
+  styleUrls: ['app.component.css'],
   providers : [ProductService]
 })
 export class AppComponent{

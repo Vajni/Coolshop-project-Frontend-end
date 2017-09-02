@@ -1,6 +1,3 @@
-:host(.pm-app) {
-}
-
 .footer {
     margin-top: 100px;
     background-color: #1f1f1f;
@@ -16,7 +13,7 @@
 .fa {
     color: white;
     font-size: 50px;
-    margin: 20px;
+    margin: 25px;
 }
 
 .social i:hover {
