@@ -16,7 +16,8 @@ export class ProductListComponent implements OnInit{
 @HostBinding('class') ProductListClass = 'pm-products';
 
   pageTitle: string = "Product List";
-  imageWidth: number = 80;
+  imageWidth: number = 150;
+  imageHeight: number = 100;
   imageMargin: number = 2;
   showImage: boolean = true;
   listFilter: string;

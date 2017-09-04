@@ -40,3 +40,11 @@
 </div>
 <div class="btn btn-info order" (click)='onOrder()'>Order</div>
 <!-- Shopping Cart - End -->
+
+<!-- Test Cart - Start -->
+<div *ngFor="let product of cartService.orderedProducts">
+	<p>
+		{{product.productName}}
+	</p>
+</div>
+<!-- Test Cart - End -->
