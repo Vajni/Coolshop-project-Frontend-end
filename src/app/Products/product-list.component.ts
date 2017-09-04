@@ -22,9 +22,11 @@ export class ProductListComponent implements OnInit{
   showImage: boolean = true;
   listFilter: string;
   products: IProduct[];
+  productsFromCart : IProduct[];
   errorMessage: string;
 
-  constructor(private _productService: ProductService, private cartComponent: CartComponent){
+  constructor(private _productService: ProductService, private cartComponent: CartComponent, private _cartService : CartService){
+    this.productsFromCart = _cartService.Products ;
   }
 
   toggleImage(): void {
@@ -42,5 +44,14 @@ export class ProductListComponent implements OnInit{
 
   checkIfAdded(product: IProduct) {
     this.cartComponent.checkIfAdded(product);
+  }
+
+  checkIfInCart(product : IProduct) : boolean{
+    this.productsFromCart.forEach(element => {
+      if (element.productId === product.productId){
+        console.log("True");
+      }
+    });
+    return false;
   }
 }

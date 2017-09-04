@@ -42,6 +42,8 @@ import { PaymentComponent } from './Payment/payment.component';
 
 import { StorageService } from './Storage/storage.service';
 import { HTTPWrapper } from "./HTTPWrapper/wrapper.service";
+import { Admin } from "./AdminPage/admin.component";
+import { AdminService } from "./AdminPage/admin.service";
 
 import {MerchantPageComponent} from './MerchantPage/mp.component';
 import {MerchantPageService} from './MerchantPage/mp.service';
@@ -67,7 +69,8 @@ import {MerchantSelectorService} from './MerchantSelector/ms.service';
        {path: 'rolemanagement', component: RoleManagementComponent},
        {path: 'checkout', component: CheckoutComponent},
        {path: 'payment', component: PaymentComponent},
-       {path: 'mp', component: MerchantPageComponent}
+       {path: 'mp', component: MerchantPageComponent},
+       {path: 'admin', component: Admin}
      ])
    ],
    declarations: [
@@ -88,9 +91,11 @@ import {MerchantSelectorService} from './MerchantSelector/ms.service';
     CartComponent,
     PaymentComponent,
     MerchantPageComponent,
-    MerchantSelectorComponent
+    MerchantSelectorComponent,
+    Admin
   ],
   bootstrap: [ AppComponent ],
-  providers: [RoleManagementService, RoleSelectorService, MerchantService, ProductDetailGuard, CheckoutService,ProductService, CartService, CartComponent, LoginService, StorageService, WelcomeService, HTTPWrapper, MerchantPageService, MerchantSelectorService]
+  providers: [RoleManagementService, RoleSelectorService, MerchantService, ProductDetailGuard, CheckoutService,ProductService, CartService, CartComponent, LoginService, StorageService, WelcomeService, HTTPWrapper, MerchantPageService, MerchantSelectorService,  AdminService]
+  ]
 })
 export class AppModule { }

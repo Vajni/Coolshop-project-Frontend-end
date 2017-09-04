@@ -5,13 +5,18 @@ import { CartService } from "../Cart/cart.service";
 import { CartComponent } from "../Cart/cart.component";
 import { LoginService } from '../Login/login.service';
 
+import { CheckoutComponent } from '../Checkout/checkout.component';
+import { CheckoutService} from '../Checkout/checkout.service';
+import { StorageService } from "../Storage/storage.service";
+import { Order } from "../Checkout/order";
+
 declare var paypal: any;
 
 @Component({
     selector: 'payment',
     templateUrl: 'payment.component.html',
-    styleUrls: ['payment.component.css']
-
+    styleUrls: ['payment.component.css'],
+    providers: [CheckoutComponent]
 })
 
 export class PaymentComponent implements OnInit{
@@ -20,12 +25,16 @@ export class PaymentComponent implements OnInit{
     cardHolder: string;
     expiryDate: string;
     securityCode: string;
+    errorMessage: string;
 
-    constructor(private cartService: CartService, private router: Router) {}
+
+    constructor(private cartService: CartService, private router: Router, private checkoutComponent: CheckoutComponent, private checkoutService: CheckoutService, private storageService: StorageService) {}
 
     totalPrice = this.cartService.totalPrice.toFixed(2);
 
     ngOnInit(): void{
+            this.checkoutService.getAddress(<string>this.storageService.read("token")).subscribe(user => this.checkoutService.user = user, error => this.checkoutService.errorMessage = <any>error);
+            console.log(this.checkoutService.user.userID)
             var price = this.totalPrice;
             paypal.Button.render({
 
@@ -53,22 +62,43 @@ export class PaymentComponent implements OnInit{
             return actions.payment.execute().then(function(payment) {
 
                 alert("The payment is complete!");
+                this.clearTheCart();
+                this.router.navigate(["welcome"]);
+
                 // You can now show a confirmation message to the customer
                 });
             }
 
 
         }, '#paypal-button');
+
+        console.log(CheckoutService.orderList)
     
     }
 
     checkCreditCardinfos(): void {
+        let orderList: Array<Order> = new Array();
         if (this.cardNumber == null || this.cardHolder == null || this.expiryDate == null || this.securityCode == null) {
             alert("You must be fill out all field.")
-        } else {
+        } else if(this.cartService.totalPrice == 0){
+            alert("Something went wrong. Now you redirected to Productlist.")
+            this.router.navigate(["products"])
+        }else {
+            for(let order of CheckoutService.orderList){
+                orderList.push(order);
+            }
+
+            this.checkoutService.postOrder(orderList, this.totalPrice, this.cardNumber).subscribe();
             alert("Thanks for your vásárlás.")
+            this.clearTheCart();
             this.router.navigate(["welcome"]);
         }
     }
 
+    clearTheCart(): void{
+        this.cartService.orderedProducts = new Array();
+        this.cartService.totalPrice = 0;
+        this.checkoutComponent.orderedProducts = new Array();
+        CheckoutService.orderList = new Array();
+    }
 }
