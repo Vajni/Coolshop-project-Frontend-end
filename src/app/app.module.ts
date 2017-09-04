@@ -96,6 +96,5 @@ import {MerchantSelectorService} from './MerchantSelector/ms.service';
   ],
   bootstrap: [ AppComponent ],
   providers: [RoleManagementService, RoleSelectorService, MerchantService, ProductDetailGuard, CheckoutService,ProductService, CartService, CartComponent, LoginService, StorageService, WelcomeService, HTTPWrapper, MerchantPageService, MerchantSelectorService,  AdminService]
-  ]
 })
 export class AppModule { }
