@@ -21,8 +21,9 @@ export class CartComponent {
     }
 
     checkIfAdded(product: IProduct) {
-        if (this.findById(product.productId) != null) {
-            this.increaseQuantity(this.findById(product.productId));
+        console.log(product.productID);
+        if (this.findById(product.productID) != null) {
+            this.increaseQuantity(this.findById(product.productID));
         } else {
             this.orderProduct(product);
         }
@@ -31,7 +32,7 @@ export class CartComponent {
     findById(id:number) : IProduct{
         let products : IProduct[] = this.cartService.Products;
             for (var i=0; i < products.length; i++){
-                if (products[i].productId === id){
+                if (products[i].productID === id){
                     return products[i];
                 }
             }

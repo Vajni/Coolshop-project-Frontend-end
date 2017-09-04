@@ -63,7 +63,7 @@ export class CheckoutComponent implements OnInit{
         for (let product of this.cartService.orderedProducts) {
                 this.checkoutService.addressOrder = new Order(0, this.checkoutService.user.userID, product.productId, product.unitsOnOrder, this.today, this.requiredDate, this.shippedDate, this.checkoutService.user.userName, this.checkoutService.user.address, this.checkoutService.user.city, this.checkoutService.user.region, this.checkoutService.user.postalCode, this.checkoutService.user.country);
                 CheckoutService.orderList.push(this.checkoutService.addressOrder);
-            }
+        }
         this.navigateToPaymentPage();
     }
 
@@ -75,7 +75,7 @@ export class CheckoutComponent implements OnInit{
             for (let product of this.cartService.orderedProducts) {
                 this.checkoutService.addressOrder = new Order(0, this.checkoutService.user.userID, product.productId, product.unitsOnOrder, this.today, this.requiredDate, this.shippedDate, this.checkoutService.user.userName, this.deliveryaddress, this.deliverycity, this.deliveryregion, this.deliverypostalcode, this.deliverycountry);
                 CheckoutService.orderList.push(this.checkoutService.addressOrder)
-                }
+            }
             this.navigateToPaymentPage();
         }
     }

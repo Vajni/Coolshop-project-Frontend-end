@@ -1,7 +1,4 @@
-/**
- * Created by vajni on 2017.07.19..
- */
-export class IProduct{
+export class Product {
 
     productID: number;
     userID: number;
@@ -12,8 +9,7 @@ export class IProduct{
     productPrice: number;
     productQuantity: number;
     unitsOnOrder: number;
-    reOrderLevel: number;
+    reorderLevel: number;
     available: boolean;
     imageName: string;
-    imageURL: any;
 }

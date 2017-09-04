@@ -1,10 +1,10 @@
-<div class="panel panel-primary">
+<!-- EREDETI!!!<div class="panel panel-primary">
   <div class="panel-heading text-center">
     <h4>{{pageTitle}}</h4>
   </div>
   <div class="panel-body">
 
-    <!-- Start of - filter-bar -->
+    <!-- Start of - filter-bar 
     <div class="filter-bar">
       <div class="row">
         <div class="col-md-4">
@@ -17,7 +17,7 @@
           <h4>Search type:</h4>
         </div>
       </div>
-      
+    
       <div class="row">
         <div class="col-md-4">
           <input type="text" [(ngModel)] = "listFilterProduct" placeholder="Product"/>
@@ -30,14 +30,14 @@
         </div>
       </div>
     </div>
-    <!-- End of - filter-bar -->
+    <!-- End of - filter-bar 
 
   <div class="table-responsive">
     <table class="table" *ngIf="products && products.length">
       <thead>
         <tr>
           <th>
-            <button class="btn btn-primary" (click)="toggleImage()">
+            <button class="btn btn-info" (click)="toggleImage()">
               {{showImage ? "Hide" : "Show"}} image</button>
           </th>
           <th>Product</th>
@@ -48,24 +48,27 @@
       </thead>
       <tbody>
       <tr *ngFor="let product of products | productFilterByProduct: listFilterProduct | productFilterBySupplier : listFilterBySupplier | productFilterByType : listFilterByType">
-        <!-- This container is filtering out Drugs and Sex toys from the products-->
-        <!--ng-container *ngIf="product.productType != 'Sex toy' && product.productType != 'Drugs'"-->
+        <!-- This container is filtering out Drugs and Sex toys from the products
+        <!-- It also filters wether a product is available or not!
+        <ng-container *ngIf="product.productType != 'Sex toy' && product.productType != 'Drugs'
+                            && product.available != false">
         <td>
           <img *ngIf="showImage"
               src={{product.imageName}} title={{product.productName}}
               [style.width.px]="imageWidth"
               [style.margin.px]="imageMargin">
         </td>
-        <td><a [routerLink] = "['/product', product.productId]">
-          {{product.productName}}</a></td>
+        <td><a [routerLink] = "['/product', product.productID]">
+            {{product.productName}}
+        </a></td>
         <td>{{product.productType}}</td>
         <td>{{product.productBrand}}</td>
         <td><b>{{product.productPrice | currency:"USD" : true: "1.2-2"}}</b></td>
         <td>
-              <button class="btn btn-primary"
+              <button class="btn btn-info"
               (click)="checkIfAdded(product);
                        addToTotalPrice(product.productPrice)">
-                       Add to cart!
+                       <span class="glyphicon glyphicon-shopping-cart"></span> Add to cart!
               </button>
         </td>
         <!--/ng-container-->
@@ -74,5 +77,54 @@
     </table>
    </div>
   </div>
+</div>-->
+
+<!-- Test produt list -->
+<!-- Search bar - Start -->
+<div class="row search-bar">
+  <div class="col-md-3 search">
+    <input type="text" [(ngModel)] = "listFilterProduct" placeholder="Search product..."/>
+  </div>
+  <div class="col-md-3 search">
+    <input type="text" [(ngModel)] = "listFilterBySupplier" placeholder="Search supplier..."/>
+  </div>
+  <div class="col-md-3 search">
+    <input type="text" [(ngModel)] = "listFilterByType" placeholder="Search type..."/>
+  </div>
 </div>
-<pm-cart></pm-cart>
+<!-- Search bar - End -->
+
+<div class="wrapper">
+  <!-- Product list - Start -->
+  <div class="row product-container">
+    <div class="col-md-3 list" *ngFor="let product of products | productFilterByProduct: listFilterProduct | productFilterBySupplier : listFilterBySupplier | productFilterByType : listFilterByType">
+      <div class="item">
+        <img src="{{product.imageName}}"
+            alt="{{product.productName}}"
+            [style.width.px]="imageWidth"
+            [style.height.px]="imageHeight">
+
+      <a [routerLink] = "['/product', product.productID]">
+        <p class="name">{{product.productName}}</p>
+      </a>
+      <p class="brand">by {{product.productBrand}}</p>
+      <p class="type">{{product.productType}}</p>
+      <p class="price">{{product.productPrice | currency:"USD" : true: "1.2-2"}}</p>
+      <button (click)="checkIfAdded(product); addToTotalPrice(product.productPrice)">
+        <span class="glyphicon glyphicon-shopping-cart"></span>
+        Add to cart!
+      </button>
+      </div>
+    </div>
+  </div>
+  <!-- Product list - End -->
+
+  <!-- Shopping cart - Start -->
+  <div class="testCart">
+    <pm-cart></pm-cart>
+  </div>
+  <!-- Shopping cart - Endt -->
+</div>
+<!-- End of test product list -->
+
+<!-- <pm-cart></pm-cart> -->

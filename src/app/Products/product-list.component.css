@@ -1,12 +1,118 @@
-:host(.pm-products) {
+/*:host(.pm-products) {
     display: flex;
-}
+}*/
 
 .panel {
     width: 78%;
     margin-right: 20px;
+    border-color: #333333;
+}
+
+.panel-primary {
+    border-color: #333333;
+}
+
+.panel-heading {
+    background-color: #333333;
+    border-color: #333333;
 }
 
 .filter-bar {
     margin-bottom: 20px;
+}
+
+.btn-info:hover {
+    color: #00b0eb;
+}
+
+/*Ez itt már az új listához tartozik */
+
+.wrapper {
+    overflow: hidden;
+}
+
+.product-container {
+    width: 80%;
+    float: left;
+    margin: 0;
+}
+
+.search-bar {
+    margin: 0;
+}
+
+.search {
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+input {
+    padding-left: 10px;
+    border: 1px solid #a9a9a9;
+}
+
+input:focus {
+    border: 1px solid #00b0eb;
+    box-shadow: 0 0 3px #00b0eb;
+    outline: none;
+}
+
+.testCart {
+    margin-left: 70%;
+    position: fixed;
+    top: 190px;
+    right: 100px;
+}
+
+.list {
+    margin: 5px 5px 0 0;
+    padding: 25px;
+    border: 1px solid #00b0eb;
+}
+
+.item {
+    text-align: center;
+}
+
+.item img {
+    margin-bottom: 15px;
+}
+
+button {
+    background-color: #474747;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-top: 5px;
+}
+
+button:hover {
+    background-color: #333333;
+    color: #00b0eb;
+}
+
+/*
+Style the item datas
+*/
+.name {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+.brand {
+    font-size: 10px;
+    margin-top: -5px;
+    margin-bottom: 5px;
+}
+
+.type {
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
+
+.price {
+    margin: 0 0 10px 0;
+    padding: 0;
 }

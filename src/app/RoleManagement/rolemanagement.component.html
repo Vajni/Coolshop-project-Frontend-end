@@ -4,6 +4,6 @@
 			<th>Name:</th>
 			<th>Role:</th>
 		</tr>
-		<tr *ngFor="let user of users" [user]="user" app-roleselector></tr>
+		<tr [ngClass]="user.role" *ngFor="let user of users" [user]="user" app-roleselector></tr>
 	</table>
 </div>

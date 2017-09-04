@@ -1,8 +1,31 @@
 .table {
     width: 50%;
     margin: auto;
+    margin-bottom: 200px;
 }
 
 .table input {
     float: right;
+}
+
+.admin {
+    border-left-color: #5cb85c;
+    border-left-width: 5px;
+    border-left-style: solid;
+}
+
+.merchant {
+    border-left-color: #ed9242;
+    border-left-width: 5px;
+    border-left-style: solid;
+    /*outline: 3px solid #ed9242;
+    outline-offset: -3px;*/
+}
+
+.user {
+    border-left-color: #00b0eb;
+    border-left-width: 5px;
+    border-left-style: solid;
+    /*outline: 3px solid #00b0eb;
+    outline-offset: -3px;*/
 }

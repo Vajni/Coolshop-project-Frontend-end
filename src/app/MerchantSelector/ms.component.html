@@ -1,0 +1,49 @@
+<td>
+    <input [ngClass]="product.available ? 'true' : 'false' "
+    type="text" [(ngModel)]="product.productName"
+    size="15">
+</td>
+<td>
+    <input [ngClass]="product.available ? 'true' : 'false' "
+    type="text" [(ngModel)]="product.productType"
+    size="10">
+</td>
+<td>
+    <input [ngClass]="product.available ? 'true' : 'false' "
+    type="text" [(ngModel)]="product.productBrand"
+    size="10">
+</td>
+<td>
+    <input [ngClass]="product.available ? 'true' : 'false' "
+    type="text" [(ngModel)]="product.productDescription"
+    size="10">
+</td>
+<td>
+    <input [ngClass]="product.available ? 'true' : 'false' "
+    type="number" [(ngModel)]="product.productPrice"
+    size="10">
+</td>
+<td>
+    <input [ngClass]="product.available ? 'true' : 'false' "
+    type="number"[(ngModel)]="product.productQuantity"
+    size="10">
+</td>
+<td>
+    {{product.unitsOnOrder}}
+</td>
+<td>
+    <input [ngClass]="product.available ? 'true' : 'false' "
+    type="number" [(ngModel)]="product.reOrderLevel"
+    size="10">
+</td>
+<td>
+    <select [ngClass]="product.available ? 'yes' : 'no' "
+        [(ngModel)]="product.available">
+        <option *ngFor="let option of options" [ngValue]="option">
+            {{option}}
+        </option>
+    </select>
+</td>
+<td>
+    <button class="save" (click)="updateProduct()">Save</button>
+</td>

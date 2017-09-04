@@ -38,5 +38,14 @@
 		<p>Total price: {{cartService.totalPrice | currency:"USD" : true:"1.2-2"}}</p>
 	</div>
 </div>
-<div class="btn btn-primary order" (click)='onOrder()'>Order</div>
+
+<div class="btn btn-info order" (click)='onOrder()'>Order</div>
 <!-- Shopping Cart - End -->
+
+<!-- Test Cart - Start -->
+<div *ngFor="let product of cartService.orderedProducts">
+	<p>
+		{{product.productName}}
+	</p>
+</div>
+<!-- Test Cart - End -->

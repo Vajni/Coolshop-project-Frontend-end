@@ -1,0 +1,29 @@
+.admin {
+    background-color: white;
+    border: 1px solid #5cb85c;
+    /*color: #5cb85c;*/
+}
+
+.merchant {
+    background-color: white;
+    border: 1px solid #ed9242;
+    /*color: #ed9242;*/
+}
+
+.user {
+    background-color: white;
+    border: 1px solid #00b0eb;
+    /*color: #00b0eb;*/
+}
+
+.admin:focus {
+    outline: none;
+}
+
+.merchant {
+    outline: none;
+}
+
+.user {
+    outline: none;
+}

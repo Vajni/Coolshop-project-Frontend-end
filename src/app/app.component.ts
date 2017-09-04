@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { ProductService } from './Products/product.service';
 import { LoginService } from './Login/login.service';
 import { StorageService } from './Storage/storage.service';
@@ -9,6 +9,7 @@ import { User } from './RoleManagement/user';
 @Component({
   selector : 'pm-app',
   templateUrl: 'app.component.html',
+  styleUrls: ['app.component.css'],
   providers : [ProductService]
 })
 export class AppComponent implements OnInit {
