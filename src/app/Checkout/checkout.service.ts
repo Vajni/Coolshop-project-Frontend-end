@@ -37,4 +37,9 @@ export class CheckoutService{
         return this._httpWrapper.post(data, "http://localhost:8080/CoolShop-1.0/rest/order/addToDatabase");
 
     }
+
+    checkQuantityInDB(order: Order[]): Observable<any>{
+        var data = {"order": order};
+        return this._httpWrapper.post(data, "http://localhost:8080/CoolShop-1.0/rest/check/checkQuantity");
+    }
 }

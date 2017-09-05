@@ -88,10 +88,19 @@ export class PaymentComponent implements OnInit{
                 orderList.push(order);
             }
 
-            this.checkoutService.postOrder(orderList, this.totalPrice, this.cardNumber).subscribe();
-            alert("Thanks for your vásárlás.")
-            this.clearTheCart();
-            this.router.navigate(["welcome"]);
+            this.checkoutService.checkQuantityInDB(orderList).subscribe(data => {
+                if(data._body == "true"){
+                    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!AMI VISSZAJÖN DATA: " + data);
+                    this.checkoutService.postOrder(orderList, this.totalPrice, this.cardNumber).subscribe();
+                    alert("Thanks for your vásárlás.")
+                    this.clearTheCart();
+                    this.router.navigate(["welcome"]);
+                } else {
+                    alert("We don't have enough product.Please decsrease the product quantity. Now you'll redirect to homepage.")
+                    this.router.navigate(["products"]);
+                }
+            });
+            
         }
     }
 
