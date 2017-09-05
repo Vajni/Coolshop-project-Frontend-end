@@ -51,6 +51,7 @@ import {MerchantSelectorComponent} from './MerchantSelector/ms.component';
 import {MerchantSelectorService} from './MerchantSelector/ms.service';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { LogFilterPipeOrderDate } from "./AdminPage/admin-filter-orderdate.pipe";
 
 
 @NgModule({
@@ -84,6 +85,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProductFilterPipeProduct,
     ProductFilterPipeSupplier,
     ProductFilterPipeType,
+    LogFilterPipeOrderDate,
     StarComponent,
     ProductDetailComponent,
     WelcomeContent,

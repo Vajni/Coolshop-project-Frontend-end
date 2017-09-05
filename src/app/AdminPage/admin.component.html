@@ -1,15 +1,78 @@
-<div class="container">
-<form>
-    <div class="input-group">
-      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-      <input [(ngModel)]="email" id="email" type="text" class="form-control" name="email" placeholder="Email">
-    </div><br>
-    <div class="input-group">
-      <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-      <input [(ngModel)]="password" id="password" type="password" class="form-control" name="password" placeholder="Password">
-    </div><br>
-    <div>
-        <div class="btn btn-info btn-md" (click)="sendClicked()">Login</div>
+<div class="panel panel-primary">
+  <div class="panel-heading text-center">
+    <h4>{{pageTitle}}</h4>
+  </div>
+  <div class="panel-body">
+
+      
+    <div class="filter-bar">
+      <div class="row">
+        <div class="col-md-4">
+          <h4>Search Order Date:</h4>
+        </div>
+        <!--div class="col-md-4">
+          <h4>Search supplier:</h4>
+        </div>
+        <div class="col-md-4">
+          <h4>Search type:</h4>
+        </div-->
+      </div>
+    
+      <div class="row">
+        <div class="col-md-4">
+          <input type="text" [(ngModel)] = "listFilterOrderDate" placeholder="Order Date"/>
+        </div>
+        <!--div class="col-md-4">
+          <input type="text" [(ngModel)] = "listFilterBySupplier" placeholder="Supplier"/>
+        </div>
+        <div class="col-md-4">
+          <input type="text" [(ngModel)] = "listFilterByType" placeholder="Type"/>
+        </div-->
+      </div>
     </div>
-</form>
+     
+
+  <div class="table-responsive">
+    <table class="table" *ngIf="logs && logs.length">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>User ID</th>
+          <th>Product ID</th>
+          <th>Units On Order</th>
+          <th>Date of Order</th>
+          <th>Date Required By</th>
+          <th>Shipping Date</th>
+          <th>Shipping Address</th>
+          <th>Ordered By</th>
+          <th>City</th>
+          <th>Region</th>
+          <th>Postal Code</th>
+          <th>Country</th>
+          <th>Total Price of Order</th>
+          <th>Card Number</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let log of logs | logFilterByOrderDate : listFilterOrderDate">
+        <td>{{log.orderId}}</td>
+        <td>{{log.userId}}</td>
+        <td>{{log.productId}}</td>
+        <td>{{log.unitsOnOrder}}</td>
+        <td>{{log.orderDate}}</td>
+        <td>{{log.requiredDate}}</td>
+        <td>{{log.shippedDate}}</td>
+        <td>{{log.shipAddress}}</td>
+        <td>{{log.shipName}}</td>
+        <td>{{log.shipCity}}</td>
+        <td>{{log.shipRegion}}</td>
+        <td>{{log.shipPostalCode}}</td>
+        <td>{{log.shipCountry}}</td>
+        <td>{{log.totalPrice}}</td>
+        <td>{{log.cardNumber}}</td>
+      </tr>
+      </tbody>
+    </table>
+   </div>
+  </div>
 </div>
