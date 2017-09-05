@@ -1,4 +1,34 @@
-<!-- Shopping Cart - Start -->
+<!-- Test Cart - Start -->
+<div class="shoppingCart">
+	<div class="cart-header">
+		<p>Shopping Cart</p>
+	</div>
+	<div class="row" *ngFor="let product of cartService.orderedProducts">
+		<div class="col-md-4 name">
+			<a href="#"><p>{{product.productName}}</p></a>
+		</div>
+		<div class="col-md-4 quantity">
+			<div class="q">
+				<button class="button">
+					<span class="glyphicon glyphicon-minus"></span>
+				</button>
+				<p>{{product.unitsOnOrder}}</p>
+				<button class="button">
+					<span class="glyphicon glyphicon-plus"></span>
+				</button>
+			</div>
+		</div>
+		<div class="col-md-4 price">
+			<p>{{product.productPrice | currency:"USD" : true:"1.2-2"}}</p>
+		</div>
+	</div>
+	<div class="cart-footer">
+		<p>Total price: {{cartService.totalPrice | currency:"USD" : true:"1.2-2"}}</p>
+	</div>
+</div>
+<!-- Test Cart - End -->
+
+<!-- Shopping Cart - Start
 <div class="panel panel-primary cart">
 	<div class="panel-heading text-center">
 		<h4>Shopping cart</h4>
@@ -40,12 +70,4 @@
 </div>
 
 <div class="btn btn-info order" (click)='onOrder()'>Order</div>
-<!-- Shopping Cart - End -->
-
-<!-- Test Cart - Start -->
-<div *ngFor="let product of cartService.orderedProducts">
-	<p>
-		{{product.productName}}
-	</p>
-</div>
-<!-- Test Cart - End -->
+<! Shopping Cart - End -->
