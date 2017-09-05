@@ -26,7 +26,7 @@ export class MerchantPageComponent {
     ngOnInit(): void{
         this._merchantPageService.getProducts()
         .subscribe(products =>{
-            this.products = products; 
+            this.products = products;
             //this.addClass();}
             }, error => this.errorMessage = <any>error);
     }

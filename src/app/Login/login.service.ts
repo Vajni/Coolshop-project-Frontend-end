@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { StorageService } from '../Storage/storage.service';
 import { CartService } from '../Cart/cart.service';
 import { CheckoutService } from '../Checkout/checkout.service';
+import { HTTPWrapper } from '../HTTPWrapper/wrapper.service';
 
 @Injectable()
 
@@ -17,7 +18,7 @@ export class LoginService {
   static token: string;
 
   constructor(private _http: Http, private router: Router, private _storage: StorageService,
-              private _cart: CartService, private checkoutService: CheckoutService) {
+              private _cart: CartService, private checkoutService: CheckoutService, private wrapper: HTTPWrapper) {
 
   }
 
@@ -65,8 +66,17 @@ export class LoginService {
         let data = new URLSearchParams();
         data.append("token", token);
         //this._storage.write("token", LoginService.token);
-        return this._http.get("http://localhost:8080/CoolShop-1.0/rest/user/get?token=" + token, data)
-          .map(response => response.json());
+        /*return this._http.get("http://localhost:8080/CoolShop-1.0/rest/user/get?token=" + token, data)
+          .map(response => response.json());*/
+         //let back = this.wrapper.get("http://localhost:8080/CoolShop-1.0/rest/user/get?token=" + token);
+         let back2;
+         let back = this.wrapper.post(data, "http://localhost:8080/CoolShop-1.0/rest/user/getuser")
+            .map((response: Response)=> response.json()).do(data => {
+                //alert("str: " + JSON.stringify(data));
+                back2 = data;
+            });
+         //alert("BACK: " + back);
+        return back;
       }
   }
 

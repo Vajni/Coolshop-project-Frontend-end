@@ -32,14 +32,14 @@ export class AppComponent implements OnInit {
       texts: {
         "logged_out": "Sign up",
         "logged_in": "",
-        "logged_in_merchant": "New product",
+        "logged_in_merchant": "Merchant page",
         "logged_in_admin": "ManageRoles"
       },
       urls: {
         "logged_out": "/register",
         "logged_in": "",
-        "logged_in_merchant": "/merchant",
-        "logged_in_admin": "/rolemanagement"
+        "logged_in_merchant": "/mp",
+        "logged_in_admin": "/admin"
       },
       clickfuncs: {
         "logged_out": "",
@@ -62,6 +62,7 @@ export class AppComponent implements OnInit {
   rmButtonText = this.snippets.regAndManagementButton.texts["logged_out"];
   rmButtonUrl = this.snippets.regAndManagementButton.urls["logged_out"];
 
+  userNameText = "";
 
   ngOnInit(): void {
       console.log(<string>this._storage.read("token"));
@@ -116,6 +117,7 @@ export class AppComponent implements OnInit {
     }
     let userDatas;
     userDatas = this.getUser();
+    //alert("userDatas: " + userDatas);
 
   }
 
@@ -123,6 +125,7 @@ export class AppComponent implements OnInit {
     this.loginService.logout();
     this.changeUserButton("logged_out");
     this.changeRegAndManageButton("logged_out");
+    this.userNameText = "";
   }
 
   logged_in(): boolean {
@@ -131,10 +134,16 @@ export class AppComponent implements OnInit {
 
 
   getUser() {
+      //alert("Getting user...");
       let logged_in = this.logged_in();
       let user;
+      //alert("logged_in:" + logged_in);
       this.loginService.getUserData().subscribe(data => {
-          this.userJSON = data;
+          //alert("CALLBACK running");
+          //alert("CALLBACK/ -> " + JSON.stringify(data));
+          //alert("CALLBACK/ -> " + this.userJSON);
+          this.userJSON = JSON.parse(JSON.stringify(data));
+          //alert("CALLBACK/ -> userJSON: " + this.userJSON);
           if (this.userJSON == null) {
               this._storage.write("token", null);
           }
@@ -159,6 +168,8 @@ export class AppComponent implements OnInit {
               break;
             default: break;
           }
+
+          this.userNameText = this.userJSON["userName"];
 
       });
   }
