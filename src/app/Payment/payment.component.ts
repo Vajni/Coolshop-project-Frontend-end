@@ -143,12 +143,6 @@ export class PaymentComponent implements OnInit{
         return true;
     }
 
-    checkPaymentInfos(): void{
-        this.checkCardNumber();
-        this.checkCardHolder();
-        this.checkSecurityCode();
-    }
-
     checkExpiryDate(): boolean{
         let today: Date = new Date();
         let expiryMonth: string = this.expiryDate.substr(5);
