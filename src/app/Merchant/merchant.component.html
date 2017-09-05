@@ -1,21 +1,23 @@
-
+<div class="container">
+  <form [formGroup]="merchantForm" novalidate>
 <div class="form-group">
     <label class="control-label col-sm-3" for="productName">Product Name:</label>
     <div class="col-sm-9">
-      <input type="text" class="form-control" id="productName" placeholder="Enter product name" ngControl="productName" [(ngModel)]= 'product.productName' required>
+      <input formControlName="productName" type="text" class="form-control margin-bottom" id="productName" placeholder="Enter product name" ngControl="productName" [(ngModel)]= 'product.productName' required>
     </div>
   </div>
 
   <div class="form-group">
     <label class="control-label col-sm-3" for="productType">Product Type:</label>
     <div class="col-sm-9"> 
-      <select type="text" class="form-control" id="productType" placeholder="Select product type" ngControl="productType" [(ngModel)]= 'product.productType' required>
+      <select formControlName="productType" type="text" class="form-control margin-bottom" id="productType" placeholder="Select product type" ngControl="productType" [(ngModel)]= 'product.productType' required>
           <option value="Sex toy">Sex toy</option>
           <option value="Luxury">Luxury</option>
           <option value="Clothing">Clothing</option>
           <option value="Drugs">Drugs</option>
           <option value="Electronics">Electronics</option>
           <option value="Hand tools">Hand tools</option>
+          <option value="Outdoor">Outdoor</option>
       </select>
     </div>
   </div>
@@ -23,41 +25,52 @@
   <div class="form-group">
     <label class="control-label col-sm-3" for="productBrand">Product Brand:</label>
     <div class="col-sm-9">
-      <input type="text" class="form-control" id="productBrand" placeholder="Enter product brand" ngControl="productBrand" [(ngModel)]= 'product.productBrand'required>
+      <input formControlName="productBrand" type="text" class="form-control margin-bottom" id="productBrand" placeholder="Enter product brand" ngControl="productBrand" [(ngModel)]= 'product.productBrand'required>
     </div>
   </div>
 
 <div class="form-group">
     <label class="control-label col-sm-3" for="productDescription">Enter a description:</label>
     <div class="col-sm-9">
-      <input type="text" class="form-control" id="productDescription" placeholder="Enter description here" ngControl="productDescription" [(ngModel)]= 'product.productDescription'required>
+      <input formControlName="productDescription" type="text" class="form-control margin-bottom" id="productDescription" placeholder="Enter description here" ngControl="productDescription" [(ngModel)]= 'product.productDescription'required>
     </div>
   </div>
 
 <div class="form-group">
     <label class="control-label col-sm-3" for="productPrice">Product Price:</label>
     <div class="col-sm-9">
-      <input type="number" class="form-control" id="productPrice" placeholder="Enter product price" ngControl="productPrice" [(ngModel)]= 'product.productPrice' required>
+      <input formControlName="productPrice" type="number" class="form-control margin-bottom" id="productPrice" placeholder="Enter product price" ngControl="productPrice" [(ngModel)]= 'product.productPrice' required>
     </div>
   </div>
 
 <div class="form-group">
     <label class="control-label col-sm-3" for="productQuantity">Product Quantity:</label>
     <div class="col-sm-9">
-      <input type="number" class="form-control" id="productQuantity" placeholder="Enter initial product quantity" ngControl="productQuantity" [(ngModel)]= 'product.productQuantity' required>
+      <input formControlName="productQuantity" type="number" class="form-control margin-bottom" id="productQuantity" placeholder="Enter initial product quantity" ngControl="productQuantity" [(ngModel)]= 'product.productQuantity' required>
     </div>
   </div>
 
 <div class="form-group">
     <label class="control-label col-sm-3" for="productReOrderLevel">Product Re-Order level:</label>
     <div class="col-sm-9">
-      <input type="number" class="form-control" id="productReOrderLevel" placeholder="Enter product re-order level" ngControl="productReOrderLevel" [(ngModel)]= 'product.ReOrderLevel' required>
+      <input formControlName="productReOrderLevel" type="number" class="form-control margin-bottom" id="productReOrderLevel" placeholder="Enter product re-order level" ngControl="productReOrderLevel" [(ngModel)]= 'product.reOrderLevel' required>
     </div>
   </div>
+
+<div class="form-group">
+    <label class="control-label col-sm-3" for="available">Available in the webshop?</label>
+    <div class="col-sm-9"> 
+      <select formControlName="available" type="text" class="form-control margin-bottom" id="available" placeholder="Select product type" ngControl="available" [(ngModel)]="product.available" required>
+          <option value="true" selected>Available</option>
+          <option value="false">Not Available</option>
+      </select>
+    </div>
+  </div>
+
 <div class="form-group">
     <label class="control-label col-sm-3" for="productPicture">Upload a product picture:</label>
     <div class="col-sm-9">
-      <input type="file" class="form-control" id="productPicture" formenctype="multipart/form-data" ngControl="productPicture" [(ngModel)]= 'product.imageUrl' required>
+      <input formControlName="productPicture" type="file" class="form-control margin-bottom" id="productPicture" formenctype="multipart/form-data" ngControl="productPicture" [(ngModel)]= 'product.imageUrl' required>
     </div>
   </div>
 
@@ -66,3 +79,5 @@
       <div class="btn btn-primary pull-right" (click)="onSubmit()">Submit</div>
     </div>
   </div>
+  </form>
+</div>

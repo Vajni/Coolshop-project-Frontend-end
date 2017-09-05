@@ -1,0 +1,21 @@
+.margin-bottom{
+    margin-bottom: 10px;
+}
+
+.container{
+    padding-top: 20px;
+    padding-bottom: 15px;
+    border-radius: 15px;
+    opacity: 0.9;
+    background: url(https://static1.squarespace.com/static/56ce04a2e707eb67c53a425e/t/56e4b8e40442621615c9b736/1457830118223/iron_texture637.jpg?format=2500w) no-repeat fixed center;
+    background-size: 960px x 460px;
+    
+}
+
+.control-label{
+    color: white;
+}
+
+input, select{
+    border-radius: 5px;
+}

@@ -50,10 +50,13 @@ import {MerchantPageService} from './MerchantPage/mp.service';
 import {MerchantSelectorComponent} from './MerchantSelector/ms.component';
 import {MerchantSelectorService} from './MerchantSelector/ms.service';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
    imports: [
      BrowserModule,
+     ReactiveFormsModule,
      HttpModule,
      FormsModule,
      RouterModule,
@@ -96,6 +99,5 @@ import {MerchantSelectorService} from './MerchantSelector/ms.service';
   ],
   bootstrap: [ AppComponent ],
   providers: [RoleManagementService, RoleSelectorService, MerchantService, ProductDetailGuard, CheckoutService,ProductService, CartService, CartComponent, LoginService, StorageService, WelcomeService, HTTPWrapper, MerchantPageService, MerchantSelectorService,  AdminService]
-  ]
 })
 export class AppModule { }

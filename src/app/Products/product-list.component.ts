@@ -48,7 +48,7 @@ export class ProductListComponent implements OnInit{
 
   checkIfInCart(product : IProduct) : boolean{
     this.productsFromCart.forEach(element => {
-      if (element.productId === product.productId){
+      if (element.productID === product.productID){
         console.log("True");
       }
     });

@@ -48,8 +48,8 @@
       </thead>
       <tbody>
       <tr *ngFor="let product of products | productFilterByProduct: listFilterProduct | productFilterBySupplier : listFilterBySupplier | productFilterByType : listFilterByType">
-        <!-- This container is filtering out Drugs and Sex toys from the products
-        <!-- It also filters wether a product is available or not!
+        <!-- This container is filtering out Drugs and Sex toys from the products-->
+        <!-- It also filters wether a product is available or not!?>
         <ng-container *ngIf="product.productType != 'Sex toy' && product.productType != 'Drugs'
                             && product.available != false">
         <td>
@@ -71,7 +71,7 @@
                        <span class="glyphicon glyphicon-shopping-cart"></span> Add to cart!
               </button>
         </td>
-        <!--/ng-container-->
+        </ng-container>
       </tr>
       </tbody>
     </table>

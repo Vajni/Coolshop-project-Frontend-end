@@ -2,7 +2,7 @@ export class Order{
 
     orderId: number;
     userId: number;
-    productId: number;
+    productID: number;
     unitsOnOrder: number;
     orderDate: Date;
     requiredDate: Date;
@@ -14,10 +14,10 @@ export class Order{
     shipPostalCode:string;
     shipCountry:string;
 
-   constructor(orderId: number, userId: number, productId: number, unitsOnOrder: number, orderDate: Date, requiredDate: Date, shippedDate: Date, shipName:string, shipAddress:string, shipCity:string, shipRegion:string, shipPostalCode:string, shipCountry:string,){
+   constructor(orderId: number, userId: number, productID: number, unitsOnOrder: number, orderDate: Date, requiredDate: Date, shippedDate: Date, shipName:string, shipAddress:string, shipCity:string, shipRegion:string, shipPostalCode:string, shipCountry:string,){
         this.orderId = orderId;
         this.userId = userId;
-        this.productId = productId;
+        this.productID = productID;
         this.unitsOnOrder = unitsOnOrder;
         this.orderDate = orderDate;
         this.requiredDate = requiredDate;

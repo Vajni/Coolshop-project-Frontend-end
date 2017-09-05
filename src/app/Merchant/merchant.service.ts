@@ -6,6 +6,7 @@ import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
 import "rxjs/add/operator/do";
 import { StorageService } from "../Storage/storage.service";
+import { MerchantComponent } from "./merchant.component";
 
 @Injectable()
 export class MerchantService {
@@ -16,14 +17,17 @@ export class MerchantService {
 
     }
 
-    postJSON(product : IProduct){
-        var details = {productName: product.productName,
+    postJSON(product : IProduct, userId : number){
+    
+        var details = {userId : userId,
+                       productName: product.productName,
                        productType: product.productType,
                        productBrand: product.productBrand,
                        productDescription: product.productDescription,
                        productPrice: product.productPrice,
                        productQuantity: product.productQuantity,
                        unitsOnOrder: 0,
+                       available: product.available,
                        imageName : product.productName,
                        reOrderLevel: product.reOrderLevel}
         
@@ -34,7 +38,7 @@ export class MerchantService {
         })), 
         
         formData.append('file', document.getElementById('productPicture')['files'][0]);
-        
+        console.log(details);
         let token = <string>this._storageService.read("token");
         let headers = new Headers();
         headers.append("X-token", token);
