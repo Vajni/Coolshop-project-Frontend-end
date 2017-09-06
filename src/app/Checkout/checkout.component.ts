@@ -28,11 +28,6 @@ export class CheckoutComponent implements OnInit{
 
 
     checked: boolean = false;
-    deliverycountry: string;
-    deliverycity: string;
-    deliveryregion: string;
-    deliveryaddress: string;
-    deliverypostalcode: string;
     deliveryOrder: Order;
     today: Date = new Date();
     requiredDate: Date = new Date("February 10, 2017 10:10:00");
@@ -67,12 +62,12 @@ export class CheckoutComponent implements OnInit{
     }
 
     orderWithDeliveryAddress(): void {
-        if (this.deliverycountry==null || this.deliverycity==null || this.deliveryregion==null || this.deliveryaddress==null || this.deliverypostalcode==null ){
+        if (this.checkoutService.deliverycountry=="" || this.checkoutService.deliverycity=="" || this.checkoutService.deliveryregion=="" || this.checkoutService.deliveryaddress=="" || this.checkoutService.deliverypostalcode=="" ){
             alert("You must fill out all field.");
         } else {
             CheckoutService.orderList = new Array();
             for (let product of this.cartService.orderedProducts) {
-                this.checkoutService.addressOrder = new Order(0, this.checkoutService.user.userID, product.productID, product.unitsOnOrder, this.today, this.requiredDate, this.shippedDate, this.checkoutService.user.userName, this.deliveryaddress, this.deliverycity, this.deliveryregion, this.deliverypostalcode, this.deliverycountry);
+                this.checkoutService.addressOrder = new Order(0, this.checkoutService.user.userID, product.productID, product.unitsOnOrder, this.today, this.requiredDate, this.shippedDate, this.checkoutService.user.userName, this.checkoutService.deliveryaddress, this.checkoutService.deliverycity, this.checkoutService.deliveryregion, this.checkoutService.deliverypostalcode, this.checkoutService.deliverycountry);
                 CheckoutService.orderList.push(this.checkoutService.addressOrder)
             }
             this.navigateToPaymentPage();

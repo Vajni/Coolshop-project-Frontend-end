@@ -147,9 +147,13 @@ export class PaymentComponent implements OnInit{
         let eY: number = +expiryYear;
 
         if(today.getFullYear() <= eY){
-            if(today.getMonth() + 1 >= eM){
+            if(today.getFullYear() == eY){
+                if(today.getMonth() + 1 >= eM){
                 alert("Your card was expiry.")
                 return false;
+                } else {
+                    return true;
+                }
             } else {
                 return true;
             }

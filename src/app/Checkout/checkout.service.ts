@@ -22,6 +22,11 @@ export class CheckoutService{
     errorMessage: string;
     user: User = new User(1, "a", "a", "a", "a", "a", "a", "a", "a", "a", "a");
     uDate: Date = new Date();
+    deliverycountry: string = "";
+    deliverycity: string = "";
+    deliveryregion: string = "";
+    deliveryaddress: string = "";
+    deliverypostalcode: string = "";
     addressOrder: Order = new Order(0, 0, 0, 0, this.uDate, this.uDate, this.uDate, "a", "a", "a", "a", "a", "a");
 
     getAddress(token: string): Observable<User> {
