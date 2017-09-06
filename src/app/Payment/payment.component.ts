@@ -34,7 +34,6 @@ export class PaymentComponent implements OnInit{
 
     ngOnInit(): void{
             this.checkoutService.getAddress(<string>this.storageService.read("token")).subscribe(user => this.checkoutService.user = user, error => this.checkoutService.errorMessage = <any>error);
-            console.log(this.checkoutService.user.userID)
             var price = this.totalPrice;
             paypal.Button.render({
 
@@ -71,8 +70,6 @@ export class PaymentComponent implements OnInit{
 
 
         }, '#paypal-button');
-
-        console.log(CheckoutService.orderList)
     
     }
 
@@ -93,7 +90,6 @@ export class PaymentComponent implements OnInit{
 
             this.checkoutService.checkQuantityInDB(orderList).subscribe(data => {
                 if(data._body == "true"){
-                    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!AMI VISSZAJÖN DATA: " + data);
                     this.checkoutService.postOrder(orderList, this.totalPrice, this.cardNumber).subscribe();
                     alert("Thanks for your vásárlás.")
                     this.clearTheCart();

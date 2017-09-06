@@ -13,7 +13,7 @@ export class RegistrationService{
 
     }
 
-    valamilyenneven(user: User): Observable<any> {
+    addToDatabase(user: User): Observable<any> {
         return this._httpWrapper.post(user, "http://localhost:8080/CoolShop-1.0/rest/register/addToDatabase");
     }
 }

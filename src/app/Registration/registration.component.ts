@@ -46,7 +46,7 @@ export class RegistrationComponent {
 
 
     onPost() {
-        this.registrationService.valamilyenneven(this.registration(this.username, this.email, this.password, this.passwordagain, this.phonenumber, this.country, this.region, this.postalcode, this.city, this.streetandstreetnumber)).subscribe((response) => {
+        this.registrationService.addToDatabase(this.registration(this.username, this.email, this.password, this.passwordagain, this.phonenumber, this.country, this.region, this.postalcode, this.city, this.streetandstreetnumber)).subscribe((response) => {
             if (response._body === "This e-mail address already in use.") {
                 alert("This e-mail address already in use.")
             } else if (response._body === "Something went wrong.") {

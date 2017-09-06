@@ -18,6 +18,6 @@ export class Admin{
     constructor(private _adminService : AdminService, private _router : Router){}
 
     ngOnInit(){
-      return this._adminService.getLogs().subscribe(logs => this.logs = logs, error => this.errorMessage = <any>error, ()=>console.log(this.logs));
+      return this._adminService.getLogs().subscribe(logs => this.logs = logs, error => this.errorMessage = <any>error);
     }
 }

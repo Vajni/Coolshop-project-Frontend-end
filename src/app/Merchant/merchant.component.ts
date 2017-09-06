@@ -38,7 +38,6 @@ export class MerchantComponent{
     ngOnInit(){
         this.checkoutService.getAddress(<string>this._storageService.read("token")).
         subscribe(user => this.user = user, error => this.checkoutService.errorMessage = <any>error);
-        console.log(this.user);
     }
 
     onSubmit(){

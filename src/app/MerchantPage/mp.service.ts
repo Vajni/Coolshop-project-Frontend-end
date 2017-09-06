@@ -19,13 +19,10 @@ export class MerchantPageService {
     }
 
     getProducts(): Observable<Product[]>{
-        //Két új sor
         let data = new URLSearchParams();
         data.append("token", <string>this._storageService.read("token"));
-        //eddig
         return this._wrapper.post(data, this._getProductURL)
         .map((response: Response) => <Product[]>response.json())
-        .do(data => console.log("All: " + JSON.stringify(data)))
         .catch(this.handleError);
     }
 

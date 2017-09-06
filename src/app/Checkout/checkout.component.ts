@@ -41,7 +41,6 @@ export class CheckoutComponent implements OnInit{
 
 
     ngOnInit(): void {
-        console.log(<string>this.storageService.read("token"))
         this.checkoutService.getAddress(<string>this.storageService.read("token")).subscribe(user => this.checkoutService.user = user, error => this.checkoutService.errorMessage = <any>error);
     }
 

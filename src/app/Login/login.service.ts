@@ -35,7 +35,6 @@ export class LoginService {
     if (data.login == "true") {
       LoginService.token = data.token;
       this._storage.write("token", data.token);
-      console.log(LoginService.token + " <--> " + this._storage.read("token"));
       return true;
     }
     else {
@@ -65,17 +64,11 @@ export class LoginService {
       if (token != null || token != undefined) {
         let data = new URLSearchParams();
         data.append("token", token);
-        //this._storage.write("token", LoginService.token);
-        /*return this._http.get("http://localhost:8080/CoolShop-1.0/rest/user/get?token=" + token, data)
-          .map(response => response.json());*/
-         //let back = this.wrapper.get("http://localhost:8080/CoolShop-1.0/rest/user/get?token=" + token);
          let back2;
          let back = this.wrapper.post(data, "http://localhost:8080/CoolShop-1.0/rest/user/getuser")
             .map((response: Response)=> response.json()).do(data => {
-                //alert("str: " + JSON.stringify(data));
                 back2 = data;
             });
-         //alert("BACK: " + back);
         return back;
       }
   }

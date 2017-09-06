@@ -38,7 +38,6 @@ export class MerchantService {
         })), 
         
         formData.append('file', document.getElementById('productPicture')['files'][0]);
-        console.log(details);
         let token = <string>this._storageService.read("token");
         let headers = new Headers();
         headers.append("X-token", token);

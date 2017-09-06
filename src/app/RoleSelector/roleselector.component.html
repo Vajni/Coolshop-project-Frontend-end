@@ -1,6 +1,6 @@
 <td>{{user.userName}}</td>
 <td>
-	<select [ngClass]="user.role" [(ngModel)]="user.role" (change)="ngOnInit(); random(); onChange()">
+	<select [ngClass]="user.role" [(ngModel)]="user.role" (change)="ngOnInit(); onChange()">
     <option *ngFor="let role of roles" [ngValue]="role">{{role}}</option>
   </select>
 </td>

@@ -66,7 +66,6 @@ export class AppComponent implements OnInit {
   roleIsAdmin: boolean = false;
 
   ngOnInit(): void {
-      console.log(<string>this._storage.read("token"));
       this.setUser();
       if (this.logged_in()) {
         this.login();
@@ -76,7 +75,6 @@ export class AppComponent implements OnInit {
   constructor(private loginService: LoginService, private _storage: StorageService, private _router: Router,
               private checkoutService: CheckoutService) {
     let token = this._storage.read("token");
-    console.log("Detected token: " + token);
     if (token != null) {
       this.login();
     }
@@ -87,7 +85,6 @@ export class AppComponent implements OnInit {
   }
 
   userButtonClicked(): void {
-    console.log("User button clicked");
     if (this.logged_in()) {
       this._storage.write("token", null);
       this.logout();
@@ -143,15 +140,12 @@ export class AppComponent implements OnInit {
           let role = this.userJSON["role"];
           switch(role) {
             case "user":
-              //alert("You are a simple user");
               this.changeRegAndManageButton("logged_in");
               break;
             case "merchant":
-              //alert("You are a merchant");
               this.changeRegAndManageButton("logged_in_merchant");
               break;
             case "admin":
-              //alert("You are an ADMIN");
               this.changeRegAndManageButton("logged_in_admin");
               break;
             default: break;

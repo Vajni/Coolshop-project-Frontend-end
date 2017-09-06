@@ -46,12 +46,4 @@ export class ProductListComponent implements OnInit{
     this.cartComponent.checkIfAdded(product);
   }
 
-  checkIfInCart(product : IProduct) : boolean{
-    this.productsFromCart.forEach(element => {
-      if (element.productID === product.productID){
-        console.log("True");
-      }
-    });
-    return false;
-  }
 }
