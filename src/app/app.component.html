@@ -19,6 +19,9 @@
             <a class="nav-link" routerLink="/admin">Order logs</a>
           </li>
 
+          <li *ngIf="roleIsAdmin" class="nav-item" id="nav-item-signup">
+            <a class="nav-link" routerLink="/merchant">Merchant page</a>
+          </li>
 
 
         </ul>
