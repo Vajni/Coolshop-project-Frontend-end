@@ -83,10 +83,13 @@ export class PaymentComponent implements OnInit{
         } else if(this.cartService.totalPrice == 0){
             alert("Something went wrong. Now you redirected to Productlist.")
             this.router.navigate(["products"])
-        }else {
+        } else if(this.checkCardNumber() == false || this.checkCardHolder() == false || this.checkSecurityCode() == false || this.checkExpiryDate() == false){
+            console.log("Error.");
+        } else {
             for(let order of CheckoutService.orderList){
                 orderList.push(order);
             }
+            this.clearTheCart();
 
             this.checkoutService.checkQuantityInDB(orderList).subscribe(data => {
                 if(data._body == "true"){
@@ -101,7 +104,7 @@ export class PaymentComponent implements OnInit{
                 }
             });
             
-        }
+        } 
     }
 
     clearTheCart(): void{
@@ -109,5 +112,57 @@ export class PaymentComponent implements OnInit{
         this.cartService.totalPrice = 0;
         this.checkoutComponent.orderedProducts = new Array();
         CheckoutService.orderList = new Array();
+    }
+
+    checkCardNumber(): boolean{
+        let cardnumSt: string = this.cardNumber.toString();
+        let numLen: number = cardnumSt.length;
+        if(numLen != 16){
+            alert("Your card number is invalid.")
+            return false;
+        }
+        return true;
+    }
+
+    checkCardHolder(): boolean{
+        let cardHolLen: number = this.cardHolder.length;
+        if(cardHolLen < 6){
+            alert("Card holder name is invalid.");
+            return false;
+        }
+        return true;
+    }
+
+    checkSecurityCode(): boolean{
+        let secSt: string = this.securityCode.toString();
+        let secLen: number = secSt.length;
+        if(secLen != 3){
+            alert("Security code is invalid.");
+            return false;
+        }
+        return true;
+    }
+
+    checkExpiryDate(): boolean{
+        let today: Date = new Date();
+        let expiryMonth: string = this.expiryDate.substr(5);
+        let eM: number = +expiryMonth;
+        let expiryYear: string = this.expiryDate.substr(0, 4);
+        let eY: number = +expiryYear;
+
+        if(today.getFullYear() <= eY){
+            if(today.getMonth() + 1 >= eM){
+                alert("Your card was expiry.")
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            alert("Your card was expired.")
+            return false;
+        }
+        
+
+        
     }
 }
