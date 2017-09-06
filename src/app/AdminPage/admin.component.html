@@ -7,32 +7,26 @@
       
     <div class="filter-bar">
       <div class="row">
+          <div class="col-md-4">
+              <h5>Search Order ID:</h5>
+            </div>
         <div class="col-md-4">
-          <h4>Search Order Date:</h4>
+          <h5>Search Order Date:</h5>
         </div>
-        <!--div class="col-md-4">
-          <h4>Search supplier:</h4>
-        </div>
-        <div class="col-md-4">
-          <h4>Search type:</h4>
-        </div-->
       </div>
     
       <div class="row">
-        <div class="col-md-4">
-          <input type="text" [(ngModel)] = "listFilterOrderDate" placeholder="Order Date"/>
-        </div>
-        <!--div class="col-md-4">
-          <input type="text" [(ngModel)] = "listFilterBySupplier" placeholder="Supplier"/>
+         <div class="col-md-4">
+          <input type="text" [(ngModel)] = "logFilterByOrderId" placeholder="Order ID"/>
         </div>
         <div class="col-md-4">
-          <input type="text" [(ngModel)] = "listFilterByType" placeholder="Type"/>
-        </div-->
+          <input type="text" [(ngModel)] = "logFilterOrderDate" placeholder="Order Date"/>
+        </div>
       </div>
     </div>
      
 
-  <div class="table-responsive">
+  <div class="table-responsive table-hover">
     <table class="table" *ngIf="logs && logs.length">
       <thead>
         <tr>
@@ -54,7 +48,7 @@
         </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let log of logs | logFilterByOrderDate : listFilterOrderDate">
+      <tr *ngFor="let log of logs | logFilterByOrderId : logFilterByOrderId | logFilterByOrderDate : logFilterOrderDate">
         <td>{{log.orderId}}</td>
         <td>{{log.userId}}</td>
         <td>{{log.productId}}</td>
