@@ -1,4 +1,4 @@
-.panel {
+/*.panel {
   margin: 0;
   padding: 0;
   border-color: #333333;
@@ -65,7 +65,7 @@ table {
 
 .button:hover {
   background-color: #337ab7;
-}*/
+}
 
 .panel-footer {
   background-color: #333333;
@@ -94,6 +94,26 @@ table {
 .shoppingCart {
   border: 1px solid #474747;
 }*/
+
+.scroll {
+  max-height: 250px;
+  overflow-y: scroll;
+}
+
+#bar-style::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: white;
+}
+
+#bar-style::-webkit-scrollbar {
+  width: 6px;
+  background-color: white;
+}
+
+#bar-style::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #00b0eb;
+}
 
 .cart-header {
   background-color: #00b0eb;
@@ -163,10 +183,29 @@ table {
 .cart-footer {
   background-color: #474747;
   color: white;
+  border: none;
 }
 
 .cart-footer p {
   font-size: 20px;
   padding: 10px;
   margin: 0;
+}
+
+.order {
+  margin-top: 10px;
+  border: none;
+  background-color: #474747;
+  color: white;
+  outline: none;
+}
+
+.order p {
+  font-size: 16px;
+  margin: 0;
+  padding: 5px 0;
+}
+
+.order:hover {
+  background-color: #1f1f1f;
 }

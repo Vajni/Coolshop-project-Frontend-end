@@ -27,6 +27,10 @@
 
 /*Ez itt már az új listához tartozik */
 
+.false {
+    display: none;
+}
+
 .wrapper {
     overflow: hidden;
 }

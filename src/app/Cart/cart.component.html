@@ -3,32 +3,42 @@
 	<div class="cart-header">
 		<p>Shopping Cart</p>
 	</div>
-	<div class="row" *ngFor="let product of cartService.orderedProducts">
-		<div class="col-md-4 name">
-			<a href="#"><p>{{product.productName}}</p></a>
-		</div>
-		<div class="col-md-4 quantity">
-			<div class="q">
-				<button class="button">
-					<span class="glyphicon glyphicon-minus"></span>
-				</button>
-				<p>{{product.unitsOnOrder}}</p>
-				<button class="button">
-					<span class="glyphicon glyphicon-plus"></span>
-				</button>
+
+	<div class="scroll" id="bar-style">
+		<div class="row" *ngFor="let product of cartService.orderedProducts">
+			<div class="col-md-4 name">
+				<a href="#"><p>{{product.productName}}</p></a>
+			</div>
+			<div class="col-md-4 quantity">
+				<div class="q">
+					<button class="button"
+							(click)="decreaseQuantity(product);
+									subtractFromTotalPrice(product.productPrice);
+									checkQuantity(product, product.unitsOnOrder)">
+						<span class="glyphicon glyphicon-minus"></span>
+					</button>
+					<p>{{product.unitsOnOrder}}</p>
+					<button class="button"
+							(click)="increaseQuantity(product);
+									addToTotalPrice(product.productPrice)">
+						<span class="glyphicon glyphicon-plus"></span>
+					</button>
+				</div>
+			</div>
+			<div class="col-md-4 price">
+				<p>{{product.productPrice | currency:"USD" : true:"1.2-2"}}</p>
 			</div>
 		</div>
-		<div class="col-md-4 price">
-			<p>{{product.productPrice | currency:"USD" : true:"1.2-2"}}</p>
-		</div>
 	</div>
+
 	<div class="cart-footer">
 		<p>Total price: {{cartService.totalPrice | currency:"USD" : true:"1.2-2"}}</p>
 	</div>
 </div>
-<div>
-	<button (click)="onOrder()">Click me</button>
-</div>
+<button class="col-md-12 order"(click)="onOrder()">
+	<p>Order</p>
+</button>
+
 <!-- Test Cart - End -->
 
 <!-- Shopping Cart - Start
