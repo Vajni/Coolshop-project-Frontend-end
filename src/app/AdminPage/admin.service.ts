@@ -8,9 +8,7 @@ export class AdminService{
 
     constructor(private _httpWrapper : HTTPWrapper){}
 
-    checkLogin(email, password): Observable<boolean> {
-        let json = {email : email, password : password};
-        return this._httpWrapper.post(json, "http://localhost:8080/CoolShop-1.0/rest/admin/checkRole")
-          .map(response => response.json(), console.log(json));
-      }
+    getLogs(): Observable<any>{
+        return this._httpWrapper.get("http://localhost:8080/CoolShop-1.0/rest/admin/getLogs").map(resp => resp.json());
+    }
 }

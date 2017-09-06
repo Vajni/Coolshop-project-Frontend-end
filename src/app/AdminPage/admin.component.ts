@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
-import { User } from "../RoleManagement/user";
 import { AdminService } from "./admin.service";
 import { Router } from "@angular/router";
+import { Log } from "./log";
 
 @Component({
     selector: 'pm-admin',
@@ -11,19 +11,13 @@ import { Router } from "@angular/router";
   })
 export class Admin{
 
-    email : string;
-    password : string;
+    logs : Log[];
+    errorMessage : any;
+    pageTitle : string = "Order Logs";
 
     constructor(private _adminService : AdminService, private _router : Router){}
 
-    sendClicked() {
-        this._adminService.checkLogin(this.email, this.password).subscribe(success => {
-          if (success) {
-            this._router.navigate(["rolemanagement"]);
-          }
-          else {
-            alert("Either your email or password was incorrect or you are not an administrator.");
-          }
-        })
-      }
+    ngOnInit(){
+      return this._adminService.getLogs().subscribe(logs => this.logs = logs, error => this.errorMessage = <any>error, ()=>console.log(this.logs));
+    }
 }
