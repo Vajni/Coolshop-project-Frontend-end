@@ -28,8 +28,7 @@ export class CheckoutService{
         let data = new URLSearchParams();
         data.append("token", <string>this.storageService.read("token"));
         return this._httpWrapper.post(data,"http://localhost:8080/CoolShop-1.0/rest/checkout/getAddressInformations")
-            .map((response: Response)=><User>response.json())
-            .do(data => console.log(JSON.stringify(data)));
+            .map((response: Response)=><User>response.json());
     }
 
     postOrder(order: Order[], totalPrice: string, cardNumber: number): Observable<any>{

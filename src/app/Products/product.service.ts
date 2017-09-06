@@ -21,7 +21,6 @@ export class ProductService {
         
         return this._wrapper.get(this._productUrl)
         .map((response: Response)=><IProduct[]>response.json())
-        .do(data => console.log("All products: " + JSON.stringify(data)))
         .catch(this.handleError);
         
     }
@@ -29,10 +28,6 @@ export class ProductService {
     private handleError(error: Response){
         console.error(error);
         return Observable.throw(error.json().error || "Server error");
-    }
-
-    logName(userName: String) {
-        console.log('userName: ' + userName);
     }
 
     getProduct(id: number): Observable<IProduct> {

@@ -19,12 +19,8 @@ export class RoleSelectorComponent implements OnInit {
   constructor(private _roleSelectorService: RoleSelectorService) { }
 
   ngOnInit() {
-    console.log('Role for this user has been changed', this.user);
   }
 
-  random() {
-    this._roleSelectorService.test(this.user.userID, this.user.role);
-  }
 
   onChange() {
     this._roleSelectorService.updateUserRole(this.user.userID, this.user.role)

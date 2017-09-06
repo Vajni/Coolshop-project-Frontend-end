@@ -27,29 +27,6 @@ export class MerchantPageComponent {
         this._merchantPageService.getProducts()
         .subscribe(products =>{
             this.products = products;
-            //this.addClass();}
             }, error => this.errorMessage = <any>error);
     }
-
-    /*addClass(): void {
-        for (let product of this.products) {
-            if(product.available == true) {
-                console.log(product.productName);
-                this.test = "bg-success";
-            } else {
-                console.log(product.productPrice);
-                this.test = "bg-danger";
-            }
-        }
-    }
-
-    AZ ALSÓ MÉG JÓL JÖHET AMIKOR VÁLTOZTATHATÓ LESZ AZ ELÉRHETŐSÉG!!!!!
-
-    isProductAvailable(product: Product) {
-        if (product.available) {
-            return "bg-success";
-        } else {
-            return "bg-danger";
-        }
-    }*/
 }

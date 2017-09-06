@@ -19,12 +19,10 @@ export class RoleManagementService {
         
         return this._httpWrapper.get(this._getRoleUrl)
                     .map((response: Response) => <User[]>response.json())
-                    .do(data => console.log("All: " + JSON.stringify(data)))
                     .catch(this.handleError);
     }
 
     private handleError(error: Response) {
-        console.error(error);
         return Observable.throw(error.json().error || "Server error");
     }
 }
