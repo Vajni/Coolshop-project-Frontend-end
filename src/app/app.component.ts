@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
         "logged_out": "/register",
         "logged_in": "",
         "logged_in_merchant": "/mp",
-        "logged_in_admin": "/admin"
+        "logged_in_admin": "/rolemanagement"
       },
       clickfuncs: {
         "logged_out": "",
