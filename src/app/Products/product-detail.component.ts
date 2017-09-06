@@ -5,13 +5,24 @@ import { ProductService } from "./product.service"
 import { Subscription } from 'rxjs/Subscription';
 import { CartComponent } from "../Cart/cart.component";
 import { HTTPWrapper } from "../HTTPWrapper/wrapper.service";
+import { trigger, state, animate, style, transition, keyframes } from '@angular/animations';
 
 declare var paypal: any;
 
 @Component({
     selector: 'pm-details',
     templateUrl:"product-detail.component.html",
-    styleUrls: ["product-details.component.css"]
+    styleUrls: ["product-details.component.css"],
+    animations: [trigger('pictureAnimation', [
+        state('small', style({
+          transform: 'scale(1)'
+        })),
+        state('large', style({
+          transform: 'scale(1.5)'
+        })),
+        transition('small <=> large', animate('600ms ease-in'))
+      ]),
+    ]
 })
 
 
@@ -23,7 +34,7 @@ export class ProductDetailComponent implements OnInit{
     product : IProduct;
     errorMessage : string;
     private sub : Subscription;
- 
+    state : string = 'small';
    
     constructor(private _httpWrapper : HTTPWrapper, private _productService : ProductService, private _route: ActivatedRoute, private _router: Router, private cartComponent: CartComponent){
         
@@ -59,6 +70,10 @@ export class ProductDetailComponent implements OnInit{
     checkIfAdded(product: IProduct) {
     this.cartComponent.checkIfAdded(product);
     }
+
+    animateSize(){
+        this.state = (this.state === 'small' ? 'large' : 'small');
+      }
 
 }
 
