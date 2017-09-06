@@ -1,3 +1,55 @@
+<div class="wrapper">
+    <!-- Product Detail - Start -->
+    <div class="row product-container">
+        <div class="col-md-12 header">
+            <h2>{{product.productName}}</h2>
+            <p>by {{product.productBrand}}</p>
+        </div>
+
+        <div class="col-md-6 image">
+            <img src="{{product.imageName}}">
+        </div>
+        
+        <div class="col-md-5 item">
+            <div class="item-details">
+                <p>Product Type:</p>
+                <p>{{product.productType}}</p>
+            </div>
+
+            <div class="item-details">
+                <p>Description:</p>
+                <p>{{product.productDescription}}</p>
+            </div>
+
+            <div class="item-details">
+                <p>Available Quantity:</p>
+                <p>{{product.productQuantity}}</p>
+            </div>
+
+            <div class="item-details">
+                <p>Price:</p>
+                <p>{{product.productPrice|currency:'USD':true}}</p>
+            </div>
+
+            <button (click)="checkIfAdded(product); addToTotalPrice(product.productPrice)">
+                <span class="glyphicon glyphicon-shopping-cart"></span>
+                Add to cart!
+            </button>
+        </div>
+
+        <button class="back" (click)="onBack()">
+            <span class="glyphicon glyphicon-chevron-left"></span> Back
+        </button>
+    </div>
+    <!-- Product Detail - End -->
+
+    <!-- Shopping Cart - Start -->
+    <div class="cart">
+        <pm-cart></pm-cart>
+    </div>
+    <!-- Shopping Cart - End -->
+</div>
+<!--
 <div class='panel panel-primary' *ngIf='product'>
     <div class='panel-heading' style='font-size:large'>
         {{pageTitle}}
@@ -60,4 +112,4 @@
         </a>
     </div>
 </div>
-<pm-cart></pm-cart>
+<pm-cart></pm-cart> -->
