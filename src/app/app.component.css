@@ -23,3 +23,9 @@
 .social i:hover {
     color: #00b0eb;
 }
+
+.nav-link {
+    margin: 0;
+    padding: 0;
+    color: #838383;
+}
