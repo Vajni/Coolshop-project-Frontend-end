@@ -13,12 +13,14 @@
           <li class="nav-item" id="nav-item-signup">
             <a class="nav-link" routerLink="{{rmButtonUrl}}">{{rmButtonText}}</a>
           </li>
-          <!--li class="nav-item" id="nav-item-about">
-            <a class="nav-link" routerLink="/mp">MP</a>
+
+
+          <li *ngIf="roleIsAdmin" class="nav-item" id="nav-item-signup">
+            <a class="nav-link" routerLink="/admin">Order logs</a>
           </li>
-          <li class="nav-item" id="nav-item-about">
-            <a class="nav-link" routerLink="/admin">Role management</a>
-        </li-->
+
+
+
         </ul>
         <div class="nav-item">
             <p class="nav-link">{{userNameText}}</p>

@@ -63,6 +63,7 @@ export class AppComponent implements OnInit {
   rmButtonUrl = this.snippets.regAndManagementButton.urls["logged_out"];
 
   userNameText = "";
+  roleIsAdmin: boolean = false;
 
   ngOnInit(): void {
       console.log(<string>this._storage.read("token"));
@@ -93,10 +94,6 @@ export class AppComponent implements OnInit {
     }
   }
 
-  test() {
-    console.log("ASDSADASDSAD");
-  }
-
   changeUserButton(to: string) {
     this.userButtonClick = this.snippets.userButton.clickfuncs[to];
     this.userButtonText = this.snippets.userButton.texts[to];
@@ -111,14 +108,11 @@ export class AppComponent implements OnInit {
 
   login() {
     this.changeUserButton("logged_in");
-    //alert(this.user);
     if (this.user == undefined) {
       this.setUser();
     }
     let userDatas;
     userDatas = this.getUser();
-    //alert("userDatas: " + userDatas);
-
   }
 
   logout() {
@@ -126,24 +120,18 @@ export class AppComponent implements OnInit {
     this.changeUserButton("logged_out");
     this.changeRegAndManageButton("logged_out");
     this.userNameText = "";
+    this.roleIsAdmin = false;
   }
 
   logged_in(): boolean {
     return this.loginService.isLoggedIn();
   }
 
-
   getUser() {
-      //alert("Getting user...");
       let logged_in = this.logged_in();
       let user;
-      //alert("logged_in:" + logged_in);
       this.loginService.getUserData().subscribe(data => {
-          //alert("CALLBACK running");
-          //alert("CALLBACK/ -> " + JSON.stringify(data));
-          //alert("CALLBACK/ -> " + this.userJSON);
           this.userJSON = JSON.parse(JSON.stringify(data));
-          //alert("CALLBACK/ -> userJSON: " + this.userJSON);
           if (this.userJSON == null) {
               this._storage.write("token", null);
           }
@@ -169,8 +157,10 @@ export class AppComponent implements OnInit {
             default: break;
           }
 
-          this.userNameText = this.userJSON["userName"];
-
+          this.userNameText = "Logged in as " + this.userJSON["userName"];
+          if (this.userJSON["role"] == "admin") {
+              this.roleIsAdmin = true;
+          }
       });
   }
 }
