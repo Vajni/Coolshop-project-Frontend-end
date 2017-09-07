@@ -4,10 +4,11 @@ import {ProductService } from "./product.service";
 import {CartComponent} from '../Cart/cart.component';
 import { CartService } from "../Cart/cart.service";
 
+
 @Component({
   selector: 'pm-products',
   templateUrl: 'product-list.component.html',
-  styleUrls: ['product-list.component.css'],
+  styleUrls: ['product-list.component.css']
 })
 export class ProductListComponent implements OnInit{
 /*
@@ -24,6 +25,7 @@ export class ProductListComponent implements OnInit{
   products: IProduct[];
   productsFromCart : IProduct[];
   errorMessage: string;
+  state : string = 'small';
 
   constructor(private _productService: ProductService, private cartComponent: CartComponent, private _cartService : CartService){
     this.productsFromCart = _cartService.Products ;
@@ -45,5 +47,4 @@ export class ProductListComponent implements OnInit{
   checkIfAdded(product: IProduct) {
     this.cartComponent.checkIfAdded(product);
   }
-
 }

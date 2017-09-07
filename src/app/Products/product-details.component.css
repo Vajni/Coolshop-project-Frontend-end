@@ -86,3 +86,7 @@ button:hover {
 .back {
     margin: 0 15px 15px 15px;
 }
+
+.img-responsive{
+    border: 0.5px solid black;
+}

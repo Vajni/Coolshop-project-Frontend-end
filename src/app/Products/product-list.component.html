@@ -97,16 +97,12 @@
 <div class="wrapper">
   <!-- Product list - Start -->
   <div class="row product-container">
-    <div class="col-md-3 list" *ngFor="let product of products | productFilterByProduct: listFilterProduct | productFilterBySupplier : listFilterBySupplier | productFilterByType : listFilterByType"
-         [ngClass]="product.available ? 'true' : 'false' ">
-      <div class="item">
-        <a [routerLink] = "['/product', product.productID]">
+    <div class="col-md-3 list" *ngFor="let product of products | productFilterByProduct: listFilterProduct | productFilterBySupplier : listFilterBySupplier | productFilterByType : listFilterByType">
+      <div class="item" >
           <img src="{{product.imageName}}"
-              alt="{{product.productName}}"
-              [style.width.px]="imageWidth"
-              [style.height.px]="imageHeight">
-        </a>
-
+            alt="{{product.productName}}"
+            [style.width.px]="imageWidth"
+            [style.height.px]="imageHeight">
         <a [routerLink] = "['/product', product.productID]">
           <p class="name">{{product.productName}}</p>
         </a>

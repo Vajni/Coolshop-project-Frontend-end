@@ -16,4 +16,5 @@ export class IProduct{
     available: boolean;
     imageName: string;
     imageURL: any;
+    
 }

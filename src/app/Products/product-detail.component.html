@@ -97,7 +97,7 @@
             </div>
 
             <div class='col-md-6'>
-                <img class='center-block img-responsive' 
+                <img class='center-block img-responsive'  [@pictureAnimation]='state' (click)='animateSize()'
                      [style.width.px]='600' 
                      [style.margin.px]='2' 
                      [src]='product.imageName'

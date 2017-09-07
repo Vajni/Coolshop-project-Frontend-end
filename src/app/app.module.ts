@@ -54,9 +54,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LogFilterPipeOrderDate } from "./AdminPage/admin-filter-orderdate.pipe";
 import { LogFilterPipeOrderId } from "./AdminPage/admin-filter-orderid.pipe";
 
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+
 
 @NgModule({
    imports: [
+    BrowserAnimationsModule,
      BrowserModule,
      ReactiveFormsModule,
      HttpModule,
